@@ -100,7 +100,7 @@ export function renderSpeciesBrowser(container, opts) {
     const img = findImage(images, s.id, 'adult');
     const thumb = img && img.status === 'verified'
       ? `<img src="${escapeHtml(img.localPath)}" alt="${escapeHtml(s.commonName)}" loading="lazy">`
-      : '🐟';
+      : '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13c2.8-3.6 6.8-5.5 11-5.5 3 0 5.3 1.7 7 5.5-1.7 3.8-4 5.5-7 5.5-4.2 0-8.2-1.9-11-5.5Z"/><path d="M18.5 10.3 21 8.2m-2.5 9.5 2.5-2.1"/><circle cx="9.3" cy="11.6" r=".55" fill="currentColor" stroke="none"/></svg>';
     return `
       <button type="button" class="species-card" data-species-id="${escapeHtml(s.id)}">
         <span class="species-thumb">${thumb}</span>

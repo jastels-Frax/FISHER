@@ -1,7 +1,7 @@
 // Service worker: cache-first offline support for the NS Fish Field ID & Catalogue app.
 // Bump CACHE_VERSION whenever precached files change so clients pick up the new set.
-const CACHE_VERSION = 'fisher-v1';
-const RUNTIME_CACHE = 'fisher-runtime-v1';
+const CACHE_VERSION = 'fisher-v2';
+const RUNTIME_CACHE = 'fisher-runtime-v2';
 
 const PRECACHE_URLS = [
   './',
@@ -24,7 +24,14 @@ const PRECACHE_URLS = [
   './data/species.json',
   './data/key.json',
   './data/images.json',
-  './icons/icon.svg',
+  './fonts/oswald-400.woff2',
+  './fonts/oswald-500.woff2',
+  './fonts/oswald-700.woff2',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './icons/icon-192-maskable.png',
+  './icons/icon-512-maskable.png',
+  './icons/fraxinus-mark-header.png',
 ];
 
 self.addEventListener('install', (event) => {
@@ -68,7 +75,7 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(() => {
           if (req.mode === 'navigate') return caches.match('./index.html');
-          return caches.match('./icons/icon.svg');
+          return caches.match('./icons/icon-192.png');
         });
     })
   );

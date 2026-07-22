@@ -17,6 +17,7 @@ key.html            Standalone dichotomous key
 catalogue.html      Survey/station metadata + nested fish catch records (single-page app)
 export.html         CSV/JSON export + clear-device view
 manifest.json, sw.js, icons/   PWA shell + offline caching
+fonts/               Self-hosted Oswald woff2 files (see Brand styling below)
 css/styles.css      Shared high-contrast, one-handed mobile styling
 js/                 db.js (IndexedDB), app.js (shared utils), species-list.js, key-engine.js,
                     identify-modal.js (in-context Identify overlay used from the catalogue form),
@@ -25,6 +26,45 @@ data/species.json   Species reference data + citations (this file, see below)
 data/key.json        Dichotomous key tree
 data/images.json     Reference image manifest (see Image Sourcing — currently all placeholders)
 ```
+
+## Brand styling
+
+Typography, color palette, and the logo were pulled from the three existing Fraxinus field
+PWAs (`jastels-Frax/Safety`, `jastels-Frax/Watercourse-Permitting-App`, `jastels-Frax/Fraxinus_JA`
+— the wildlife survey app) rather than invented fresh, so this app reads as part of the same
+suite. What was reused, and from where:
+
+- **Font — Oswald.** Used for headings, labels, nav, and buttons; body copy uses the system
+  font stack (`-apple-system, ... sans-serif`) for long-form legibility, matching the Safety
+  PWA's exact convention (Safety and the Wildlife app both use Oswald on Google Fonts; this
+  app self-hosts the same typeface instead via the `@fontsource/oswald` npm package — OFL-1.1
+  licensed, see `fonts/OFL-LICENSE.txt` — since a CDN font link fails offline). Only the 3
+  weights actually used are bundled: 400 (body-adjacent regular use), 500 (labels, nav, chips),
+  700 (headings, buttons, emphasis) — about 37 KB total as woff2.
+- **Logo.** The green compass/ash-leaf mark is Fraxinus's master logo file
+  (`FRAXINUS_LOGO_Compass_Color_transparent.png`, found in the Safety repo and reused verbatim,
+  unmodified, as the in-app header mark — `icons/fraxinus-mark-header.png`/`fraxinus-mark.png`).
+  The PWA manifest icons (`icons/icon-{192,512}[-maskable].png`) were regenerated from that same
+  source file — composited onto an opaque `#111111` square to match how the sibling apps export
+  their own manifest icons, with extra safe-zone padding on the maskable variants. No new logo
+  artwork was created.
+- **Color palette.** The three sibling apps don't share one identical palette (Safety: light
+  cream body + orange accent; Wildlife app: dark body + green accent; Watercourse app: dark
+  navy/cyan, and doesn't use Oswald at all — likely an earlier, pre-brand-system build). This
+  app follows Safety's light-theme token *structure* (CSS custom properties, card/shadow/radius
+  system, status-color set) almost verbatim — it's the most complete and polished reference
+  implementation — but swaps the primary accent from Safety's safety-specific orange
+  (`#E8731A`) to the Wildlife survey app's green (`#2D6B2D`, matching the logo's actual leaf
+  color), since this app's subject matter (species/habitat data) is closer to that sibling than
+  to Safety's hazard-reporting domain. The header is always-black (`#111111`) in both light and
+  dark mode, and the bottom nav is a light bar with a top accent indicator on the active tab —
+  both exact conventions lifted from Safety's `style.css`. The status-color set (native/ok,
+  warning/flag, danger) reuses Safety's "risk" colors unchanged. All tokens live as CSS custom
+  properties at the top of `css/styles.css` (`:root`, with light/dark overrides) for easy
+  auditing.
+- **Icons.** Nav/tile/button icons were switched from emoji to small inline monochrome SVGs
+  (currentColor strokes) to match the sibling apps' clean line-icon convention instead of
+  colorful OS emoji glyphs, which don't respect the brand palette.
 
 The **Identify** button on the catalogue fish-entry form opens `identify-modal.js`, which
 renders the same species list / key components used by the standalone pages as an overlay

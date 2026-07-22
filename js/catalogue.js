@@ -132,7 +132,7 @@ function renderSurveyForm() {
     <label>GPS coordinates</label>
     <div class="identify-row">
       <input type="text" id="f-gps" value="${s.gps ? `${s.gps.lat.toFixed(6)}, ${s.gps.lon.toFixed(6)}` : ''}" placeholder="Tap Capture, or enter manually as lat, lon">
-      <button type="button" class="identify-btn" id="capture-gps-btn">📍 Capture</button>
+      <button type="button" class="identify-btn" id="capture-gps-btn"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Capture</button>
     </div>
     <p class="field-hint">Decimal degrees, WGS84. Editable manually if capture fails or needs correcting.</p>
 
@@ -190,8 +190,12 @@ function habitatSectionHtml(h) {
   const wc = h.waterChemistry || {}; const cm = h.channelMorphology || {}; const sub = h.substrate || {};
   const cov = h.cover || {}; const rip = h.riparian || {}; const flow = h.flow || {}; const barrier = h.barrier || {};
   return `
-    <details class="section-collapsible card" id="habitat-details">
-      <summary>Habitat Characterization (optional &mdash; expand only if not already on file)</summary>
+    <details class="section-collapsible" id="habitat-details" style="margin-bottom:12px">
+      <summary>
+        <span class="summary-label">Habitat Characterization <span class="field-hint">(optional &mdash; expand only if not already on file)</span></span>
+        <svg class="chevron-ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </summary>
+      <div class="collapsible-body">
       <p class="field-hint">Every field below is independently optional. Skip anything already documented for this station.</p>
 
       <fieldset><legend>Water chemistry</legend>
@@ -248,6 +252,7 @@ function habitatSectionHtml(h) {
         <label>Site photo reference (filename/ID)</label>
         <input type="text" id="h-photoRef" value="${escapeHtml(h.photoRef || '')}" placeholder="e.g. IMG_0231-0234, facing downstream">
       </fieldset>
+      </div>
     </details>
   `;
 }
@@ -276,7 +281,7 @@ function fishFormHtml(draft) {
           <option value="unidentified" ${draft.unidentified ? 'selected' : ''}>Unidentified — see key</option>
           ${refSpecies.map((s) => `<option value="${escapeHtml(s.id)}" ${draft.speciesId === s.id ? 'selected' : ''}>${escapeHtml(s.commonName)}</option>`).join('')}
         </select>
-        <button type="button" class="identify-btn" id="ff-identify-btn">🔍 Identify</button>
+        <button type="button" class="identify-btn" id="ff-identify-btn"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15 20 20"/></svg>Identify</button>
       </div>
       ${draft.unidentified ? '<p class="flag-note">Flagged for follow-up. Photograph this fish if possible, then confirm the ID later via Species Reference or the Key.</p>' : ''}
 

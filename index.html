@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NS Fish Field ID &amp; Catalogue</title>
 <link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#0b3d2e">
-<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./icons/icon.svg">
+<meta name="theme-color" content="#2D6B2D">
+<link rel="icon" href="./icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 <header class="app-header">
+  <img src="./icons/fraxinus-mark-header.png" alt="Fraxinus Environmental &amp; Geomatics" class="brand-logo">
   <h1>NS Fish Field ID &amp; Catalogue</h1>
   <span class="offline-pill" data-offline-pill>Online</span>
 </header>
@@ -23,10 +24,10 @@
 
   <h2>Get started</h2>
   <div class="grid-tiles">
-    <a class="tile" href="catalogue.html"><span class="ic">📋</span>Field Catalogue</a>
-    <a class="tile secondary" href="species.html"><span class="ic">🐟</span>Species Reference</a>
-    <a class="tile secondary" href="key.html"><span class="ic">🔑</span>Dichotomous Key</a>
-    <a class="tile secondary" href="export.html"><span class="ic">📤</span>Export / Sync</a>
+    <a class="tile" href="catalogue.html"><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="17" rx="2"/><rect x="9" y="3" width="6" height="3" rx="1"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4.5"/></svg>Field Catalogue</a>
+    <a class="tile secondary" href="species.html"><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13c2.8-3.6 6.8-5.5 11-5.5 3 0 5.3 1.7 7 5.5-1.7 3.8-4 5.5-7 5.5-4.2 0-8.2-1.9-11-5.5Z"/><path d="M18.5 10.3 21 8.2m-2.5 9.5 2.5-2.1"/><circle cx="9.3" cy="11.6" r=".55" fill="currentColor" stroke="none"/></svg>Species Reference</a>
+    <a class="tile secondary" href="key.html"><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="12" r="4.2"/><path d="M11.5 12H21M17 12v3M20 12v3"/></svg>Dichotomous Key</a>
+    <a class="tile secondary" href="export.html"><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="M8 7.5 12 3l4 4.5"/><path d="M4.5 14.5V19a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5v-4.5"/></svg>Export / Sync</a>
   </div>
 
   <div class="card" id="resume-card" hidden>
@@ -35,19 +36,24 @@
     <a class="btn" id="resume-link" href="catalogue.html">Resume</a>
   </div>
 
-  <details class="section-collapsible card">
-    <summary>About this app</summary>
-    <p>Built for field use during Nova Scotia fish habitat studies. The species reference tool and dichotomous key are for morphological identification only &mdash; there is no camera-based or ML photo identification in this version. If a catch can't be confidently identified in the field, log it as <em>unidentified &mdash; see key</em> and photograph it for follow-up.</p>
-    <p>Species diagnostic data is sourced from FishBase, DFO, GBIF, ACCDC, and NS government/peer-reviewed references. See <a href="./README.md">README</a> for full citations and known data gaps.</p>
+  <details class="section-collapsible">
+    <summary>
+      <span class="summary-label">About this app</span>
+      <svg class="chevron-ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </summary>
+    <div class="collapsible-body">
+      <p>Built for field use during Nova Scotia fish habitat studies. The species reference tool and dichotomous key are for morphological identification only &mdash; there is no camera-based or ML photo identification in this version. If a catch can't be confidently identified in the field, log it as <em>unidentified &mdash; see key</em> and photograph it for follow-up.</p>
+      <p>Species diagnostic data is sourced from FishBase, DFO, GBIF, ACCDC, and NS government/peer-reviewed references. See <a href="./README.md">README</a> for full citations and known data gaps.</p>
+    </div>
   </details>
 </main>
 
 <nav class="bottom-nav">
-  <a href="index.html"><span class="ic">🏠</span>Home</a>
-  <a href="species.html"><span class="ic">🐟</span>Species</a>
-  <a href="key.html"><span class="ic">🔑</span>Key</a>
-  <a href="catalogue.html"><span class="ic">📋</span>Catalogue</a>
-  <a href="export.html"><span class="ic">📤</span>Export</a>
+  <a href="index.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9.5h12V10"/><path d="M10 19.5v-6h4v6"/></svg>Home</a>
+  <a href="species.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13c2.8-3.6 6.8-5.5 11-5.5 3 0 5.3 1.7 7 5.5-1.7 3.8-4 5.5-7 5.5-4.2 0-8.2-1.9-11-5.5Z"/><path d="M18.5 10.3 21 8.2m-2.5 9.5 2.5-2.1"/><circle cx="9.3" cy="11.6" r=".55" fill="currentColor" stroke="none"/></svg>Species</a>
+  <a href="key.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="12" r="4.2"/><path d="M11.5 12H21M17 12v3M20 12v3"/></svg>Key</a>
+  <a href="catalogue.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="17" rx="2"/><rect x="9" y="3" width="6" height="3" rx="1"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4.5"/></svg>Catalogue</a>
+  <a href="export.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="M8 7.5 12 3l4 4.5"/><path d="M4.5 14.5V19a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5v-4.5"/></svg>Export</a>
 </nav>
 
 <script type="module">
