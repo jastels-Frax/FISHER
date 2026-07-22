@@ -15,13 +15,15 @@ index.html        Home / hub
 species.html       Filterable species reference list + detail view
 key.html            Standalone dichotomous key
 catalogue.html      Survey/station metadata + nested fish catch records (single-page app)
-export.html         CSV/JSON export + clear-device view
+export.html         Survey selection (checkboxes/select-all), CSV/JSON export, per-survey
+                    PDF report, clear-device view
 manifest.json, sw.js, icons/   PWA shell + offline caching
 fonts/               Self-hosted Oswald woff2 files (see Brand styling below)
 css/styles.css      Shared high-contrast, one-handed mobile styling
 js/                 db.js (IndexedDB), app.js (shared utils), species-list.js, key-engine.js,
                     identify-modal.js (in-context Identify overlay used from the catalogue form),
-                    catalogue.js, export.js, species-page.js, key-page.js
+                    catalogue.js, export.js, pdf-report.js (branded per-survey PDF report,
+                    see PDF export below), species-page.js, key-page.js
 data/species.json   Species reference data + citations (this file, see below)
 data/key.json        Dichotomous key tree
 data/images.json     Reference image manifest (see Image Sourcing — currently all placeholders)
@@ -34,20 +36,22 @@ PWAs (`jastels-Frax/Safety`, `jastels-Frax/Watercourse-Permitting-App`, `jastels
 — the wildlife survey app) rather than invented fresh, so this app reads as part of the same
 suite. What was reused, and from where:
 
-- **Font — Oswald.** Used for headings, labels, nav, and buttons; body copy uses the system
-  font stack (`-apple-system, ... sans-serif`) for long-form legibility, matching the Safety
-  PWA's exact convention (Safety and the Wildlife app both use Oswald on Google Fonts; this
-  app self-hosts the same typeface instead via the `@fontsource/oswald` npm package — OFL-1.1
-  licensed, see `fonts/OFL-LICENSE.txt` — since a CDN font link fails offline). Only the 3
-  weights actually used are bundled: 400 (body-adjacent regular use), 500 (labels, nav, chips),
-  700 (headings, buttons, emphasis) — about 37 KB total as woff2.
+- **Font — Oswald.** Used app-wide — headings, labels, nav, buttons, inputs, and body copy —
+  as a single consistent typeface (an earlier pass split body copy off onto the system font
+  stack to mirror the Safety PWA's specific convention, but that read as two mismatched
+  typefaces in practice, so this app now uses Oswald everywhere instead). Self-hosted via the
+  `@fontsource/oswald` npm package — OFL-1.1 licensed, see `fonts/OFL-LICENSE.txt` — since a
+  CDN font link fails offline. Only the 4 weights actually used are bundled: 400 (body), 500
+  (labels, nav, chips), 600 (subheadings, table headers, emphasis), 700 (h1/h2/h3, buttons) —
+  about 50 KB total as woff2.
 - **Logo.** The green compass/ash-leaf mark is Fraxinus's master logo file
   (`FRAXINUS_LOGO_Compass_Color_transparent.png`, found in the Safety repo and reused verbatim,
-  unmodified, as the in-app header mark — `icons/fraxinus-mark-header.png`/`fraxinus-mark.png`).
-  The PWA manifest icons (`icons/icon-{192,512}[-maskable].png`) were regenerated from that same
-  source file — composited onto an opaque `#111111` square to match how the sibling apps export
-  their own manifest icons, with extra safe-zone padding on the maskable variants. No new logo
-  artwork was created.
+  unmodified, as the source for every logo asset in this app: `icons/fraxinus-mark-header.png`
+  (in-app header), `icons/fraxinus-mark-report.png` (higher-resolution version for the PDF
+  report, print-quality), and the PWA manifest icons (`icons/icon-{192,512}[-maskable].png`,
+  composited onto an opaque `#111111` square to match how the sibling apps export their own
+  manifest icons, with extra safe-zone padding on the maskable variants). No new logo artwork
+  was created.
 - **Color palette.** The three sibling apps don't share one identical palette (Safety: light
   cream body + orange accent; Wildlife app: dark body + green accent; Watercourse app: dark
   navy/cyan, and doesn't use Oswald at all — likely an earlier, pre-brand-system build). This
@@ -71,6 +75,39 @@ renders the same species list / key components used by the standalone pages as a
 `<div>` on top of the in-progress form — it never navigates away, so length/weight/notes
 already entered are untouched. Confirming a species (or backing out via the uncertain path)
 closes the modal and returns control to the form.
+
+## PDF export
+
+`js/pdf-report.js` generates one branded PDF per survey/station, available from a "PDF"
+button next to each survey on `export.html`. Sourcing and approach:
+
+- **No PDF library, no network call.** `openSurveyPdfReport()` builds a self-contained HTML
+  string and opens it via `window.open('', '_blank', ...)` + `document.write()`, then the user
+  clicks a "Print / Save as PDF" button in that preview, which calls `window.print()`. This is
+  the exact pattern already used by the Wildlife survey app's own report generators
+  (`js/turtlePDF.js`, `moosePDF.js`, `nestPDF.js`, `bbsPDF.js` in `jastels-Frax/Fraxinus_JA`) —
+  reused here rather than introducing a new dependency, and it keeps the export fully
+  client-side and offline-capable (fonts and the logo are same-origin files already cached by
+  the service worker; nothing is fetched from a server).
+- **Report layout** mirrors that same sibling template: a branded cover header (logo, report
+  title, generated timestamp) over a light-green metadata grid, green-accented section
+  headings, a green-header data table, and a plain-text footer — using the identical CSS
+  variable names and this app's own accent green (`--ca: #2D6B2D`), which turned out to already
+  match the sibling template's own `--ca` value exactly.
+- **One documented improvement over the sibling template:** the Wildlife app's reports only
+  print an in-flow header/footer once (at the top/bottom of the whole flowed document), so
+  multi-page reports lose their branding and page numbers past page 1 — its own UI tells users
+  to manually disable the browser's print-dialog headers/footers rather than solving this. This
+  app instead uses real CSS `@page` margin-box running headers/footers
+  (`@top-left`/`@top-right`/`@bottom-left`/`@bottom-right` with `counter(page)`/`counter(pages)`),
+  which were empirically verified (via `page.pdf()` + text extraction in this repo's own test
+  pass) to render correctly in Chromium's print-to-PDF pipeline — so every physical page gets
+  the report title, company name, generation date, and an accurate "Page X of Y", automatically.
+- **Report sections**, in order: survey/station metadata (only non-empty fields shown);
+  Habitat Characterization (the whole section, and each field within it, is omitted entirely
+  when left blank — nothing renders as an empty label); the fish catalogue table (species, life
+  stage, length, weight, health notes, capture method) with a follow-up flag banner if any
+  record is unidentified.
 
 ## Species data sources
 

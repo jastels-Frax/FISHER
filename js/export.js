@@ -1,5 +1,6 @@
 import { initHeaderNav, showToast, escapeHtml } from './app.js';
 import { FisherDB } from './db.js';
+import { openSurveyPdfReport } from './pdf-report.js';
 
 initHeaderNav();
 
@@ -92,7 +93,7 @@ async function loadAll() {
 function previewTable(surveys, fishBySurvey) {
   const rows = [];
   surveys.forEach((s) => (fishBySurvey.get(s.id) || []).forEach((f) => rows.push([s, f])));
-  if (!rows.length) return '<p class="empty-state">Nothing logged yet on this device.</p>';
+  if (!rows.length) return '<p class="empty-state">Nothing selected, or nothing logged yet on this device.</p>';
   return `
     <div class="table-scroll">
     <table class="export-preview">
@@ -105,42 +106,121 @@ function previewTable(surveys, fishBySurvey) {
   `;
 }
 
+function surveyRowHtml(s, fishCount, checked) {
+  return `
+    <div class="record-list-item survey-select-row">
+      <label class="survey-select-row-main" for="sel-${escapeHtml(s.id)}">
+        <input type="checkbox" class="survey-checkbox" id="sel-${escapeHtml(s.id)}" data-survey-checkbox="${escapeHtml(s.id)}" ${checked ? 'checked' : ''}>
+        <span>
+          <strong>${escapeHtml(s.siteId || s.stationId || 'Unnamed site')}</strong>
+          ${s.flaggedForFollowUp ? '<span class="badge" style="background:var(--status-danger-text);color:#fff">follow-up</span>' : ''}
+          <div class="meta">${escapeHtml((s.dateTime || '').replace('T', ' '))} &middot; ${escapeHtml(s.observerNames || 'no observer set')} &middot; ${fishCount} fish</div>
+        </span>
+      </label>
+      <button type="button" class="btn btn-outline btn-sm" data-pdf-btn="${escapeHtml(s.id)}">PDF</button>
+    </div>
+  `;
+}
+
+let state = { surveys: [], fishBySurvey: new Map(), selected: new Set() };
+
 async function boot() {
   const root = document.getElementById('export-root');
   const { surveys, fishBySurvey } = await loadAll();
+  // Preserve prior selection where possible; default to "all selected" on first load.
+  const prevSelected = state.selected;
+  state = { surveys, fishBySurvey, selected: new Set(surveys.map((s) => s.id).filter((id) => !prevSelected.size || prevSelected.has(id))) };
+  if (!prevSelected.size) state.selected = new Set(surveys.map((s) => s.id));
+  render();
+}
+
+function selectedSurveys() {
+  return state.surveys.filter((s) => state.selected.has(s.id));
+}
+
+function render() {
+  const root = document.getElementById('export-root');
+  const { surveys, fishBySurvey } = state;
   const totalFish = Array.from(fishBySurvey.values()).reduce((n, arr) => n + arr.length, 0);
-  const flaggedSurveys = surveys.filter((s) => s.flaggedForFollowUp);
+  const sel = selectedSurveys();
+  const selFishCount = sel.reduce((n, s) => n + (fishBySurvey.get(s.id) || []).length, 0);
+  const allSelected = surveys.length > 0 && state.selected.size === surveys.length;
 
   root.innerHTML = `
     <div class="card">
       <strong>${surveys.length}</strong> survey(s) &middot; <strong>${totalFish}</strong> fish record(s) queued on this device.
-      ${flaggedSurveys.length ? `<p class="flag-note">${flaggedSurveys.length} survey(s) have unidentified catches flagged for follow-up.</p>` : ''}
     </div>
-    <button type="button" class="btn btn-accent" id="export-csv-btn">Export CSV</button>
-    <button type="button" class="btn" id="export-json-btn">Export JSON</button>
-    <button type="button" class="btn btn-danger" id="clear-btn">Clear exported records from this device</button>
 
-    <h2 style="margin-top:20px">Preview</h2>
-    ${previewTable(surveys, fishBySurvey)}
+    ${surveys.length ? `
+      <div class="identify-row" style="margin-bottom:10px">
+        <button type="button" class="btn btn-outline btn-sm" id="select-all-btn" style="width:auto">${allSelected ? 'Deselect all' : 'Select all'}</button>
+        <span class="field-hint" style="align-self:center">${state.selected.size} of ${surveys.length} selected for CSV/JSON export</span>
+      </div>
+      <div id="survey-select-list">
+        ${surveys.map((s) => surveyRowHtml(s, (fishBySurvey.get(s.id) || []).length, state.selected.has(s.id))).join('')}
+      </div>
+    ` : '<p class="empty-state">No surveys logged yet on this device.</p>'}
+
+    <button type="button" class="btn btn-accent" id="export-csv-btn" ${sel.length ? '' : 'disabled'}>Export CSV (${sel.length} survey${sel.length === 1 ? '' : 's'}, ${selFishCount} fish)</button>
+    <button type="button" class="btn" id="export-json-btn" ${sel.length ? '' : 'disabled'}>Export JSON (${sel.length} survey${sel.length === 1 ? '' : 's'})</button>
+    <button type="button" class="btn btn-danger" id="clear-btn" ${sel.length ? '' : 'disabled'}>Clear ${sel.length} selected survey${sel.length === 1 ? '' : 's'} from this device</button>
+
+    <h2 style="margin-top:20px">Preview &mdash; selected surveys</h2>
+    ${previewTable(sel, fishBySurvey)}
   `;
 
-  document.getElementById('export-csv-btn').addEventListener('click', () => {
-    download(`fisher-catch-records-${timestampSlug()}.csv`, buildCsv(surveys, fishBySurvey), 'text/csv');
+  wireEvents();
+}
+
+function wireEvents() {
+  const { surveys, fishBySurvey } = state;
+
+  document.getElementById('select-all-btn')?.addEventListener('click', () => {
+    if (state.selected.size === surveys.length) state.selected.clear();
+    else state.selected = new Set(surveys.map((s) => s.id));
+    render();
+  });
+
+  document.querySelectorAll('[data-survey-checkbox]').forEach((cb) => {
+    cb.addEventListener('change', () => {
+      const id = cb.getAttribute('data-survey-checkbox');
+      if (cb.checked) state.selected.add(id); else state.selected.delete(id);
+      render();
+    });
+  });
+
+  document.querySelectorAll('[data-pdf-btn]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = btn.getAttribute('data-pdf-btn');
+      const survey = surveys.find((s) => s.id === id);
+      if (!survey) return;
+      openSurveyPdfReport(survey, fishBySurvey.get(id) || []);
+    });
+  });
+
+  document.getElementById('export-csv-btn')?.addEventListener('click', () => {
+    const sel = selectedSurveys();
+    download(`fisher-catch-records-${timestampSlug()}.csv`, buildCsv(sel, state.fishBySurvey), 'text/csv');
     showToast('CSV downloaded');
   });
-  document.getElementById('export-json-btn').addEventListener('click', () => {
-    download(`fisher-catch-records-${timestampSlug()}.json`, buildJson(surveys, fishBySurvey), 'application/json');
+  document.getElementById('export-json-btn')?.addEventListener('click', () => {
+    const sel = selectedSurveys();
+    download(`fisher-catch-records-${timestampSlug()}.json`, buildJson(sel, state.fishBySurvey), 'application/json');
     showToast('JSON downloaded');
   });
-  document.getElementById('clear-btn').addEventListener('click', async () => {
-    if (!surveys.length) return;
-    if (!confirm(`Delete all ${surveys.length} survey(s) and ${totalFish} fish record(s) from this device? Make sure you already exported them.`)) return;
-    for (const s of surveys) {
-      for (const f of (fishBySurvey.get(s.id) || [])) await FisherDB.delete('fishRecords', f.id);
+  document.getElementById('clear-btn')?.addEventListener('click', async () => {
+    const sel = selectedSurveys();
+    if (!sel.length) return;
+    const fishCount = sel.reduce((n, s) => n + (state.fishBySurvey.get(s.id) || []).length, 0);
+    if (!confirm(`Delete ${sel.length} selected survey(s) and ${fishCount} fish record(s) from this device? Make sure you already exported them.`)) return;
+    for (const s of sel) {
+      for (const f of (state.fishBySurvey.get(s.id) || [])) await FisherDB.delete('fishRecords', f.id);
       await FisherDB.delete('surveys', s.id);
     }
     showToast('Cleared');
-    boot();
+    await boot();
   });
 }
+
 boot();
