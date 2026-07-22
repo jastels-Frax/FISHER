@@ -537,7 +537,11 @@ legend {
   display: block;
   width: 100%;
   text-align: left;
-  background: var(--bg-card);
+  background: var(--accent-subtle);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.35;
   border: 1.5px solid var(--border-color);
   border-left: 4px solid var(--accent);
   border-radius: var(--radius-sm);
@@ -548,7 +552,7 @@ legend {
   -webkit-tap-highlight-color: transparent;
   transition: background var(--transition);
 }
-.key-option:active { background: var(--accent-subtle); }
+.key-option:active { background: var(--accent-subtle-h); }
 .key-breadcrumb { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 10px; }
 .key-breadcrumb button {
   background: none; border: none; color: var(--accent);
