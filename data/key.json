@@ -1,0 +1,418 @@
+{
+  "version": "2026-07-22",
+  "startId": "start",
+  "nodes": {
+    "start": {
+      "id": "start", "type": "couplet",
+      "text": "Start here. Look at the fish's overall body plan.",
+      "options": [
+        { "label": "Body eel-like or leech-like: no paired pelvic fins, and either a round jawless sucking mouth or a continuous fin margin with no true biting jaw", "goTo": "eel-lamprey" },
+        { "label": "Normal fish body plan: paired pelvic fins present and a jawed mouth with a distinct upper/lower jaw", "goTo": "has-adipose" }
+      ]
+    },
+    "eel-lamprey": {
+      "id": "eel-lamprey", "type": "couplet",
+      "text": "Look closely at the head.",
+      "options": [
+        { "label": "Round, jawless sucking disc mouth with no visible jaw, and a row of 7 small round gill openings behind the eye on each side", "goTo": "result-sea-lamprey" },
+        { "label": "Small but normal jaw, a single covered gill opening on each side, well-developed pectoral fins, elongate snake-like body with a continuous dorsal-caudal-anal fin margin", "goTo": "result-american-eel" }
+      ]
+    },
+    "result-sea-lamprey": {
+      "id": "result-sea-lamprey", "type": "result", "speciesId": "sea-lamprey",
+      "note": "If this is a small (5-15 cm), eyeless-looking, burrowing larva, it's an ammocoete — a very common but easily-missed electrofishing/kick-seine bycatch in silty stream margins, not a young eel.",
+      "lookalikeCheck": [{ "species": "American eel", "distinguishingNote": "Eel has a normal jawed mouth, one covered gill opening per side, and pectoral fins; lamprey has none of these." }]
+    },
+    "result-american-eel": {
+      "id": "result-american-eel", "type": "result", "speciesId": "american-eel",
+      "note": "Check size/pigmentation to estimate life stage: transparent = glass eel, lightly pigmented = elver, olive-brown = yellow eel, silvery with a dark cape = silver eel (pre-migration).",
+      "lookalikeCheck": [{ "species": "Sea lamprey ammocoete", "distinguishingNote": "Ammocoetes are jawless with a hooded mouth and no externally visible eyes; eels have a normal small jaw and visible eyes." }]
+    },
+    "has-adipose": {
+      "id": "has-adipose", "type": "couplet",
+      "text": "Look at the back, between the dorsal fin and the tail.",
+      "options": [
+        { "label": "A small, fleshy adipose fin is present (no rays or spine, just a soft flap)", "goTo": "adipose-group" },
+        { "label": "No adipose fin — only the dorsal fin(s) and tail, nothing in between", "goTo": "no-adipose-group" }
+      ]
+    },
+    "adipose-group": {
+      "id": "adipose-group", "type": "couplet",
+      "text": "Adipose-finned fish in Nova Scotia are the salmonids (salmon, trout, char) plus rainbow smelt and Atlantic tomcod. Check the mouth and body.",
+      "options": [
+        { "label": "Small, slender, silvery fish (usually under 25 cm) with a single dorsal fin and either a chin barbel or prominent canine-like teeth on the tongue", "goTo": "smelt-tomcod-key" },
+        { "label": "Larger-bodied salmon/trout/char shape: no chin barbel, no strong tongue teeth, often spotted or patterned", "goTo": "salmonid-stage-check" }
+      ]
+    },
+    "smelt-tomcod-key": {
+      "id": "smelt-tomcod-key", "type": "couplet",
+      "text": "Check for a chin barbel and count the dorsal fins.",
+      "options": [
+        { "label": "A single small barbel under the chin; three separate dorsal fins and two anal fins; upper jaw projects past the lower jaw; body heavier, mottled brown", "goTo": "result-atlantic-tomcod" },
+        { "label": "No chin barbel; a single dorsal fin; slender iridescent silvery body with prominent canine-like teeth on the tongue and roof of the mouth; deeply forked tail", "goTo": "result-rainbow-smelt" }
+      ]
+    },
+    "result-atlantic-tomcod": {
+      "id": "result-atlantic-tomcod", "type": "result", "speciesId": "atlantic-tomcod",
+      "note": "A small codfish relative of fresh/brackish tidal reaches.",
+      "lookalikeCheck": [{ "species": "Rainbow smelt", "distinguishingNote": "Smelt has no chin barbel, only one dorsal fin, and strong tongue teeth; tomcod has a barbel, three dorsal fins, and no notable tongue teeth." }]
+    },
+    "result-rainbow-smelt": {
+      "id": "result-rainbow-smelt", "type": "result", "speciesId": "rainbow-smelt",
+      "note": "Check for the adipose fin to confirm it isn't a young alewife/blueback herring, which never have one.",
+      "lookalikeCheck": [
+        { "species": "Atlantic tomcod", "distinguishingNote": "Tomcod has a chin barbel and three dorsal fins; smelt has neither." },
+        { "species": "Juvenile alewife/blueback herring", "distinguishingNote": "Herrings have a sawbelly keel of scutes and no adipose fin; smelt has an adipose fin and no sawbelly keel." }
+      ]
+    },
+    "salmonid-stage-check": {
+      "id": "salmonid-stage-check", "type": "couplet",
+      "text": "Check the size and markings.",
+      "options": [
+        { "label": "Small juvenile (roughly under 15 cm) showing oval parr marks along the sides, not yet in full adult coloration", "goTo": "parr-key-1" },
+        { "label": "Adult-sized or otherwise showing clear adult coloration/pattern", "goTo": "salmonid-adult-1" }
+      ]
+    },
+    "parr-key-1": {
+      "id": "parr-key-1", "type": "couplet",
+      "text": "Look at the adipose fin colour and the upper jaw (maxilla) length relative to the eye.",
+      "options": [
+        { "label": "Adipose fin shows a faint orange/red tint AND the upper jaw reaches close to or past the rear edge of the eye; red/orange spotting may already be visible", "goTo": "result-parr-brown-trout" },
+        { "label": "Adipose fin is plain grey with no orange/red tint (check the back and fins for vermiculations next)", "goTo": "parr-key-2" }
+      ]
+    },
+    "parr-key-2": {
+      "id": "parr-key-2", "type": "couplet",
+      "text": "Look at the back and the lower fins.",
+      "options": [
+        { "label": "Back shows pale, wavy, worm-like vermiculations; lower fins (pelvic/anal/pectoral) have a white leading edge backed by a black stripe", "goTo": "result-parr-brook-trout" },
+        { "label": "No vermiculations; 8-11 oval parr marks each about as wide as the eye or narrower; short maxilla not reaching past the rear of the eye; only 1-4 spots on the gill cover", "goTo": "result-parr-atlantic-salmon" }
+      ]
+    },
+    "result-parr-brown-trout": {
+      "id": "result-parr-brown-trout", "type": "result", "speciesId": "brown-trout", "lifeStage": "parr",
+      "note": "The maxilla-length and adipose-fin-colour contrast with Atlantic salmon parr is the standard field couplet fisheries biologists use for this trio.",
+      "lookalikeCheck": [
+        { "species": "Atlantic salmon parr", "distinguishingNote": "Salmon parr has a plain grey adipose fin and a short maxilla that does not reach past the eye." },
+        { "species": "Brook trout parr", "distinguishingNote": "Brook trout parr shows back vermiculations and white-edged lower fins, which brown trout parr lacks." }
+      ]
+    },
+    "result-parr-brook-trout": {
+      "id": "result-parr-brook-trout", "type": "result", "speciesId": "brook-trout", "lifeStage": "parr",
+      "note": "Vermiculations plus white-edged, black-striped lower fins are diagnostic for brook trout at any age.",
+      "lookalikeCheck": [
+        { "species": "Atlantic salmon parr", "distinguishingNote": "Salmon parr never shows back vermiculations." },
+        { "species": "Brown trout parr", "distinguishingNote": "Brown trout parr lacks vermiculations and white-edged lower fins; its adipose fin often shows an orange tint instead." }
+      ]
+    },
+    "result-parr-atlantic-salmon": {
+      "id": "result-parr-atlantic-salmon", "type": "result", "speciesId": "atlantic-salmon", "lifeStage": "parr",
+      "note": "If any of the three characters (adipose colour, maxilla length, gill-cover spots) don't line up cleanly, stop and mark unidentified rather than guessing — this trio is the single hardest field ID in Nova Scotia streams.",
+      "lookalikeCheck": [
+        { "species": "Brown trout parr", "distinguishingNote": "Brown trout parr has a longer maxilla and often an orange-tinted adipose fin." },
+        { "species": "Brook trout parr", "distinguishingNote": "Brook trout parr shows back vermiculations that salmon parr never has." }
+      ]
+    },
+    "salmonid-adult-1": {
+      "id": "salmonid-adult-1", "type": "couplet",
+      "text": "Look at the spot colour on the back and sides.",
+      "options": [
+        { "label": "Light (white, cream, or yellowish) spots on a dark background — never pink or red — with a deeply forked tail", "goTo": "result-lake-trout" },
+        { "label": "Spots are absent, or are dark/black, or are red/orange — continue to the next character", "goTo": "salmonid-adult-2" }
+      ]
+    },
+    "result-lake-trout": {
+      "id": "result-lake-trout", "type": "result", "speciesId": "lake-trout",
+      "note": "The most deeply forked tail of any Nova Scotia trout/salmon/char, paired with pale (never pink/red) spotting.",
+      "lookalikeCheck": [{ "species": "Splake (lake trout x brook trout hybrid, where both are stocked)", "distinguishingNote": "Splake show an intermediate, moderately forked tail with a mix of vermiculations and pale spotting." }]
+    },
+    "salmonid-adult-2": {
+      "id": "salmonid-adult-2", "type": "couplet",
+      "text": "Look at the back for wavy markings, and the flank spots for a blue halo.",
+      "options": [
+        { "label": "Dark olive-green wavy vermiculations on the back; red spots with bright blue halos on the flanks; belly pale yellow-orange to red; tail nearly square", "goTo": "result-brook-trout-adult" },
+        { "label": "No vermiculations — continue to the next character", "goTo": "salmonid-adult-3" }
+      ]
+    },
+    "result-brook-trout-adult": {
+      "id": "result-brook-trout-adult", "type": "result", "speciesId": "brook-trout", "lifeStage": "adult",
+      "note": "Nova Scotia's official provincial fish emblem.",
+      "lookalikeCheck": [
+        { "species": "Lake trout", "distinguishingNote": "Lake trout has pale spots only (no red/blue) and a deeply forked tail." },
+        { "species": "Brown trout", "distinguishingNote": "Brown trout lacks vermiculations and has a red-margined (not solid orange) adipose fin." }
+      ]
+    },
+    "salmonid-adult-3": {
+      "id": "salmonid-adult-3", "type": "couplet",
+      "text": "Check the spot size/halo colour, the adipose fin margin, and how far the upper jaw reaches.",
+      "options": [
+        { "label": "Large dark spots with pale (not blue) halos, often extending onto the dorsal fin; adipose fin has a red/orange margin; maxilla extends well past the rear of the eye", "goTo": "result-brown-trout-adult" },
+        { "label": "None of the above — continue to the next character", "goTo": "salmonid-adult-4" }
+      ]
+    },
+    "result-brown-trout-adult": {
+      "id": "result-brown-trout-adult", "type": "result", "speciesId": "brown-trout", "lifeStage": "adult",
+      "note": "Introduced to Nova Scotia in the 1920s from German and Loch Leven hatchery stock.",
+      "lookalikeCheck": [
+        { "species": "Atlantic salmon", "distinguishingNote": "Salmon has a short maxilla (not past the eye), a plain adipose fin, and a more deeply forked tail." },
+        { "species": "Brook trout", "distinguishingNote": "Brook trout has back vermiculations and blue-haloed red spots that brown trout lacks." }
+      ]
+    },
+    "salmonid-adult-4": {
+      "id": "salmonid-adult-4", "type": "couplet",
+      "text": "Check the caudal (tail) fin and the flanks for a stripe.",
+      "options": [
+        { "label": "Dense small black spots covering the back, sides, dorsal fin, AND the caudal fin in rows; a broad pink-to-red lateral stripe", "goTo": "result-rainbow-trout" },
+        { "label": "Few or no spots on the tail; silvery fresh from the sea, becoming bronze/brown with spots concentrated above the lateral line; no pink stripe; tail moderately to deeply forked, more square-edged in large fish", "goTo": "result-atlantic-salmon-adult" }
+      ]
+    },
+    "result-rainbow-trout": {
+      "id": "result-rainbow-trout", "type": "result", "speciesId": "rainbow-trout", "lifeStage": "adult",
+      "note": "Mostly stocked/put-and-take in Nova Scotia; acid-sensitive, so wild reproduction is limited to a few Cape Breton systems.",
+      "lookalikeCheck": [{ "species": "Atlantic salmon", "distinguishingNote": "Salmon lacks the pink lateral stripe and dense tail spotting." }]
+    },
+    "result-atlantic-salmon-adult": {
+      "id": "result-atlantic-salmon-adult", "type": "result", "speciesId": "atlantic-salmon", "lifeStage": "adult",
+      "note": "Spawning males develop a hooked lower jaw (kype).",
+      "lookalikeCheck": [
+        { "species": "Brown trout", "distinguishingNote": "Brown trout has a longer maxilla, pale-haloed dark spots, and a red-margined adipose fin." },
+        { "species": "Rainbow trout", "distinguishingNote": "Rainbow trout has a pink stripe and dense black tail spotting that salmon lacks." }
+      ]
+    },
+    "no-adipose-group": {
+      "id": "no-adipose-group", "type": "couplet",
+      "text": "Look at the mouth shape.",
+      "options": [
+        { "label": "Downward-pointing (subterminal), toothless, papillose sucking mouth with no barbels", "goTo": "result-white-sucker" },
+        { "label": "Normal terminal or slightly angled jawed mouth", "goTo": "bullhead-check" }
+      ]
+    },
+    "result-white-sucker": {
+      "id": "result-white-sucker", "type": "result", "speciesId": "white-sucker",
+      "note": "The only sucker species native to Nova Scotia — no sucker-vs-sucker confusion in this province.",
+      "lookalikeCheck": []
+    },
+    "bullhead-check": {
+      "id": "bullhead-check", "type": "couplet",
+      "text": "Look for barbels around the mouth and a spine at the front of each pectoral fin.",
+      "options": [
+        { "label": "Four pairs of barbels (whisker-like) around the mouth, dark chin barbels, and a stout serrated pectoral spine", "goTo": "result-brown-bullhead" },
+        { "label": "No barbels, or only a single small barbel — continue", "goTo": "stickleback-check" }
+      ]
+    },
+    "result-brown-bullhead": {
+      "id": "result-brown-bullhead", "type": "result", "speciesId": "brown-bullhead",
+      "note": "Common in warm, weedy NS lakes and ponds.",
+      "lookalikeCheck": [{ "species": "American eel (small yellow eel)", "distinguishingNote": "Eel has no barbels, no adipose fin, no pelvic fins, and a continuous dorsal-caudal-anal fin margin." }]
+    },
+    "stickleback-check": {
+      "id": "stickleback-check", "type": "couplet",
+      "text": "Look at the back just in front of the dorsal fin.",
+      "options": [
+        { "label": "A row of separate, free spines (not webbed together into one fin) in front of a small soft dorsal fin", "goTo": "stickleback-count" },
+        { "label": "No free spines — continue", "goTo": "sculpin-check" }
+      ]
+    },
+    "stickleback-count": {
+      "id": "stickleback-count", "type": "couplet",
+      "text": "Carefully count the free dorsal spines and check the tail base.",
+      "options": [
+        { "label": "6 or more (usually about 9) short free spines; a bony keel of scutes runs along the side of the caudal peduncle toward the dorsal fin", "goTo": "result-ninespine-stickleback" },
+        { "label": "Only 2 to 4 (usually 3) stouter free spines; no scute keel at the tail base, though bony side plates may be present", "goTo": "result-threespine-stickleback" }
+      ]
+    },
+    "result-ninespine-stickleback": {
+      "id": "result-ninespine-stickleback", "type": "result", "speciesId": "ninespine-stickleback",
+      "note": "Re-count the spines if in doubt — ninespine and threespine stickleback commonly co-occur in the same trap.",
+      "lookalikeCheck": [{ "species": "Threespine stickleback", "distinguishingNote": "Threespine has only 2-4 stouter spines and a caudal keel of scutes rather than lateral plates." }]
+    },
+    "result-threespine-stickleback": {
+      "id": "result-threespine-stickleback", "type": "result", "speciesId": "threespine-stickleback",
+      "note": "Both anadromous (sea-run) and resident freshwater forms occur in NS; lateral plating varies by population.",
+      "lookalikeCheck": [{ "species": "Ninespine stickleback", "distinguishingNote": "Ninespine has 6-12 shorter spines and a distinct caudal-peduncle keel that threespine lacks." }]
+    },
+    "sculpin-check": {
+      "id": "sculpin-check", "type": "couplet",
+      "text": "Look at the head shape, scales, and pectoral fins.",
+      "options": [
+        { "label": "Broad, flattened head tapering sharply to a slender body; no scales anywhere; large fan-like pectoral fins; two separate dorsal fins (a short spiny one and a soft one)", "goTo": "result-slimy-sculpin" },
+        { "label": "None of the above — continue", "goTo": "pickerel-check" }
+      ]
+    },
+    "result-slimy-sculpin": {
+      "id": "result-slimy-sculpin", "type": "result", "speciesId": "slimy-sculpin",
+      "note": "Unmistakable among NS freshwater bycatch — no other species here has this scaleless, broad-headed body plan.",
+      "lookalikeCheck": []
+    },
+    "pickerel-check": {
+      "id": "pickerel-check", "type": "couplet",
+      "text": "Look at the snout and the dorsal fin position.",
+      "options": [
+        { "label": "Long, flattened, duck-bill snout full of small sharp teeth; a single soft dorsal fin set far back near the tail, no separate spiny dorsal fin", "goTo": "result-chain-pickerel" },
+        { "label": "Rounded snout, not a duck-bill — continue", "goTo": "two-dorsal-check" }
+      ]
+    },
+    "result-chain-pickerel": {
+      "id": "result-chain-pickerel", "type": "result", "speciesId": "chain-pickerel",
+      "note": "Non-native and invasive in Nova Scotia — mandatory retention (do not release) has applied province-wide since April 1, 2025. Check current NS angling regulations for the latest rule.",
+      "lookalikeCheck": [{ "species": "American eel", "distinguishingNote": "Eel has no pelvic fins, no visible scales, and a continuous fin margin, unlike a pickerel's scaled body with separate paired and dorsal/anal fins." }]
+    },
+    "two-dorsal-check": {
+      "id": "two-dorsal-check", "type": "couplet",
+      "text": "Look at the dorsal fin(s) on the back.",
+      "options": [
+        { "label": "Two dorsal fins are present (one spiny, one soft), whether touching, notched, or fully separated", "goTo": "dorsal-gap-check" },
+        { "label": "Only one dorsal fin, or a single soft dorsal fin with no true spines", "goTo": "herring-check" }
+      ]
+    },
+    "dorsal-gap-check": {
+      "id": "dorsal-gap-check", "type": "couplet",
+      "text": "Look at how the two dorsal fins connect.",
+      "options": [
+        { "label": "Joined by only a shallow notch, not a full gap", "goTo": "bass-check" },
+        { "label": "Clearly and fully separated by a gap about as wide as the eye or more", "goTo": "perch-sunfish-check" }
+      ]
+    },
+    "bass-check": {
+      "id": "bass-check", "type": "couplet",
+      "text": "Check the upper jaw length, eye colour, and flank markings.",
+      "options": [
+        { "label": "Upper jaw (maxilla) does NOT reach past the rear margin of the eye; red eye; faint vertical bars, no horizontal stripes; robust bronze-olive body", "goTo": "result-smallmouth-bass" },
+        { "label": "6-9 continuous dark horizontal stripes along silvery sides; two tooth patches at the back of the tongue", "goTo": "result-striped-bass" }
+      ]
+    },
+    "result-smallmouth-bass": {
+      "id": "result-smallmouth-bass", "type": "result", "speciesId": "smallmouth-bass",
+      "note": "Non-native and invasive in Nova Scotia; a mandatory-retention order applies in the Margaree watershed (incl. Lake Ainslie) and part of the LaHave River since 2024 — check current regulations.",
+      "lookalikeCheck": [{ "species": "Yellow perch", "distinguishingNote": "Yellow perch has two fully separated dorsal fins (a real gap) versus smallmouth bass's shallow notch." }]
+    },
+    "result-striped-bass": {
+      "id": "result-striped-bass", "type": "result", "speciesId": "striped-bass",
+      "note": "In Nova Scotia the only robust remaining spawning run is the Shubenacadie-Stewiacke system; handle with care, this population is COSEWIC-listed Endangered.",
+      "lookalikeCheck": [{ "species": "White perch", "distinguishingNote": "White perch has no horizontal stripes and only one tooth patch on the tongue (striped bass has two)." }]
+    },
+    "perch-sunfish-check": {
+      "id": "perch-sunfish-check", "type": "couplet",
+      "text": "Look at the body shape and the gill cover.",
+      "options": [
+        { "label": "Small, round, deep-bodied sunfish shape with a dark opercular (gill cover) flap bordered by a bright orange-red crescent", "goTo": "result-pumpkinseed" },
+        { "label": "More elongate body with 6-8 sharply defined dark vertical bars on a golden-yellow/brassy background; no orange-red gill-cover crescent", "goTo": "result-yellow-perch" }
+      ]
+    },
+    "result-pumpkinseed": {
+      "id": "result-pumpkinseed", "type": "result", "speciesId": "pumpkinseed",
+      "note": "Native-vs-introduced status in Nova Scotia is unresolved in the app's current data — record the catch normally, but treat this as a species worth double-checking against current ACCDC/DFO records.",
+      "lookalikeCheck": [{ "species": "Yellow perch", "distinguishingNote": "Yellow perch is more elongate with two well-separated dorsal fins; pumpkinseed has one continuous dorsal fin and the orange-red gill-cover crescent." }]
+    },
+    "result-yellow-perch": {
+      "id": "result-yellow-perch", "type": "result", "speciesId": "yellow-perch",
+      "note": "Very common in NS lakes; can be locally overabundant.",
+      "lookalikeCheck": [{ "species": "Smallmouth bass / pumpkinseed", "distinguishingNote": "Both have only a shallow dorsal-fin notch or a single dorsal fin, versus yellow perch's fully separated pair." }]
+    },
+    "herring-check": {
+      "id": "herring-check", "type": "couplet",
+      "text": "Look along the belly midline and check the tail/shoulder.",
+      "options": [
+        { "label": "A sharp, saw-toothed keel of modified scales along the belly between the pelvic and anal fins; a single dark spot behind the gill cover; deeply forked tail", "goTo": "herring-pair-check" },
+        { "label": "No sawtooth belly keel — continue", "goTo": "killifish-check" }
+      ]
+    },
+    "herring-pair-check": {
+      "id": "herring-pair-check", "type": "couplet",
+      "text": "This is alewife or blueback herring — a genuinely difficult field pair (up to ~16% misidentification even with these characters). If the fish can be briefly and safely examined, check the body cavity lining (peritoneum) colour and compare eye diameter to snout length.",
+      "options": [
+        { "label": "Peritoneum white/pale; eye diameter clearly larger than snout length; slightly deeper body; back more blue-grey/greenish", "goTo": "result-alewife" },
+        { "label": "Peritoneum black/sooty; eye diameter about equal to or smaller than snout length; back distinctly blue", "goTo": "result-blueback-herring" }
+      ]
+    },
+    "result-alewife": {
+      "id": "result-alewife", "type": "result", "speciesId": "alewife",
+      "note": "In NS spring runs, alewife typically arrive about two weeks before blueback herring — run timing can be a secondary clue at a known site.",
+      "lookalikeCheck": [{ "species": "Blueback herring", "distinguishingNote": "Blueback has a black peritoneum and a smaller eye relative to snout length; if unsure, note run timing and photograph." }]
+    },
+    "result-blueback-herring": {
+      "id": "result-blueback-herring", "type": "result", "speciesId": "blueback-herring",
+      "note": "If the peritoneum couldn't be checked confidently, mark this pair as unidentified and photograph both flanks plus a close-up of the eye/snout.",
+      "lookalikeCheck": [{ "species": "Alewife", "distinguishingNote": "Alewife has a white peritoneum and a larger eye relative to snout length." }]
+    },
+    "killifish-check": {
+      "id": "killifish-check", "type": "couplet",
+      "text": "Look at the mouth position and body markings.",
+      "options": [
+        { "label": "Upturned (superior) mouth, flattened top of the head, narrow dark vertical bars on the body, no barbels, no lateral line", "goTo": "killifish-pair-check" },
+        { "label": "None of the above — continue", "goTo": "golden-shiner-check" }
+      ]
+    },
+    "killifish-pair-check": {
+      "id": "killifish-pair-check", "type": "couplet",
+      "text": "Compare the caudal peduncle (just before the tail) and where the dorsal fin sits.",
+      "options": [
+        { "label": "Slender caudal peduncle; dorsal fin set relatively far forward; crisp, regular, well-defined vertical bars in both sexes", "goTo": "result-banded-killifish" },
+        { "label": "Deep caudal peduncle; rounded tail; dorsal fin set farther back toward the tail; blotchier pattern, males with a small dark spot at the rear of the dorsal fin", "goTo": "result-mummichog" }
+      ]
+    },
+    "result-banded-killifish": {
+      "id": "result-banded-killifish", "type": "result", "speciesId": "banded-killifish",
+      "note": "Freshwater lakes/ponds/slow streams, tolerating brackish margins.",
+      "lookalikeCheck": [{ "species": "Mummichog", "distinguishingNote": "Mummichog has a deeper caudal peduncle, a rounded tail, and a dorsal fin set farther back." }]
+    },
+    "result-mummichog": {
+      "id": "result-mummichog", "type": "result", "speciesId": "mummichog",
+      "note": "Typical of salt marshes, tidal creeks, and estuaries rather than upstream freshwater sites.",
+      "lookalikeCheck": [{ "species": "Banded killifish", "distinguishingNote": "Banded killifish is slimmer with a more forward dorsal fin and crisper, more regular bars." }]
+    },
+    "golden-shiner-check": {
+      "id": "golden-shiner-check", "type": "couplet",
+      "text": "Look at the lateral line shape and belly.",
+      "options": [
+        { "label": "A fleshy, scaleless keel along the belly between the pelvic and anal fins, AND a lateral line that bows sharply downward (decurved) toward the belly", "goTo": "result-golden-shiner" },
+        { "label": "Straight lateral line, no fleshy belly keel — continue", "goTo": "barbel-check" }
+      ]
+    },
+    "result-golden-shiner": {
+      "id": "result-golden-shiner", "type": "result", "speciesId": "golden-shiner",
+      "note": "The sharply decurved lateral line is not shared by any other small Nova Scotia minnow.",
+      "lookalikeCheck": [{ "species": "Common shiner", "distinguishingNote": "Common shiner has a straight lateral line and no belly keel." }]
+    },
+    "barbel-check": {
+      "id": "barbel-check", "type": "couplet",
+      "text": "Look closely in the corner of the mouth for a small barbel — it can be tiny or embedded.",
+      "options": [
+        { "label": "A single small barbel is present in the corner of the mouth", "goTo": "dace-chub-check" },
+        { "label": "No barbel at all; large, loose scales that fall off easily; terminal mouth; deeply forked tail often with a dark spot at its base; dark mid-dorsal stripe", "goTo": "result-common-shiner" }
+      ]
+    },
+    "result-common-shiner": {
+      "id": "result-common-shiner", "type": "result", "speciesId": "common-shiner",
+      "note": "Frequent bycatch in clear, cool creeks and small rivers.",
+      "lookalikeCheck": [
+        { "species": "Blacknose dace", "distinguishingNote": "Dace has a barbel and fine scales that common shiner lacks." },
+        { "species": "Creek chub", "distinguishingNote": "Chub has a barbel and a dorsal-fin-base black spot that common shiner lacks." }
+      ]
+    },
+    "dace-chub-check": {
+      "id": "dace-chub-check", "type": "couplet",
+      "text": "Look for a large mouth and dark spots at the dorsal and caudal fin bases.",
+      "options": [
+        { "label": "Large mouth reaching back toward the eye; a large black spot at the front of the dorsal fin base AND a black spot at the base of the tail", "goTo": "result-creek-chub" },
+        { "label": "Small mouth, slightly overhung by a pointed snout; fine scales; a dusky lateral stripe running from the snout through the eye to the tail base; no dorsal/caudal black spots", "goTo": "result-blacknose-dace" }
+      ]
+    },
+    "result-creek-chub": {
+      "id": "result-creek-chub", "type": "result", "speciesId": "creek-chub",
+      "note": "A habitat generalist, often dominating small disturbed or intermittent headwater streams.",
+      "lookalikeCheck": [
+        { "species": "Blacknose dace", "distinguishingNote": "Dace is smaller-mouthed with no dorsal/caudal black spots." },
+        { "species": "Common shiner", "distinguishingNote": "Shiner has no barbel at all." }
+      ]
+    },
+    "result-blacknose-dace": {
+      "id": "result-blacknose-dace", "type": "result", "speciesId": "blacknose-dace",
+      "note": "In NS, documented mainly in Northumberland Strait and Bay of Fundy watersheds draining the Cobequid Mountains.",
+      "lookalikeCheck": [
+        { "species": "Creek chub", "distinguishingNote": "Chub is larger-mouthed with a dorsal-fin-base black spot and a caudal spot." },
+        { "species": "Common shiner", "distinguishingNote": "Shiner has no barbel and much larger, loose scales." }
+      ]
+    }
+  }
+}

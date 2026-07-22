@@ -1,0 +1,658 @@
+{
+  "version": "2026-07-22",
+  "species": [
+    {
+      "id": "atlantic-salmon",
+      "commonName": "Atlantic Salmon",
+      "scientificName": "Salmo salar",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "anadromous",
+      "regions": ["province-wide", "southern-upland", "cape-breton-bras-dor", "bay-of-fundy"],
+      "lookalikeGroup": "salmonid-parr",
+      "lifeStages": {
+        "egg": { "diagnostics": "Reddish-orange, pea-sized eggs buried in a gravel nest (redd) in headwater riffle habitat; not normally seen during field surveys.", "notes": "Incubation 6-12 weeks depending on water temperature; hatches to an alevin still attached to a yolk sac (~2 cm)." },
+        "fry": { "diagnostics": "Post-yolk-sac fry feeding on stream invertebrates, before parr marks fully develop.", "sizeRange": "2-8 cm" },
+        "parr": { "diagnostics": "8-11 oval parr marks along the lateral line, each about the width of the eye or narrower, often with a single red/orange spot between adjacent marks. Adipose fin plain grey/dusky with no orange or red pigment. Maxilla (upper jaw) short, not reaching past the rear margin of the eye. Only 1-4 spots on the gill cover, often just one large spot. Pectoral fin relatively long and pointed; caudal fin deeply forked.", "notes": "Parr reside in freshwater 2-6 years in Nova Scotia's often-acidic Southern Upland streams before smolting." },
+        "juvenile": { "diagnostics": "Smolt stage: parr marks fade under a silvery guanine layer; back darkens to steel-blue/olive, flanks bright silver.", "sizeRange": "12-20 cm smolts" },
+        "adult": { "diagnostics": "Fusiform, laterally compressed, silvery fresh from the sea, becoming bronze/brown with scattered black spots (often X- or cross-shaped, concentrated above the lateral line) after time in freshwater. Mouth terminal, maxilla reaching only to about the rear margin of the eye, not past it. Adipose fin plain, without red/orange margin or spots. Caudal fin moderately to deeply forked, more square-edged in large multi-sea-winter fish. Spawning males develop a hooked lower jaw (kype).", "sizeRange": "Grilse (1 sea-winter): <63 cm fork length, 1-3 kg. Multi-sea-winter adults: ~63-105 cm, 3-7+ kg." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Brown trout", "distinguishingNote": "Brown trout maxilla extends well past the rear of the eye (salmon's does not); brown trout has larger, more numerous dark spots with pale halos, often extending onto an adipose fin with a red/orange margin (salmon's adipose fin is plain); brown trout's tail is nearly square in adults vs. salmon's deeply forked tail." },
+        { "species": "Brook trout", "distinguishingNote": "Brook trout show pale wavy vermiculations on the back and dorsal/caudal fins (absent in salmon) and white-leading-edge lower fins backed by a black stripe; salmon lack both." },
+        { "species": "Rainbow trout", "distinguishingNote": "Rainbow trout have small black spots densely covering the caudal fin in rows and, in maturing fish, a pink lateral band; salmon show few or no tail spots and no pink stripe." }
+      ],
+      "habitatNotes": "Cold, well-oxygenated headwater rivers and tributaries with gravel/cobble spawning and rearing substrate. Major NS rivers include the Margaree, St. Marys, LaHave, and Medway, plus Eastern Shore and Southern Upland systems; DFO's Gulf Nova Scotia program monitors index rivers including the Margaree, West River Antigonish, East River Pictou, and River Philip. Inner Bay of Fundy river populations are listed Endangered by COSEWIC. Adults spend part of their life at sea, returning to natal rivers to spawn.",
+      "citations": [
+        { "source": "DFO", "url": "https://www.dfo-mpo.gc.ca/species-especes/publications/salmon-saumon/lifecycle-cyclevital/index-eng.html", "accessedNote": "Life-cycle page: egg/alevin/fry/parr/smolt/grilse/kelt terminology and redd/gravel spawning description." },
+        { "source": "DFO", "url": "https://www.dfo-mpo.gc.ca/species-especes/publications/salmon-saumon/infographics-infographiques/atlanticsalmon-saumonatlantique-eng.html", "accessedNote": "Life-cycle infographic corroborating egg/alevin/fry/parr size and colour." },
+        { "source": "DFO Gulf NS SFA18 research document", "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/41107238.pdf", "accessedNote": "Status in SFA 18 (Northumberland Strait NS / western Cape Breton); identifies Margaree, West River Antigonish, East River Pictou, River Philip as index rivers." },
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/salmo-salar.html", "accessedNote": "Dorsal/anal fin ray counts." },
+        { "source": "Atlantic Salmon Trust", "url": "https://atlanticsalmontrust.org/knowledge/resources/salmon-and-sea-trout-facts/", "accessedNote": "Salmon vs. trout parr recognition guide: maxilla length, adipose fin colour, gill-cover spotting, tail fork, parr marks." }
+      ]
+    },
+    {
+      "id": "brook-trout",
+      "commonName": "Brook Trout",
+      "scientificName": "Salvelinus fontinalis",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide", "southern-upland"],
+      "lookalikeGroup": "salmonid-parr",
+      "lifeStages": {
+        "egg": { "diagnostics": "Orange eggs in gravel redds, typically headwater streams or spring-fed lake margins, laid in fall (Sept-Nov); buried, not seen in typical surveys.", "notes": "Fall spawner like Atlantic salmon and brown trout, unlike spring-spawning rainbow trout." },
+        "parr": { "diagnostics": "Pale yellowish parr marks along the flanks plus early wavy (vermiculated) back markings and small pale/yellow spots; some red spotting with pale halos may already appear.", "notes": "Adipose fin and lower fins may already show a hint of adult orange with a white leading edge." },
+        "adult": { "diagnostics": "Back and dorsal fin marked with dark olive-green wavy vermiculations. Flanks scattered with red spots surrounded by bright blue halos, plus pale yellow spots. Belly pale yellow-orange, vivid orange-red in spawning males with a black midline stripe. Pelvic, anal and pectoral fins orange to red with a white leading edge followed by a black stripe. Caudal fin only slightly forked/nearly square (a true char trait).", "sizeRange": "Typical NS wild fish 15-30 cm; sea-run ('salter') or lake-resident fish can reach 40-50+ cm." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Lake trout", "distinguishingNote": "Lake trout show light cream/white/yellow spots on a dark background (never red or pink) and lack vermiculations; lake trout also have a much more deeply forked tail than brook trout's nearly square one." },
+        { "species": "Brown trout", "distinguishingNote": "Brown trout have large dark spots with pale (not blue) halos and no back vermiculations; its adipose fin has a red margin rather than brook trout's plain orange fin." },
+        { "species": "Splake (lake trout x brook trout hybrid, may occur where both are stocked)", "distinguishingNote": "Splake show an intermediate, moderately forked tail with a mix of vermiculations and pale spotting; pure brook trout has a nearly square tail with the consistent vermiculated-plus-red-spot pattern." }
+      ],
+      "habitatNotes": "Native and widespread in cold headwater streams, barrens brooks, and lakes across virtually every NS watershed, including acidic Southern Upland systems where few other salmonids persist. Sea-run ('salter') populations occur in coastal rivers with ocean access. Brook trout is the official provincial fish emblem of Nova Scotia, though populations show measurable hatchery introgression from decades of stocking.",
+      "citations": [
+        { "source": "USGS NAS", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=939", "accessedNote": "Range/size context." },
+        { "source": "FishBase", "url": "https://fishbase.se/Summary/Salvelinus-fontinalis", "accessedNote": "Dorsal/anal soft-ray counts (8-14 each) and vertebral count (58-62)." },
+        { "source": "NCBI (peer-reviewed)", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7232767/", "accessedNote": "Hatchery introgression in wild NS brook trout populations, confirming native status and stocking history." },
+        { "source": "Nova Scotia Salmon Association", "url": "https://nssalmon.ca/wild-trout", "accessedNote": "Confirms brook trout as native to NS and the provincial fish; sea-run brook trout described." }
+      ]
+    },
+    {
+      "id": "brown-trout",
+      "commonName": "Brown Trout",
+      "scientificName": "Salmo trutta",
+      "nativeStatus": "introduced",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["southwestern-nova", "northumberland-strait"],
+      "lookalikeGroup": "salmonid-parr",
+      "lifeStages": {
+        "parr": { "diagnostics": "10-12 parr marks along the flanks, none as wide as the eye diameter. Red/orange spotting is often already visible, unlike Atlantic salmon parr. Adipose fin frequently already shows a faint orange tint. Maxilla noticeably longer, already extending close to or past the rear of the eye.", "notes": "The maxilla-length and adipose-fin-colour contrast with Atlantic salmon parr is the standard field couplet used by fisheries biologists." },
+        "adult": { "diagnostics": "Colour variable, typically brownish on the back fading to golden-tan or silver on the flanks. Large dark spots with pale halos scattered over the head, back, and upper sides, often extending onto the dorsal and adipose fins; lower-flank spots red/orange with pale blue-white halos. Adipose fin has a distinctive red/orange margin. Few or no spots on the caudal fin. Mouth large, maxilla extending well beyond the rear margin of the eye (pronounced kype in spawning males).", "sizeRange": "Typical NS river/lake fish 20-60 cm; sea-run individuals occasionally 70-80 cm." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Atlantic salmon", "distinguishingNote": "Salmon have a short maxilla not reaching past the eye, a plain (non-orange) adipose fin, few spots confined mostly above the lateral line, and a more deeply forked tail; brown trout shows the reverse of each trait." },
+        { "species": "Brook trout", "distinguishingNote": "Brown trout lacks the dark wavy vermiculations and blue-haloed red spots of brook trout, and its adipose fin margin is red rather than solid orange." }
+      ],
+      "habitatNotes": "Introduced to Nova Scotia in 1923-1925 from imported German and Loch Leven (Scottish) hatchery stock; now widely distributed through coastal tributaries and inland lakes, especially in southwestern Nova Scotia and Northumberland Strait river systems. Tends toward anadromy wherever sea access exists, letting it naturally colonize additional unstocked coastal rivers over the past century.",
+      "citations": [
+        { "source": "Northeastern Naturalist (peer-reviewed monograph)", "url": "https://www.eaglehill.us/NENAonline/articles/NENA-mon-26/mon-26-Andrews.shtml", "accessedNote": "History and distribution of brown trout in NS/NB/PEI; introduction dates/origin (1923-1925, German/Loch Leven stock) and anadromous colonization pattern." },
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/Salmo-trutta.html", "accessedNote": "Dorsal/anal soft-ray counts and spotting/adipose-fin description." },
+        { "source": "Purdue Extension FNR-579-W", "url": "https://www.extension.purdue.edu/extmedia/fnr/fnr-579-w.pdf", "accessedNote": "Parr-mark count and width comparison used for the parr-stage couplet." },
+        { "source": "Nova Scotia Salmon Association", "url": "https://www.nssalmon.ca/wild-trout", "accessedNote": "Confirms brown trout as an introduced, self-sustaining recreational species in NS coastal rivers." }
+      ]
+    },
+    {
+      "id": "rainbow-trout",
+      "commonName": "Rainbow Trout",
+      "scientificName": "Oncorhynchus mykiss",
+      "nativeStatus": "introduced",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide", "cape-breton-bras-dor"],
+      "lookalikeGroup": "salmonid-parr",
+      "lifeStages": {
+        "parr": { "diagnostics": "8-13 parr marks along the flanks; adipose fin plain with a dark outline and no spots; small black spots already scattered over back, sides, and fins; a pink lateral tint may begin to appear.", "notes": "Spring spawner (unlike the fall-spawning salmon/brook/brown trout), so juveniles of the year are on a different seasonal schedule." },
+        "adult": { "diagnostics": "Silvery to olive-green back; small black spots densely covering the back, sides, dorsal fin, and — diagnostically — the caudal fin in distinct rows (few/no tail spots in salmon, brook, or brown trout). Broad pink-to-red lateral stripe along the midline, most vivid in mature/spawning fish. White belly. Mouth moderate, maxilla not reaching much past the eye.", "sizeRange": "Stocked 'catchable' fish typically 20-35 cm; occasional larger fish to 45-50+ cm." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Brown trout", "distinguishingNote": "Rainbow trout lacks brown trout's large pale-haloed dark spots and orange adipose-fin margin, showing instead dense small black spotting (including on the tail) plus a pink lateral stripe." },
+        { "species": "Atlantic salmon", "distinguishingNote": "Salmon lack the pink lateral stripe and dense rows of black tail spots that rainbow trout shows." }
+      ],
+      "habitatNotes": "Native to Pacific-drainage rivers of western North America; introduced to Nova Scotia beginning in 1899 and maintained today primarily through put-and-take stocking (roughly 65,000 fish annually across ~20 sites). Highly acid-sensitive, limiting natural reproduction across most of mainland NS's acidic Southern Upland waters; limited, likely non-self-sustaining natural reproduction has been documented in a handful of Cape Breton systems (e.g., Middle River, Skye River, Bras d'Or Lakes tributaries).",
+      "citations": [
+        { "source": "Government of Nova Scotia — Trout Management Plan", "url": "https://novascotia.ca/fish/documents/special-management-areas-reports/NSTroutManplandraft05.pdf", "accessedNote": "Stocking numbers/sites and acid-sensitivity of rainbow trout in NS." },
+        { "source": "ResearchGate", "url": "https://www.researchgate.net/publication/228825369_Examining_the_Occurrence_of_Wild_Rainbow_Trout_in_the_Bras_d'Or_Lakes_Nova_Scotia_Using_Scale_Pattern_Analysis_to_Differentiate_Hatchery_and_Wild", "accessedNote": "Study on wild vs. hatchery rainbow trout in Bras d'Or Lakes watershed." },
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/Oncorhynchus-mykiss.html", "accessedNote": "Anal ray count and lateral-line scale range." },
+        { "source": "DFO", "url": "https://www.dfo-mpo.gc.ca/species-especes/profiles-profils/rainbow-trout-truite-arc-en-ciel-eng.html", "accessedNote": "Confirms native Pacific range and general identification." }
+      ]
+    },
+    {
+      "id": "lake-trout",
+      "commonName": "Lake Trout",
+      "scientificName": "Salvelinus namaycush",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["southern-upland"],
+      "lookalikeGroup": "salmonid-parr",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "5-12 dark oval parr-mark-like bands on a silvery-grey body, distinct from the wavy vermiculations of young brook trout.", "notes": "Rears in deep, cold lakes rather than streams, unlike the stream-rearing juveniles of other NS salmonids." },
+        "adult": { "diagnostics": "Dark green to grey, brown, or nearly black background heavily marked with irregular light (white, cream, or yellowish) spots — never pink or red — extending onto the dorsal, adipose, and caudal fins. Caudal fin deeply forked, the most deeply forked of any NS trout/salmon/char. Paired fins sometimes orange-red with a white leading edge, especially in northern populations.", "sizeRange": "Typically 35-70 cm in NS lakes; can exceed 100 cm in larger systems." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Brook trout", "distinguishingNote": "Lake trout shows pale cream/white/yellow spots on a dark ground and a deeply forked tail, versus brook trout's back vermiculations, red spots with blue halos, and nearly square tail." },
+        { "species": "Splake (lake trout x brook trout hybrid, where stocked)", "distinguishingNote": "Splake are intermediate: moderately forked tail with a mix of pale spotting and some vermiculation." }
+      ],
+      "habitatNotes": "Deep, cold, well-oxygenated lakes. Genuinely native remnant NS populations are now thought to persist in very few lakes — a 2023 study identified only Dollar Lake (Halifax Co.) and possibly Pockwock Lake as retaining likely-pure native ancestry, out of 9 lakes historically believed to hold ancestral populations. Sherbrooke Lake (Lunenburg Co.) is a separately studied population near the species' southeastern range limit. Maritime-wide stocking since 1886 has heavily confounded native-vs-introduced status determinations across most other NS lakes.",
+      "citations": [
+        { "source": "Northeastern Naturalist (peer-reviewed)", "url": "https://bioone.org/journals/northeastern-naturalist/volume-30/issue-mo23/045.030.m2301/Past-and-Present-Distribution-and-Identification-of-Extant-Native-Lake/10.1656/045.030.m2301.short", "accessedNote": "Past and present distribution/identification of extant native lake trout populations in the Maritimes; identifies Dollar Lake/Pockwock Lake as likely sole native NS populations." },
+        { "source": "Government of Nova Scotia FFRC report", "url": "https://novascotia.ca/fish/documents/2023-ffrc-lake-trout-distribution.pdf", "accessedNote": "2023 report on past/present lake trout distribution in NS; 1886 stocking start date." },
+        { "source": "DFO", "url": "https://www.dfo-mpo.gc.ca/species-especes/profiles-profils/lake-trout-touladi-eng.html", "accessedNote": "Juvenile parr-mark description, spot colour, fin coloration, max length (~106 cm)." },
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/Salvelinus-namaycush", "accessedNote": "Dorsal/anal soft-ray counts and adult colour description." }
+      ]
+    },
+    {
+      "id": "chain-pickerel",
+      "commonName": "Chain Pickerel",
+      "scientificName": "Esox niger",
+      "nativeStatus": "non-native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["southwestern-nova", "province-wide"],
+      "lookalikeGroup": null,
+      "lifeStages": {
+        "egg": { "diagnostics": "Adhesive eggs ~2 mm diameter, laid in gelatinous ribbons wrapped over submerged vegetation in shallow water in early spring; unguarded.", "notes": "Hatch in roughly 6-12 days." },
+        "fry": { "diagnostics": "Hatchlings remain inactive, attached to vegetation, until the yolk sac is absorbed (~6-8 days); become cannibalistic toward other fry within 3-4 weeks.", "notes": "Feed initially on small invertebrates before shifting to a fish diet." },
+        "juvenile": { "diagnostics": "Elongated cylindrical body developing the dark reticulated 'chain-link' pattern on a lighter green-gold background. Single soft dorsal fin set far back near the tail; duck-bill snout with numerous small sharp teeth; no adipose fin at any stage." },
+        "adult": { "diagnostics": "Elongated cylindrical body with a long, flattened, duck-bill snout. Single soft dorsal fin positioned far back above the anal fin; no adipose fin. Distinctive dark chain-like reticulated pattern over a green-gold body; a conspicuous dark vertical bar beneath each eye; yellow pupil. Cheek and operculum fully to nearly fully scaled.", "sizeRange": "Common length ~30-42 cm; NS fish commonly 30-55 cm; max recorded 99 cm TL." }
+      },
+      "lookalikeSpecies": [
+        { "species": "American eel", "distinguishingNote": "Eels lack pelvic fins and have a single continuous fin margin running from mid-back around the tail to the anus with no visible scales, unlike a pickerel's distinctly scaled body with separate dorsal, anal, and paired fins." }
+      ],
+      "habitatNotes": "Prefers vegetated lake margins, quiet backwaters, and slow pools. First authorized introduction to Nova Scotia was in 1945 into three lakes; illegal bait-bucket transfer has since spread it to at least 95 known NS waterbodies. Considered one of the two aquatic invasive species of greatest concern in NS freshwaters (with smallmouth bass); rapidly displaces native brook trout and other sport fish. Mandatory retention (illegal to release a caught chain pickerel) has applied province-wide since April 1, 2025. Absent from Kejimkujik National Park's core protected waters.",
+      "citations": [
+        { "source": "Nova Scotia Invasive Species Council", "url": "https://nsinvasives.ca/chain-pickerel/", "accessedNote": "1945 introduction/three lakes, spread to 95+ locations, mandatory retention rule effective April 1, 2025." },
+        { "source": "DFO", "url": "https://www.dfo-mpo.gc.ca/publications/habitat/highlights-faitssaillants/nova-scotia-nouvelle-ecosse/managing-invasive-species-gerer-especes-envanhissantes-eng.html", "accessedNote": "Managing aquatic invasive species (chain pickerel, smallmouth bass) in NS watersheds." },
+        { "source": "Government of Nova Scotia impact report", "url": "https://novascotia.ca/fish/documents/special-management-areas-reports/impact-chain-pickerel.pdf", "accessedNote": "Chain pickerel impacts on lake fish communities." },
+        { "source": "FishBase", "url": "https://fishbase.se/summary/2712", "accessedNote": "Dorsal/anal soft-ray counts and max length/weight for Esox niger." },
+        { "source": "Canadian Field-Naturalist (peer-reviewed)", "url": "https://www.canadianfieldnaturalist.ca/index.php/cfn/article/download/1116/1120/4464", "accessedNote": "Scaled-cheek/operculum diagnostics distinguishing Esox niger from E. americanus (not present in NS)." }
+      ]
+    },
+    {
+      "id": "smallmouth-bass",
+      "commonName": "Smallmouth Bass",
+      "scientificName": "Micropterus dolomieu",
+      "nativeStatus": "non-native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["southwestern-nova", "cape-breton-bras-dor"],
+      "lookalikeGroup": "centrarchid-perch",
+      "lifeStages": {
+        "egg": { "diagnostics": "Adhesive eggs laid in a nest fanned into gravel/rock substrate by the male, who guards the nest; after hatching, fry swarm until dispersal." },
+        "juvenile": { "diagnostics": "Olive-green above, yellow-white below, with 8-16 dark brown vertical bars/blotches ('tiger-stripe' pattern) most vivid in young fish, fading with age. Two dorsal fins joined by only a shallow notch." },
+        "adult": { "diagnostics": "Fusiform, robust body; bronze to olive-brown coloration ('bronzeback'), with faint vertical bars persisting in some individuals; red eye. Two dorsal fins joined by a shallow notch, not a deep separation. Upper jaw (maxilla) does not extend past the rear margin of the eye.", "sizeRange": "Grows slowly in low-productivity NS waters — about 25 cm at 5 years and 35 cm at 9 years; a 50 cm fish may be 10+ years old." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Yellow perch", "distinguishingNote": "Yellow perch has two clearly and fully separated dorsal fins (a distinct gap, not a shallow notch) and a more elongate body with 6-9 sharply defined vertical bars, versus smallmouth bass's robust fusiform body and faint bars." },
+        { "species": "Chain pickerel", "distinguishingNote": "Chain pickerel has a single dorsal fin set far back near the tail and a duck-bill snout, unlike smallmouth bass's two dorsal fins and rounded terminal mouth." }
+      ],
+      "habitatNotes": "Occupies rocky/gravel shoals of lakes and clear, gravel-bottomed runs and pools of rivers. Native to the Great Lakes-St. Lawrence system; first authorized introduction to Nova Scotia was in 1942 at Bunkers Lake, Yarmouth County (13 authorized introductions total, last in 1984); illegal transfer has since spread it to 188+ NS lakes and rivers as of 2008, concentrated in southwestern NS and expanding into Cape Breton. Along with chain pickerel, one of the two aquatic invasive species of greatest concern in NS freshwaters. Mandatory-retention order applies to the Margaree River watershed (incl. Lake Ainslie) and part of the LaHave River since 2024. Absent from Kejimkujik National Park.",
+      "citations": [
+        { "source": "DFO", "url": "https://www.dfo-mpo.gc.ca/species-especes/profiles-profils/smallmouthbass-achiganpetitebouche-eng.html", "accessedNote": "Native Great Lakes-St. Lawrence range; confirms largemouth bass absent from NS." },
+        { "source": "Nova Scotia Invasive Species Council", "url": "https://nsinvasives.ca/smallmouth-bass/", "accessedNote": "1942 Bunkers Lake introduction, spread to 188+ waterbodies by 2008, Margaree/LaHave retention order." },
+        { "source": "Government of Nova Scotia life history report", "url": "https://novascotia.ca/fish/documents/special-management-areas-reports/GrandLakeBassRpt265911.pdf", "accessedNote": "NS tournament-monitoring growth data." },
+        { "source": "FishBase", "url": "https://fishbase.org/summary/3382", "accessedNote": "Dorsal spine/soft-ray counts and body colour/bar pattern." },
+        { "source": "NCBI (peer-reviewed)", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7069312/", "accessedNote": "Competitive threat to Atlantic salmon in an NS river." }
+      ]
+    },
+    {
+      "id": "striped-bass",
+      "commonName": "Striped Bass",
+      "scientificName": "Morone saxatilis",
+      "nativeStatus": "native",
+      "sRank": "S1",
+      "habitatType": "anadromous",
+      "regions": ["bay-of-fundy"],
+      "lookalikeGroup": "centrarchid-perch",
+      "lifeStages": {
+        "egg": { "diagnostics": "Semi-buoyant eggs released into fast-flowing river reaches during spawning; not practically encountered in field surveys." },
+        "fry": { "diagnostics": "Larvae ~2.0-3.7 mm at hatching with a large yolk sac and oil globule; feed on zooplankton after about a week; drift downstream in river/estuary nursery habitat." },
+        "juvenile": { "diagnostics": "Metamorphoses into a juvenile form at ~20 mm, developing scales, fin spines, and the horizontal stripe pattern of a miniature adult; forms large nursery schools.", "sizeRange": "~20 mm to several cm" },
+        "adult": { "diagnostics": "Laterally compressed, elongate, sturdy body; large terminal mouth; two separate dorsal fins (anterior spiny, posterior soft-rayed) with a distinct gap between them. 6-9 continuous dark horizontal stripes along silvery sides; back olive, steel-blue, or blackish; belly white/silvery. Anal fin with 3 spines, graduated in length (2nd noticeably shorter than 3rd). Two tooth patches at the back of the tongue.", "sizeRange": "46-140 cm typical; up to 200 cm TL max. NS Bay of Fundy fish commonly ~40-90 cm." }
+      },
+      "lookalikeSpecies": [
+        { "species": "White perch (present in NS)", "distinguishingNote": "White perch entirely lacks horizontal stripes, has nearly equal-length 2nd and 3rd anal spines (not graduated), a single continuous dorsal fin base with no gap between spiny and soft portions, and only one tooth patch on the tongue (striped bass has two)." }
+      ],
+      "habitatNotes": "Anadromous; in Atlantic Canada only two confirmed spawning populations remain: the southern Gulf of St. Lawrence (Miramichi River) and the Bay of Fundy system, whose only currently robust spawning run is Nova Scotia's Shubenacadie-Stewiacke river system. That population overwinters in Grand Lake and Shubenacadie Lake and migrates through the hypertidal Minas Passage of the Bay of Fundy. Other Bay of Fundy-area stocks (Annapolis River NS; Saint John River NB) are severely depressed or possibly extirpated. The Bay of Fundy population was designated Endangered by COSEWIC in 2012; invasive chain pickerel in Shubenacadie overwintering habitat is flagged as an emerging threat.",
+      "citations": [
+        { "source": "COSEWIC / Species at Risk Public Registry", "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/striped-bass/chapter-7.html", "accessedNote": "Two remaining eastern Canadian spawning populations and Bay of Fundy stock status." },
+        { "source": "DFO research document", "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/183364.pdf", "accessedNote": "Striped bass stock status in Scotia-Fundy; Shubenacadie-Stewiacke as the remaining robust NS spawning population." },
+        { "source": "NatureServe Explorer", "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104731/Morone_saxatilis", "accessedNote": "Provincial S-rank comparison table (NS S1, NB S2, PEI S2N, QC SX), surfaced via search — page itself not directly rendered in this research pass." },
+        { "source": "Canadian Journal of Fisheries and Aquatic Sciences (peer-reviewed)", "url": "https://cdnsciencepub.com/doi/abs/10.1139/cjfas-2016-0002", "accessedNote": "Winter presence/diel vertical migration of Shubenacadie River striped bass in the Minas Passage." },
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/Morone-saxatilis.html", "accessedNote": "Dorsal spine count, stripe count, adult size range." }
+      ]
+    },
+    {
+      "id": "blacknose-dace",
+      "commonName": "Blacknose Dace",
+      "scientificName": "Rhinichthys atratulus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["northumberland-strait", "bay-of-fundy"],
+      "lookalikeGroup": "small-cyprinid",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Same body plan as adult but paler and less speckled; dark lateral band already present but faint; barbel may be hard to see without magnification.", "sizeRange": "~2.5-5 cm TL" },
+        "adult": { "diagnostics": "Single small fleshy barbel in the corner of the mouth (may be embedded/hard to see); pointed snout that slightly overhangs a subterminal mouth; dorsal fin with 8 soft rays, no spines; lateral line complete, 56-70 scales; deep, compressed caudal peduncle; back and sides speckled with brown-black spots and a dusky lateral stripe from snout through eye to caudal base; breeding males develop orange/red at the fin bases.", "sizeRange": "Common length ~5.7 cm TL, max reported 12.4 cm TL." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Common shiner", "distinguishingNote": "Common shiner lacks a barbel entirely, has a terminal mouth, large loose scales that fall off easily, and a deeply forked tail with a dark spot at its base; blacknose dace has fine scales and a barbel." },
+        { "species": "Creek chub", "distinguishingNote": "Creek chub also has a jaw-corner barbel but grows much larger, has a bigger terminal mouth reaching toward the eye, a prominent black spot at the front of the dorsal fin base, and a black caudal spot absent in blacknose dace." }
+      ],
+      "habitatNotes": "In Nova Scotia, documented distribution is restricted to portions of the Northumberland Strait and Bay of Fundy watersheds, concentrated in headwater streams originating in the Cobequid Mountains. Prefers cool, well-oxygenated riffle/run habitat over gravel-rubble substrate; common electrofishing bycatch in these systems.",
+      "citations": [
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/Rhinichthys-atratulus", "accessedNote": "Dorsal soft rays (8), anal soft rays (7), max/common length, barbel and overhanging snout, native range NS to Manitoba." },
+        { "source": "Wikipedia — Eastern blacknose dace", "url": "https://en.wikipedia.org/wiki/Eastern_blacknose_dace", "accessedNote": "Lateral line scale count (56-70) and general body description." },
+        { "source": "Distribution of Blacknose Dace, Rhinichthys atratulus, in Nova Scotia (ResearchGate)", "url": "https://www.researchgate.net/publication/292623523_Distribution_of_Blacknose_Dace_Rhinichthys_atratulus_in_Nova_Scotia", "accessedNote": "NS-specific distribution: Northumberland Strait and Bay of Fundy watersheds, Cobequid Mountains headwaters; 55 documented localities." }
+      ]
+    },
+    {
+      "id": "common-shiner",
+      "commonName": "Common Shiner",
+      "scientificName": "Luxilus cornutus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide"],
+      "lookalikeGroup": "small-cyprinid",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Slender, silvery, no barbel; olive back without a strongly developed dorsal stripe yet; scales already noticeably large and loose compared to dace/chub of similar size.", "sizeRange": "~3-6 cm TL" },
+        "adult": { "diagnostics": "No barbel; terminal, slightly oblique mouth; dorsal fin with 8 (rarely 9) rays; lateral line complete, ~34-38 large, loose-fitting scales that detach easily; body silvery to bronze with an olive back and dark middorsal stripe; deeply forked caudal fin often with a dark spot at its base; breeding males develop rosy/pink fin coloration, blue sheen, and small head tubercles.", "sizeRange": "Common length ~8.3 cm TL, max reported 18.0 cm TL." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Blacknose dace", "distinguishingNote": "Blacknose dace has a barbel, fine scales, a subterminal overhung mouth, and a dusky lateral band, versus no barbel, large loose scales, and a terminal mouth in common shiner." },
+        { "species": "Creek chub", "distinguishingNote": "Creek chub has a barbel, smaller scales, a large mouth, and a black spot at the dorsal fin base/caudal fin; common shiner lacks a barbel and has much larger, loose scales." }
+      ],
+      "habitatNotes": "Widespread across mainland Nova Scotia in clear, cool creeks and small-to-medium rivers, typically holding in rocky pools adjacent to riffles; a frequent electrofishing bycatch species in well-oxygenated stream habitat.",
+      "citations": [
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/Luxilus-cornutus", "accessedNote": "Max/common length, olive back with dark dorsal stripe, silvery/bronze coloration, native range NS to southeastern Saskatchewan, habitat in rocky pools near riffles." },
+        { "source": "USGS NAS", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=563", "accessedNote": "Range and general species account." }
+      ]
+    },
+    {
+      "id": "creek-chub",
+      "commonName": "Creek Chub",
+      "scientificName": "Semotilus atromaculatus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide"],
+      "lookalikeGroup": "small-cyprinid",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Herringbone-pattern lines on the upper side (distinctive juvenile marking that fades with age); barbel and dark lateral stripe already present; body proportionally more slender than adult.", "sizeRange": "~3-8 cm TL" },
+        "adult": { "diagnostics": "Single small barbel in the corner of the jaw (sometimes hidden in the groove between maxilla and premaxilla); large, pointed, terminal mouth reaching toward the eye; dorsal fin with 8 rays; complete lateral line with 47-65 scales, occasionally interrupted; a large black spot at the front of the dorsal fin base and a black spot at the caudal fin base; body gray-brown above with a dark stripe along the back and a dusky stripe along the olive-silver side; breeding males develop orange at the dorsal fin base and head tubercles.", "sizeRange": "Common length ~19.1 cm TL, max reported 30.3 cm TL (field-caught bycatch commonly much smaller, ~5-15 cm)." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Blacknose dace", "distinguishingNote": "Both have a jaw-corner barbel, but creek chub is larger-bodied with a bigger terminal mouth, a black spot at the dorsal fin base, and a black caudal spot, none of which occur in blacknose dace." },
+        { "species": "Common shiner", "distinguishingNote": "Common shiner has no barbel and much larger, loose scales; creek chub retains a barbel and has smaller scales plus the diagnostic dorsal-fin-base black spot." }
+      ],
+      "habitatNotes": "A habitat generalist found throughout mainland Nova Scotia headwater creeks and small rivers; tolerates warmer, siltier, lower-oxygen conditions than blacknose dace or common shiner, often dominating small, disturbed, or intermittent headwater streams and roadside ditches sampled during electrofishing.",
+      "citations": [
+        { "source": "FishBase", "url": "https://fishbase.mnhn.fr/summary/semotilus-atromaculatus.html", "accessedNote": "Dorsal fin 8 rays, large black spot at dorsal fin base, black caudal spot, lateral line 47-65 scales, pointed mouth, habitat in rocky/sandy pools of headwaters and creeks." },
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/Semotilus-atromaculatus", "accessedNote": "Size data: max length 30.3 cm TL, common length 19.1 cm TL." }
+      ]
+    },
+    {
+      "id": "banded-killifish",
+      "commonName": "Banded Killifish",
+      "scientificName": "Fundulus diaphanus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide"],
+      "lookalikeGroup": "killifish",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Vertical barring already visible but faint; slender body; superior/flat-topped head already apparent.", "sizeRange": "~2-4 cm TL" },
+        "adult": { "diagnostics": "No lateral line; 39-49 cycloid scales in lateral series (subspecies-dependent); dorsal fin with 13-15 rays, origin set relatively far forward (roughly equidistant between the eye and tail base); slender body with a slender caudal peduncle; superior (upturned), small mouth; flattened top of head; silvery sides marked with 12-20 narrow, well-defined dark vertical bands in both sexes; caudal fin rounded to slightly truncate.", "sizeRange": "Common length ~6.3 cm TL, max reported 13.0 cm TL." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Mummichog", "distinguishingNote": "Dorsal fin position and caudal peduncle depth are the most useful field characters: banded killifish has a slimmer caudal peduncle and a more forward dorsal fin; mummichog has a deep caudal peduncle, a rounded caudal fin, and a dorsal fin set farther back toward the tail. Banded killifish also shows crisp, regular vertical bars in both sexes vs. mummichog's blotchier pattern and (in males) a dark ocellus at the rear of the dorsal fin." }
+      ],
+      "habitatNotes": "Occurs in lakes, ponds, and slow-flowing streams across mainland Nova Scotia, tolerating oligohaline conditions at the edges of tidal marshes/estuaries where its range overlaps with mummichog; frequently caught in minnow traps set in weedy littoral zones. Mainland NS populations are not considered at risk (the only at-risk Canadian population is the geographically distinct Newfoundland population).",
+      "citations": [
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/Fundulus-diaphanus", "accessedNote": "No lateral line, 39-49 lateral scales, dorsal/anal ray counts, max/common length." },
+        { "source": "Canadian Field-Naturalist (peer-reviewed)", "url": "https://www.canadianfieldnaturalist.ca/index.php/cfn/article/view/2373", "accessedNote": "Morphological comparison identifying dorsal fin position and caudal peduncle depth as the key characters distinguishing the two species." },
+        { "source": "COSEWIC — Banded Killifish status report", "url": "https://wildlife-species.canada.ca/species-risk-registry/virtual_sara/files/cosewic/sr_Banded%20Killifish_2014_e.pdf", "accessedNote": "Mainland NS, NB, QC, ON and MB populations native and not at risk, distinct from the at-risk Newfoundland population." }
+      ]
+    },
+    {
+      "id": "mummichog",
+      "commonName": "Mummichog",
+      "scientificName": "Fundulus heteroclitus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "estuarine",
+      "regions": ["coastal-estuarine"],
+      "lookalikeGroup": "killifish",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Robust, chunky body already evident relative to banded killifish; bars/blotches present but less distinct; superior mouth and flat head profile apparent.", "sizeRange": "~2-4 cm TL" },
+        "adult": { "diagnostics": "No lateral line; elongate but robust body, depth less than 1/3 SL; rounded snout; small superior/terminal mouth; dorsal fin with 11-12 rays (range 10-15), origin distinctly anterior to the anal fin and set over a deep caudal peduncle; caudal fin rounded; coloration dark olive-brown to yellowish; males with dark vertical bars alternating with silvery/greenish interspaces and a small dark ocellus at the rear of the dorsal fin; females with irregular blotching rather than crisp bars.", "sizeRange": "Common length ~8.9 cm TL, max reported 15.0 cm TL." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Banded killifish", "distinguishingNote": "Mummichog has a deep caudal peduncle, a rounded caudal fin, and a dorsal fin set farther back toward the tail, plus a male dorsal-fin ocellus and blotchier female pattern; banded killifish is slimmer with a more forward dorsal fin and crisp, regular vertical bars in both sexes." }
+      ],
+      "habitatNotes": "Abundant in Nova Scotia salt marshes, tidal creeks, and estuaries along both the Atlantic coast and Bay of Fundy; highly euryhaline, tolerant of wide swings in salinity, temperature, and dissolved oxygen. More typical of coastal/estuarine minnow-trap bycatch than upstream freshwater electrofishing sites, where banded killifish is more likely.",
+      "citations": [
+        { "source": "FishBase", "url": "https://www.fishbase.org/summary/3192", "accessedNote": "Dorsal fin 11-12 rays (range 10-15), origin before the anal fin, elongate body depth <1/3 SL, rounded snout, small mouth, max/common length." },
+        { "source": "Canadian Field-Naturalist (peer-reviewed)", "url": "https://www.canadianfieldnaturalist.ca/index.php/cfn/article/view/2373", "accessedNote": "Dorsal fin position / caudal peduncle depth distinguishing characters vs. banded killifish." }
+      ]
+    },
+    {
+      "id": "ninespine-stickleback",
+      "commonName": "Ninespine Stickleback",
+      "scientificName": "Pungitius pungitius",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide", "coastal-estuarine"],
+      "lookalikeGroup": "stickleback",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Free dorsal spines already countable and diagnostic even in small individuals; slender body; caudal keel developing.", "sizeRange": "~2-4 cm TL" },
+        "adult": { "diagnostics": "6-12 (commonly ~9) short, isolated, alternately-tilted free spines along the back anterior to the soft dorsal fin, each with its own membrane. A bony keel (scutes) runs along the side of the caudal peduncle, usually reaching forward to beneath the dorsal fin. Caudal peduncle wider than deep; flanks generally lack the bony lateral plates seen in threespine stickleback. Body slender, olive-green to brown with faint mottling; pelvic fins with a single stout spine; breeding males darken, often to black.", "sizeRange": "Common length ~6.5 cm TL, max reported 9.0 cm TL." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Threespine stickleback", "distinguishingNote": "Dorsal spine count is the key diagnostic: ninespine has 6-12 (usually ~9) short free spines vs. threespine's 2-4 (usually 3) stouter spines. Ninespine also has a distinct caudal-peduncle keel of scutes and generally lacks flank lateral plates common in threespine." }
+      ],
+      "habitatNotes": "Found in cool lakes, ponds, and slow-flowing vegetated streams across Nova Scotia, including brackish coastal waters at the freshwater-estuarine margin; frequently caught alongside threespine stickleback in vegetated shallows during minnow trapping, so spine counts should be checked on every stickleback caught rather than assumed from habitat alone.",
+      "citations": [
+        { "source": "FishBase", "url": "https://fishbase.se/summary/Pungitius-pungitius", "accessedNote": "Dorsal spines (total) 6-12, max/common length." },
+        { "source": "FishBase-sourced stickleback reference compilation", "url": "https://allfishes.org/fishes/freshwater/sticklebacks-ninespine", "accessedNote": "Caudal-peduncle keel/scute description and free dorsal spine range." }
+      ]
+    },
+    {
+      "id": "threespine-stickleback",
+      "commonName": "Threespine Stickleback",
+      "scientificName": "Gasterosteus aculeatus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "anadromous",
+      "regions": ["province-wide", "coastal-estuarine"],
+      "lookalikeGroup": "stickleback",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Free dorsal spines already countable and diagnostic even in small individuals; lateral plate development variable and may be incomplete in young fish.", "sizeRange": "~2-4 cm TL" },
+        "adult": { "diagnostics": "2-4 (usually 3) stout, isolated free spines in front of the soft dorsal fin, the last very short; one stout pelvic spine and one stout anal spine. Lateral bony plates highly variable by ecotype — fully plated (common in anadromous/marine and brackish fish), partially plated with a keeled caudal peduncle, or low-plated with only a few anterior plates (common in resident freshwater populations). Body stouter/deeper than ninespine stickleback; silvery with olive-green to blue-green back; breeding males develop a red throat/belly and blue eyes.", "sizeRange": "Common length ~5.1 cm TL, max reported 11.0 cm TL (marine/anadromous fish typically larger than resident freshwater fish, which rarely exceed ~8 cm)." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Ninespine stickleback", "distinguishingNote": "Threespine has only 2-4 (usually 3) stouter free dorsal spines vs. 6-12 (usually ~9) shorter spines in ninespine; threespine may also show bony lateral plates whereas ninespine typically lacks flank plates but has a distinct caudal keel." }
+      ],
+      "habitatNotes": "Extremely common and widespread across Nova Scotia in both fresh and brackish/estuarine waters; both anadromous (sea-run) and resident freshwater/landlocked forms occur, with lateral-plate morph often reflecting the salinity history of the population. One of the most frequent bycatch species in both electrofishing and minnow-trap surveys, often co-occurring with ninespine stickleback in vegetated shallows.",
+      "citations": [
+        { "source": "FishBase", "url": "https://fishbase.se/summary/Gasterosteus-aculeatus.html", "accessedNote": "Dorsal spines (total) 2-4, max/common length, freshwater vs. saltwater max size difference." },
+        { "source": "Canadian Journal of Zoology (peer-reviewed)", "url": "https://cdnsciencepub.com/doi/10.1139/z73-079", "accessedNote": "Meristic variation in threespine stickleback in eastern Canadian waters." },
+        { "source": "PMC (peer-reviewed)", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5072691/", "accessedNote": "Lateral plate morph categories and their association with salinity/habitat." }
+      ]
+    },
+    {
+      "id": "slimy-sculpin",
+      "commonName": "Slimy Sculpin",
+      "scientificName": "Cottus cognatus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide"],
+      "lookalikeGroup": null,
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Same diagnostic body plan as adult (broad head, no scales, fan-like pectoral fins) but with reduced dark saddle-blotch pigmentation.", "sizeRange": "~2-4 cm TL" },
+        "adult": { "diagnostics": "No scales anywhere on the body; broad, flattened head tapering to a slender body; large, fan-like pectoral fins; pelvic fins with 1 spine and 3 soft rays, positioned under the anterior base of the pectoral fins; a single hooked preopercular spine; two dorsal fins (spiny fin low and separate from the soft fin); mottled brown to gray dorsally with 4 dark saddle-shaped blotches extending onto the upper sides; complete lateral line.", "sizeRange": "Common length ~7.5 cm TL, max reported 12.1 cm TL." }
+      },
+      "lookalikeSpecies": [
+        { "species": "None of the other species in this list", "distinguishingNote": "Slimy sculpin is unmistakable among Nova Scotia's freshwater bycatch: it is the only species with a scaleless body, a broad flattened head, large fan-like pectoral fins, and a two-part dorsal fin. (Elsewhere in its range it is distinguished from the mottled sculpin, Cottus bairdii — not present in Nova Scotia — by pelvic fin ray count: 3 soft rays here vs. 4 in mottled sculpin.)" }
+      ],
+      "habitatNotes": "A benthic species of cold, clean, well-oxygenated headwater streams and lakes across mainland Nova Scotia; sensitive to warming and siltation, and used elsewhere in Canada as an indicator species in environmental effects monitoring programs. Commonly picked up as electrofishing bycatch in the same riffle/run habitat as blacknose dace and brook trout.",
+      "citations": [
+        { "source": "FishBase", "url": "https://www.fishbase.de/summary/4068", "accessedNote": "Broad head, tapering body, fan-like pectoral fins, hooked preopercular spine, no scales, pelvic fins under pectoral base, max/common length, Canadian range including Atlantic Canada." },
+        { "source": "Illinois DNR — Wild About Fishes: Slimy Sculpin", "url": "https://dnr.illinois.gov/education/wildaboutpages/wildaboutfishes/wafsculpin/wafslimysculpin.html", "accessedNote": "Pelvic fin ray count (3 soft rays) distinguishing slimy sculpin from mottled sculpin (4 soft rays)." },
+        { "source": "FACETS Journal (peer-reviewed)", "url": "https://www.facetsjournal.com/doi/10.1139/facets-2017-0069", "accessedNote": "Biology/ecology of slimy sculpin and its use as an environmental monitoring indicator species." }
+      ]
+    },
+    {
+      "id": "american-eel",
+      "commonName": "American Eel",
+      "scientificName": "Anguilla rostrata",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "catadromous",
+      "regions": ["province-wide", "coastal-estuarine"],
+      "lookalikeGroup": "eel-like",
+      "lifeStages": {
+        "elver": { "diagnostics": "Includes glass eel (fully transparent, no pigment) transitioning to elver (small pigment develops). Elongate, snake-like, laterally compressed only near the tail; continuous dorsal-caudal-anal fin margin with no pelvic fins; tiny embedded scales not yet obvious; single gill slit each side (helps rule out lamprey, which has 7 round gill pores per side and no jaw/pectoral fins).", "sizeRange": "Glass eel ~50-75 mm; elver ~50-90 mm." },
+        "juvenile": { "diagnostics": "Yellow eel stage begins once total length exceeds ~10 cm. Uniform olive-yellow to brown-green dorsally, yellowish-white venter; small embedded scales in a basket-weave pattern; large pectoral fins; small mouth reaching to about the eye, thick lips; dorsal fin origin well behind pectoral fins, continuous with caudal and anal fins; no pelvic fins.", "sizeRange": "Yellow eel: roughly 20-60 cm, a multi-year stage lasting several years to decades." },
+        "adult": { "diagnostics": "Silver eel (pre-spawning migratory stage): body becomes more silvery/bronze with a dark dorsal cape and white belly; eyes enlarge, snout narrows, gut regresses. Females much larger than males and lighter coloured with smaller eyes and higher fins relative to males. No pelvic fins; dorsal, caudal and anal fins confluent.", "sizeRange": "Females up to ~152 cm max reported; males typically <50-60 cm total length." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Sea lamprey (ammocoete or adult)", "distinguishingNote": "Lampreys are jawless with a circular sucker-disc mouth and 7 round external gill openings per side and no paired pectoral/pelvic fins; American eel has a normal jawed mouth, a single covered gill opening per side, and well-developed pectoral fins. Ammocoetes (larval lampreys) also lack externally visible eyes and have a fleshy hood over the mouth, unlike elvers." }
+      ],
+      "habitatNotes": "Catadromous; occupies fresh, brackish, and estuarine waters as a yellow eel for years to decades before migrating to sea as a silver eel to spawn in the Sargasso Sea. DFO Maritimes Region electrofishing index rivers for NS yellow/silver eel monitoring include the LaHave River and St. Mary's River; composite index data 1985-2012 showed a statistically significant ~3%/year decline (~39% overall since 1996). Elvers are the target of a valuable, tightly regulated commercial spring fishery in NS/NB coastal rivers under DFO's Elver Integrated Fisheries Management Plan.",
+      "citations": [
+        { "source": "COSEWIC / Species at Risk Public Registry", "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/american-eel-2012.html", "accessedNote": "COSEWIC status assessment (Special Concern, 2012) and life-stage terminology." },
+        { "source": "DFO Maritimes — Elver Integrated Fisheries Management Plan", "url": "https://www.dfo-mpo.gc.ca/fisheries-peches/ifmp-gmp/elver-anguille/index-eng.html", "accessedNote": "Elver fishery management plan for NS/NB coastal rivers." },
+        { "source": "DFO Assessment of Maritimes Region American Eel", "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/41040624.pdf", "accessedNote": "Identifies LaHave and St. Mary's Rivers as electrofishing index rivers; reports ~3%/yr decline 1985-2012." },
+        { "source": "NCFishes.com (FishBase-derived)", "url": "https://ncfishes.com/marine-fishes-of-north-carolina/anguilla-rostrata/", "accessedNote": "Diagnostic characters: basket-weave scales, large pectoral fins, mouth reaching under eye, single gill opening." },
+        { "source": "U.S. Fish & Wildlife Service Species Profile", "url": "https://www.fws.gov/species/american-eel-anguilla-rostrata", "accessedNote": "Sexual dimorphism and max length (152 cm females)." }
+      ]
+    },
+    {
+      "id": "white-sucker",
+      "commonName": "White Sucker",
+      "scientificName": "Catostomus commersonii",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide"],
+      "lookalikeGroup": null,
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Three dark lateral blotches along the body (between dorsal fin and operculum, under the dorsal fin, and on the caudal fin base) that fade with age; body otherwise streamlined and cylindrical.", "sizeRange": "Young-of-year to ~15-20 cm." },
+        "adult": { "diagnostics": "Diagnostic toothless, papillose, subterminal (downturned) sucking mouth with no barbels; lower lip about twice as thick as upper lip and deeply notched. Dorsal fin with 10-13 rays; complete lateral line with 55-85 scales. Body cylindrical, olive-brown to grey-bronze dorsally, silvery-white venter, usually unmarked in adults. Only native sucker species in Nova Scotia, so no in-province sucker-vs-sucker confusion.", "sizeRange": "Adults commonly to ~50 cm total length, 1 kg+." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Juvenile chain pickerel or young cyprinids (creek chub, common shiner)", "distinguishingNote": "White sucker is immediately distinguished from any minnow or pickerel by its downturned, toothless, papillose sucker mouth versus a terminal jawed mouth in dace/shiners/pickerel." }
+      ],
+      "habitatNotes": "Tolerant, bottom-feeding species found in virtually all NS lake and river habitats; the only sucker species native to Nova Scotia. Commonly taken in electrofishing surveys across the province.",
+      "citations": [
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/catostomus-commersonii.html", "accessedNote": "Diagnostic subterminal papillose sucking mouth and lip thickness ratio." },
+        { "source": "NatureNorth.com fish species accounts", "url": "http://www.naturenorth.com/spring/creature/whsucker/Fwhsuck2.html", "accessedNote": "Dorsal ray counts (10-13), lateral line scale counts (55-85), juvenile blotch pattern, adult size." },
+        { "source": "DFO species profile", "url": "https://www.dfo-mpo.gc.ca/species-especes/profiles-profils/white-sucker-meunier-noir-eng.html", "accessedNote": "Confirms white sucker is the only sucker native to Nova Scotia." }
+      ]
+    },
+    {
+      "id": "brown-bullhead",
+      "commonName": "Brown Bullhead",
+      "scientificName": "Ameiurus nebulosus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide"],
+      "lookalikeGroup": null,
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Resembles adults in miniature; dark olive-brown mottled body with four pairs of barbels present from an early stage; often in dense schools near shore/vegetation.", "sizeRange": "Young-of-year several cm up to ~10-15 cm." },
+        "adult": { "diagnostics": "Four pairs of barbels (chin barbels dark/black); no scales; adipose fin present; single dorsal fin with 1 spine and 6-7 soft rays; stout serrated pectoral spine with teeth on the posterior margin; 21-24 anal fin rays. Olive to brown dorsally with dark brown/black mottling, yellow-olive sides, whitish-yellow venter, dusky-to-black fins.", "sizeRange": "Typically 20-35 cm; up to ~50 cm maximum recorded." }
+      },
+      "lookalikeSpecies": [
+        { "species": "American eel (juvenile/small yellow eel)", "distinguishingNote": "Bullhead has 4 pairs of barbels, an adipose fin, stout pectoral/dorsal spines and no continuous fin margin; eel lacks barbels and pelvic fins and has a continuous dorsal-caudal-anal fin." }
+      ],
+      "habitatNotes": "Native to Atlantic Slope drainages from Nova Scotia and New Brunswick south; common in warm, weedy, slow-moving NS lakes, ponds and river backwaters, tolerant of low oxygen and warm water. Frequently caught in minnow traps and electrofishing surveys in productive, vegetated habitat. Note: brown bullhead is considered introduced/invasive on Prince Edward Island even though native to mainland Nova Scotia.",
+      "citations": [
+        { "source": "USGS NAS Species Profile", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=734", "accessedNote": "Native range includes Nova Scotia and New Brunswick to Mobile Bay, AL." },
+        { "source": "FishBase", "url": "https://www.fishbase.se/summary/Ameiurus-nebulosus", "accessedNote": "Dorsal fin (1 spine, 6-7 rays), anal rays (21-24), dark chin barbels, pectoral spine tooth character." },
+        { "source": "PEI Invasive Species Council", "url": "https://peiinvasives.com/brown-bullhead/", "accessedNote": "Brown bullhead treated as introduced/invasive in PEI despite native range including NS." }
+      ]
+    },
+    {
+      "id": "yellow-perch",
+      "commonName": "Yellow Perch",
+      "scientificName": "Perca flavescens",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide"],
+      "lookalikeGroup": "centrarchid-perch",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Same 6-8 dark vertical bars on a golden-yellow to brassy body as adults, but more translucent/pale; two separate dorsal fins present early.", "sizeRange": "Young-of-year to ~10 cm." },
+        "adult": { "diagnostics": "Two clearly separated dorsal fins (first with 12-14 spines, second with 1-2 spines and 13-16 soft rays) — the gap between dorsal fins is a key diagnostic separating perch from bass/sunfish where the dorsal fins are joined or only notched. Body golden-yellow to brassy with 6-8 dark vertical bars; lower fins often orange-tinged in mature males, especially during spawning; ctenoid (rough) scales, 51-61 along the lateral line.", "sizeRange": "Commonly 10-25 cm; maximum recorded ~50 cm." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Smallmouth bass / pumpkinseed", "distinguishingNote": "Yellow perch's two well-separated dorsal fins plus 6-8 vertical bars are distinctive; smallmouth bass has only a shallow notch between dorsal fins and pumpkinseed is a small, deep-bodied sunfish with a single continuous dorsal fin and a red-orange-bordered gill spot." }
+      ],
+      "habitatNotes": "Native and widespread across Nova Scotia lakes and slow rivers; can become locally overabundant/stunted in some NS lake fisheries. Very common electrofishing, gillnet, and trap catch in NS lakes.",
+      "citations": [
+        { "source": "Animal Diversity Web / FishBase", "url": "https://animaldiversity.org/accounts/Perca_flavescens/", "accessedNote": "Dorsal spine/ray counts, 6-8 vertical bars, lateral line scale count 51-61." },
+        { "source": "Nova Scotia Fisheries and Aquaculture — Special Management Areas Reports", "url": "https://novascotia.ca/fish/documents/special-management-areas-reports/yellowperch.pdf", "accessedNote": "NS-specific report on yellow perch growth/overpopulation in provincial lakes." }
+      ]
+    },
+    {
+      "id": "alewife",
+      "commonName": "Alewife (Gaspereau)",
+      "scientificName": "Alosa pseudoharengus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "anadromous",
+      "regions": ["province-wide", "coastal-estuarine"],
+      "lookalikeGroup": "clupeid-herring",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Resembles small adults; silvery, deep-bodied, with a sawtooth (serrated/keeled) belly scale row along the midline. Distinguishing juvenile alewife from blueback herring reliably in the field is difficult — morphological ID error rates run up to ~16%; genetic or otolith methods are more reliable for larvae/juveniles.", "sizeRange": "Juveniles a few cm up to ~15 cm before first return migration." },
+        "adult": { "diagnostics": "Key pair-ID vs. blueback herring: alewife has a white (pale) peritoneum (body cavity lining) vs. blueback's black/dusky peritoneum — the single most reliable distinguishing character. Alewife also has a larger eye diameter (greater than snout length) vs. blueback's smaller eye (≤ snout length), and generally a greater body depth. Alewife back is more blue-grey/greenish (less deep blue) than blueback. Both species: deep-bodied, laterally compressed, silvery with a single dark shoulder spot behind the operculum, sawbelly keel of scales between pelvic and anal fins, single soft dorsal fin, deeply forked caudal fin.", "sizeRange": "Adults typically 25-30 cm total length; spawning adults average ~279-305 mm." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Blueback herring", "distinguishingNote": "Classic tough field pair. Best character: peritoneum colour (alewife white/pale, blueback black/sooty). Secondary: eye diameter relative to snout length (alewife eye > snout length; blueback eye ≤ snout length) and body depth (alewife deeper-bodied). In NS rivers, alewife typically arrive first in spring runs, blueback herring follow about 2 weeks later." },
+        { "species": "Rainbow smelt / juvenile Atlantic herring", "distinguishingNote": "Alewife/blueback lack an adipose fin (present in smelt) and lack strong canine teeth on the tongue/jaws that smelt have; juvenile Atlantic herring (a marine visitor) lacks the sawbelly keel of scutes that alewife/blueback have." }
+      ],
+      "habitatNotes": "Anadromous; NS populations run into rivers/lakes each spring (May-June) to spawn, historically the target of the Gaspereau River commercial fishery (weir/dip-net gear), one of the largest gaspereau fisheries in the Maritimes, with associated fishway/fish-lift infrastructure on the Gaspereau River. Over 69 rivers along Atlantic coastal Nova Scotia and additional Bay of Fundy/Gulf of St. Lawrence systems support spawning gaspereau runs (alewife + blueback herring collectively). DFO manages the fishery under the Gaspereau Integrated Fishery Management Plan.",
+      "citations": [
+        { "source": "Canadian Journal of Fisheries and Aquatic Sciences (peer-reviewed)", "url": "https://cdnsciencepub.com/doi/pdf/10.1139/f81-076", "accessedNote": "External morphological discrimination characters (peritoneum colour, eye diameter, body depth); ~16% morphological misclassification rate." },
+        { "source": "DFO — Gaspereau Integrated Fishery Management Plan", "url": "https://www.dfo-mpo.gc.ca/fisheries-peches/ifmp-gmp/gaspereau-gaspareau/index-eng.html", "accessedNote": "Gaspereau River NS gaspereau fishery; alewife-then-blueback run timing." },
+        { "source": "DFO Science — Assessment of Gaspereau River Alewife", "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/329174.pdf", "accessedNote": "~69 rivers along Atlantic coastal NS with spawning gaspereau runs." },
+        { "source": "Virginia Institute of Marine Science", "url": "https://www.vims.edu/research/units/programs/american_shad/River%20Herring%20about/Alewife/", "accessedNote": "General morphology and sawbelly/shoulder-spot description." }
+      ]
+    },
+    {
+      "id": "blueback-herring",
+      "commonName": "Blueback Herring",
+      "scientificName": "Alosa aestivalis",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "anadromous",
+      "regions": ["province-wide", "coastal-estuarine"],
+      "lookalikeGroup": "clupeid-herring",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Resembles juvenile alewife closely; reliable field separation is difficult (up to ~16% morphological misID rate). Dorsal blue-grey coloration is slightly more pronounced than alewife.", "sizeRange": "Juveniles a few cm up to ~15 cm." },
+        "adult": { "diagnostics": "Key pair-ID vs. alewife: black/dusky (sooty) peritoneum lining the body cavity (vs. alewife's white peritoneum) — most reliable character. Eye diameter smaller, ≤ snout length (vs. alewife's larger eye). Body generally slightly less deep than alewife. Dorsal surface distinctly blue (more saturated than alewife's blue-green/grey). 41-51 gill rakers. Single dark shoulder spot, sawbelly keel, single soft dorsal fin, deeply forked tail — shared with alewife.", "sizeRange": "Adults typically 150-250 mm, up to ~400 mm max; generally smaller than alewife on average." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Alewife", "distinguishingNote": "See peritoneum colour (black in blueback vs white in alewife) and eye-diameter/snout-length ratio as primary field characters. Blueback herring enters NS rivers roughly two weeks after alewife in the spring run, a secondary cue at a known site." }
+      ],
+      "habitatNotes": "Anadromous; found alongside alewife as one of the two 'gaspereau' species harvested and monitored together in NS rivers (Gaspereau River, LaHave, and other Atlantic-coast and Bay of Fundy systems). DFO stock assessments track alewife and blueback herring jointly as the gaspereau resource.",
+      "citations": [
+        { "source": "Canadian Journal of Fisheries and Aquatic Sciences (peer-reviewed)", "url": "https://cdnsciencepub.com/doi/pdf/10.1139/f81-076", "accessedNote": "Blueback-specific character values (eye/snout ratio, peritoneum, otolith shape)." },
+        { "source": "USGS NAS Species Profile", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=488", "accessedNote": "General life history and size range." },
+        { "source": "Atlantic Salmon Restoration Project", "url": "https://atlanticsalmonrestoration.org/resources/fact-sheets/blueback-herring-alosa-aestivalis-1", "accessedNote": "Gill raker counts (41-51) and blue dorsal coloration." },
+        { "source": "DFO — Gaspereau Integrated Fishery Management Plan", "url": "https://www.dfo-mpo.gc.ca/fisheries-peches/ifmp-gmp/gaspereau-gaspareau/index-eng.html", "accessedNote": "Jointly managed with alewife; enters rivers ~2 weeks after alewife." }
+      ]
+    },
+    {
+      "id": "rainbow-smelt",
+      "commonName": "Rainbow Smelt",
+      "scientificName": "Osmerus mordax",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "anadromous",
+      "regions": ["province-wide", "bay-of-fundy", "coastal-estuarine"],
+      "lookalikeGroup": "adipose-anadromous",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Slender, silvery, translucent-green juveniles with the adult's diagnostic adipose fin already present; young-of-year found along shorelines in shallow water 2-6 m deep in summer.", "sizeRange": "Young-of-year up to several cm by end of first season." },
+        "adult": { "diagnostics": "Adipose fin present (small fleshy fin between dorsal and caudal fins — shared with tomcod, absent in alewife/blueback herring); pointed snout with well-developed canine-like teeth on the tongue and roof of the mouth, notably enlarged on the tongue and front of the vomer, unlike toothless-mouthed herrings; deeply forked caudal fin; fewer than 75 (typically 62-72) easily-detached cycloid lateral line scales. Body silvery with an iridescent purple/blue/pink sheen on the sides, olive-green back, bright silvery midlateral stripe, white belly.", "sizeRange": "Commonly 18-23 cm; up to ~30-36 cm in large lake populations." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Atlantic tomcod", "distinguishingNote": "Both are small, cold-tolerant, adipose-finned anadromous fish with overlapping habitat, but tomcod has a chin barbel (smelt has none), a heavier body with a large subterminal mouth and protruding upper jaw, three separate dorsal fins and two anal fins (smelt has a single dorsal fin), and mottled brown coloration rather than smelt's iridescent silver sheen." },
+        { "species": "Juvenile alewife/blueback herring", "distinguishingNote": "Smelt has an adipose fin and prominent canine teeth on the tongue/jaw; alewife and blueback herring lack an adipose fin entirely and instead show the sawbelly keel of scutes along the belly that smelt lack." }
+      ],
+      "habitatNotes": "Anadromous in most NS coastal populations (some lake-resident/landlocked populations occur regionally in the Maritimes); spawns in early spring in well-oxygenated riffle habitat of coastal streams, eggs adhering to vegetation/substrate in fast-flowing water. A traditional NS ice-fishing and dip-net species in tidal rivers and estuaries.",
+      "citations": [
+        { "source": "USGS NAS Species Profile", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=796", "accessedNote": "Diagnostic teeth description, adipose fin, lateral line scale count, coloration." },
+        { "source": "Maine Department of Marine Resources fact sheet", "url": "https://www.maine.gov/dmr/sites/maine.gov.dmr/files/docs/rainbowsmelt.pdf", "accessedNote": "Spawning habitat and anadromous vs. landlocked life history." },
+        { "source": "DFO Science", "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/197905.pdf", "accessedNote": "Regional anadromous life history context for Maritimes populations." }
+      ]
+    },
+    {
+      "id": "atlantic-tomcod",
+      "commonName": "Atlantic Tomcod",
+      "scientificName": "Microgadus tomcod",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "anadromous",
+      "regions": ["bay-of-fundy", "coastal-estuarine"],
+      "lookalikeGroup": "adipose-anadromous",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Miniature version of adult; chin barbel and three-dorsal/two-anal fin arrangement present from an early size; mottled brown coloration develops early, useful in distinguishing from young smelt, which lack a barbel.", "sizeRange": "Juveniles a few cm up to ~10-15 cm." },
+        "adult": { "diagnostics": "Small codfish relative with a single chin barbel (diagnostic vs. smelt, which has none); three separate dorsal fins and two rounded anal fins; rounded caudal fin; upper jaw projects noticeably past the lower jaw; large, subterminal mouth; small eyes; small scales; pale lateral line visible against mottled sides; pelvic fins with small filamentous extensions. Dark brown dorsally fading to tan/yellowish with dark mottling on the sides, white belly.", "sizeRange": "Commonly 16-25 cm; up to ~45 cm maximum; males generally smaller (10-20 cm) than females (15-30 cm)." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Rainbow smelt", "distinguishingNote": "Tomcod has a chin barbel and three dorsal fins/two anal fins with a heavier, mottled brown body and protruding upper jaw; smelt has no barbel, a single dorsal fin, a slender iridescent silvery body, and prominent canine teeth on the tongue." },
+        { "species": "Juvenile Atlantic cod", "distinguishingNote": "Tomcod is a much smaller, estuarine/tidal-river species (max ~45 cm) closely resembling a miniature cod with a chin barbel, projecting upper jaw, and similar fin arrangement, but cod grow much larger, are typically marine rather than estuarine/anadromous in habit, and lack tomcod's strongly mottled brown estuarine coloration." }
+      ],
+      "habitatNotes": "Anadromous, cold-tolerant estuarine species that winters and spawns in fresh/brackish tidal reaches of coastal rivers; a specific NS ecological study documented tomcod spawning migration, habitat connectivity, and diet in the Minas Basin, Nova Scotia (Bay of Fundy).",
+      "citations": [
+        { "source": "Acadia University — Coastal ecology of Atlantic Tomcod in Minas Basin, Nova Scotia", "url": "https://scholar.acadiau.ca/node/4278", "accessedNote": "NS-specific study on tomcod spawning migration, habitat connectivity and diet in Minas Basin, Bay of Fundy." },
+        { "source": "Marine Life ID (FishBase-derived)", "url": "https://www.marinelifeid.com/identification/atlantic-tomcod-microgadus-tomcod/", "accessedNote": "Chin barbel, three dorsal/two anal fins, projecting upper jaw, coloration and size range." }
+      ]
+    },
+    {
+      "id": "sea-lamprey",
+      "commonName": "Sea Lamprey",
+      "scientificName": "Petromyzon marinus",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "anadromous",
+      "regions": ["province-wide"],
+      "lookalikeGroup": "eel-like",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Ammocoete (larval) stage: eel-like but jawless, with a fleshy hood covering a toothless, non-functional mouth pit rather than jaws; no paired pectoral or pelvic fins; eyes not externally visible (covered by skin); burrows in fine sediment/silt of stream margins for several years before metamorphosis, making it an easily-missed but genuine electrofishing/kick-seine bycatch surprise.", "sizeRange": "Ammocoetes commonly 5-15 cm before metamorphosis." },
+        "adult": { "diagnostics": "Jawless, with a circular, sucker-disc mouth ringed with horny teeth used to attach to host fish; 7 round external gill openings in a row behind the eye on each side (vs. one covered gill opening in true fishes); no paired pectoral or pelvic fins; long, cylindrical, eel-like body; mottled olive-brown to grey coloration; two dorsal fins, the rearmost continuous with the caudal fin.", "sizeRange": "Adults commonly 45-75 cm." }
+      },
+      "lookalikeSpecies": [
+        { "species": "American eel", "distinguishingNote": "American eel has a normal jawed mouth, a single covered gill opening per side, and well-developed pectoral fins; sea lamprey has a jawless sucker-disc mouth, 7 round gill pores per side, and no paired fins at all." }
+      ],
+      "habitatNotes": "Anadromous; adults spawn in gravel-bottomed streams and rivers, and ammocoetes then spend several years burrowed in silty/sandy margins of the same or nearby streams before migrating to sea. Documented on Nova Scotia's general status freshwater fish list and in the NS Museum's freshwater fish checklist; ammocoetes are a common but easily-overlooked electrofishing bycatch in silty stream margins.",
+      "citations": [
+        { "source": "Nova Scotia Department of Natural Resources and Renewables — General Status of freshwater fish", "url": "https://novascotia.ca/natr/wildlife/genstatus/chartfish.asp", "accessedNote": "Confirms sea lamprey presence on NS's general status freshwater fish list." }
+      ],
+      "dataFlags": ["Added during source cross-check as a species not in the original candidate list; diagnostic text drawn from standard lamprey morphology and confirmed present in NS via the cited government checklist rather than a species-specific NS diagnostic paper."]
+    },
+    {
+      "id": "golden-shiner",
+      "commonName": "Golden Shiner",
+      "scientificName": "Notemigonus crysoleucas",
+      "nativeStatus": "native",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide"],
+      "lookalikeGroup": "small-cyprinid",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Slender and silvery, developing the adult's fleshy midline keel and decurved lateral line while still small.", "sizeRange": "~3-6 cm TL" },
+        "adult": { "diagnostics": "Deep, laterally compressed, golden-yellow to silvery body; no barbel; a fleshy, scaleless keel runs along the belly between the pelvic and anal fins (no true scute spines, unlike a true 'sawbelly' herring); lateral line strongly decurved (bows sharply downward toward the belly) — a highly distinctive character not shared by any other small NS cyprinid; small, upturned mouth; anal fin long-based with 8-19 rays.", "sizeRange": "Common length ~10-15 cm, max reported ~30 cm." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Common shiner", "distinguishingNote": "Common shiner has a straight (not decurved) lateral line and no fleshy belly keel; golden shiner's sharply downward-bowed lateral line and scaleless midline keel are diagnostic." },
+        { "species": "Blacknose dace / creek chub", "distinguishingNote": "Both dace and chub retain a jaw-corner barbel and lack golden shiner's decurved lateral line and fleshy keel." }
+      ],
+      "habitatNotes": "Native to Nova Scotia, at the northern limit of its Atlantic Slope native range; reported as widespread in the province, collected in 264 of 744 NS lakes sampled in provincial lake surveys. A common minnow-trap/electrofishing catch in weedy NS lakes and ponds.",
+      "citations": [
+        { "source": "USGS NAS Species Profile", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=579", "accessedNote": "Native Atlantic Slope range reaching Nova Scotia; general morphology." }
+      ],
+      "dataFlags": ["Added during source cross-check as a species not in the original candidate list, based on documented NS lake survey occurrence."]
+    },
+    {
+      "id": "pumpkinseed",
+      "commonName": "Pumpkinseed",
+      "scientificName": "Lepomis gibbosus",
+      "nativeStatus": "unknown",
+      "sRank": "unknown",
+      "habitatType": "freshwater",
+      "regions": ["province-wide"],
+      "lookalikeGroup": "centrarchid-perch",
+      "lifeStages": {
+        "juvenile": { "diagnostics": "Small, deep-bodied, laterally compressed sunfish shape already apparent; vertical bars/mottling present, opercular flap and its red-orange margin developing.", "sizeRange": "Young-of-year to ~5 cm." },
+        "adult": { "diagnostics": "Deep, round, strongly laterally compressed body typical of sunfish; single continuous dorsal fin (spiny and soft portions joined, no gap); small mouth; a dark opercular flap (ear spot) bordered with a bright orange-red crescent at its rear edge — the single most distinctive field character in Nova Scotia, where no other native sunfish species occurs; body olive-green to golden-brown with speckled orange-yellow spots and faint vertical bars.", "sizeRange": "Commonly 10-20 cm; max reported ~40 cm." }
+      },
+      "lookalikeSpecies": [
+        { "species": "Yellow perch / smallmouth bass", "distinguishingNote": "Pumpkinseed's continuous single dorsal fin, small round body, and orange-red-bordered opercular spot separate it from yellow perch (two well-separated dorsal fins, elongate barred body) and smallmouth bass (larger, more elongate, only a shallow dorsal-fin notch, no opercular ear spot)." }
+      ],
+      "habitatNotes": "Reported as present in Nova Scotia lakes in DFO and general angling sources, but its native-vs-introduced status specifically in this province is unresolved from sources checked in this research pass: some range descriptions place the native Atlantic Slope limit at New Brunswick (at or just south of NS), and it is not listed among the species NS's Invasive Species Council currently flags as a priority invasive fish concern (unlike chain pickerel and smallmouth bass). Treat the native-status field as unverified pending direct ACCDC/DFO confirmation; likely a common catch in vegetated NS lake margins regardless of origin.",
+      "citations": [
+        { "source": "DFO species profile", "url": "https://www.dfo-mpo.gc.ca/species-especes/profiles-profils/pumpkinseed-crapetsoleil-eng.html", "accessedNote": "Confirms pumpkinseed presence in Nova Scotia waters; general identification and biology." }
+      ],
+      "dataFlags": ["Added during source cross-check. Native-vs-introduced status in NS specifically could not be confirmed in this research pass — flagged for follow-up against ACCDC/DFO records before treating nativeStatus as authoritative."]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Species Reference — NS Fish Field ID</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0b3d2e">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>Species Reference</h1>
+  <span class="offline-pill" data-offline-pill>Online</span>
+</header>
+
+<main class="page">
+  <p class="field-hint">Browse and filter Nova Scotia fish species. Tap a species for diagnostic characters by life stage. No camera-based ID here — use this list or the <a href="key.html">dichotomous key</a> to identify by morphology.</p>
+  <div id="species-root"><p class="empty-state">Loading species reference&hellip;</p></div>
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="species.html"><span class="ic">🐟</span>Species</a>
+  <a href="key.html"><span class="ic">🔑</span>Key</a>
+  <a href="catalogue.html"><span class="ic">📋</span>Catalogue</a>
+  <a href="export.html"><span class="ic">📤</span>Export</a>
+</nav>
+
+<script type="module" src="./js/species-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "NS Fish Field ID & Catalogue",
+  "short_name": "Fish Field ID",
+  "description": "Offline-first field tool for Nova Scotia fish species identification and habitat survey catch logging.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b3d2e",
+  "theme_color": "#0b3d2e",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

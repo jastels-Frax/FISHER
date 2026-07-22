@@ -1,0 +1,166 @@
+{
+  "version": "2026-07-22",
+  "_readme": "All entries are unfetched placeholders — see README.md Image Sourcing section for why, and how to complete this file.",
+  "atlantic-salmon": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Salmo salar\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "brook-trout": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Salvelinus fontinalis\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "brown-trout": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Salmo trutta\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "rainbow-trout": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Oncorhynchus mykiss\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "lake-trout": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Salvelinus namaycush\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "chain-pickerel": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Esox niger\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "smallmouth-bass": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Micropterus dolomieu\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "striped-bass": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Morone saxatilis\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "blacknose-dace": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Rhinichthys atratulus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "common-shiner": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Luxilus cornutus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "creek-chub": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Semotilus atromaculatus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "banded-killifish": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Fundulus diaphanus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "mummichog": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Fundulus heteroclitus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "ninespine-stickleback": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Pungitius pungitius\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "threespine-stickleback": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Gasterosteus aculeatus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "slimy-sculpin": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Cottus cognatus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "american-eel": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Anguilla rostrata\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "white-sucker": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Catostomus commersonii\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "brown-bullhead": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Ameiurus nebulosus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "yellow-perch": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Perca flavescens\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "alewife": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Alosa pseudoharengus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "blueback-herring": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Alosa aestivalis\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "rainbow-smelt": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Osmerus mordax\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "atlantic-tomcod": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Microgadus tomcod\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "sea-lamprey": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Petromyzon marinus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "golden-shiner": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Notemigonus crysoleucas\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  },
+  "pumpkinseed": {
+    "adult": {
+      "status": "placeholder",
+      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Lepomis gibbosus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NS Fish Field ID &amp; Catalogue</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0b3d2e">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icons/icon.svg">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>NS Fish Field ID &amp; Catalogue</h1>
+  <span class="offline-pill" data-offline-pill>Online</span>
+</header>
+
+<main class="page">
+  <div class="card">
+    <strong>Offline-first field tool.</strong> Species reference, dichotomous key, and catch logging all work with no signal once this page has loaded once.
+  </div>
+
+  <h2>Get started</h2>
+  <div class="grid-tiles">
+    <a class="tile" href="catalogue.html"><span class="ic">📋</span>Field Catalogue</a>
+    <a class="tile secondary" href="species.html"><span class="ic">🐟</span>Species Reference</a>
+    <a class="tile secondary" href="key.html"><span class="ic">🔑</span>Dichotomous Key</a>
+    <a class="tile secondary" href="export.html"><span class="ic">📤</span>Export / Sync</a>
+  </div>
+
+  <div class="card" id="resume-card" hidden>
+    <h3>Continue last survey</h3>
+    <p id="resume-text" class="field-hint"></p>
+    <a class="btn" id="resume-link" href="catalogue.html">Resume</a>
+  </div>
+
+  <details class="section-collapsible card">
+    <summary>About this app</summary>
+    <p>Built for field use during Nova Scotia fish habitat studies. The species reference tool and dichotomous key are for morphological identification only &mdash; there is no camera-based or ML photo identification in this version. If a catch can't be confidently identified in the field, log it as <em>unidentified &mdash; see key</em> and photograph it for follow-up.</p>
+    <p>Species diagnostic data is sourced from FishBase, DFO, GBIF, ACCDC, and NS government/peer-reviewed references. See <a href="./README.md">README</a> for full citations and known data gaps.</p>
+  </details>
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="species.html"><span class="ic">🐟</span>Species</a>
+  <a href="key.html"><span class="ic">🔑</span>Key</a>
+  <a href="catalogue.html"><span class="ic">📋</span>Catalogue</a>
+  <a href="export.html"><span class="ic">📤</span>Export</a>
+</nav>
+
+<script type="module">
+  import { initHeaderNav } from './js/app.js';
+  import { FisherDB } from './js/db.js';
+  initHeaderNav();
+  FisherDB.seedReferenceData().catch((e) => console.warn('Reference data seed failed (will retry from cache)', e));
+  FisherDB.listSurveys().then((surveys) => {
+    if (!surveys.length) return;
+    const s = surveys[0];
+    document.getElementById('resume-card').hidden = false;
+    document.getElementById('resume-text').textContent =
+      `${s.siteId || 'Unnamed site'} — ${s.dateTime ? s.dateTime.replace('T', ' ') : ''}`;
+    document.getElementById('resume-link').href = `catalogue.html?survey=${encodeURIComponent(s.id)}`;
+  }).catch(() => {});
+</script>
+</body>
+</html>

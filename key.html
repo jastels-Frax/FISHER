@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dichotomous Key — NS Fish Field ID</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0b3d2e">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>Dichotomous Key</h1>
+  <span class="offline-pill" data-offline-pill>Online</span>
+</header>
+
+<main class="page">
+  <div class="card">
+    Answer each step based on what you can see on the fish in hand. If you're ever unsure, stop and mark it <em>unidentified &mdash; see key</em> rather than forcing an ID &mdash; photograph it for later confirmation.
+  </div>
+  <button type="button" class="btn btn-outline btn-sm" id="restart-key-btn" style="margin-bottom:10px">Restart key</button>
+  <div id="key-root"><p class="empty-state">Loading key&hellip;</p></div>
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="species.html"><span class="ic">🐟</span>Species</a>
+  <a href="key.html"><span class="ic">🔑</span>Key</a>
+  <a href="catalogue.html"><span class="ic">📋</span>Catalogue</a>
+  <a href="export.html"><span class="ic">📤</span>Export</a>
+</nav>
+
+<script type="module" src="./js/key-page.js"></script>
+</body>
+</html>
