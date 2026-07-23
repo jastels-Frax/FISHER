@@ -5,7 +5,7 @@
 
 const USER_AGENT = 'FisherSpeciesImageFetcher/1.0 (internal tool for Fraxinus Environmental & Geomatics; contact: see project README)';
 const MIN_DELAY_MS = 350;
-const MAX_DELAY_MS = 8000;
+const MAX_DELAY_MS = 4000;
 const MAX_RETRIES = 5;
 
 // Adaptive pacing: starts at MIN_DELAY_MS between requests, but permanently
@@ -27,6 +27,13 @@ function bumpDelay() {
   currentDelayMs = Math.min(currentDelayMs * 1.5, MAX_DELAY_MS);
 }
 
+function shortLabel(url) {
+  try { return new URL(url).hostname; } catch { return url.slice(0, 40); }
+}
+
+// Logs on every retry (not just the final failure) so a long run never goes
+// silent while it's actually still working — a silent multi-second sleep
+// looks indistinguishable from a hang when you're the one watching it run.
 async function fetchWithRetry(url, opts = {}) {
   await pace();
   let lastErr;
@@ -41,6 +48,7 @@ async function fetchWithRetry(url, opts = {}) {
         const retryAfter = Number(res.headers.get('retry-after')) || 0;
         const backoff = Math.min(Math.max(retryAfter * 1000, 500 * 2 ** attempt), MAX_DELAY_MS);
         if (attempt < MAX_RETRIES) {
+          console.warn(`    ! HTTP ${res.status} from ${shortLabel(url)} — retrying in ${(backoff / 1000).toFixed(1)}s (attempt ${attempt + 2}/${MAX_RETRIES + 1})`);
           await new Promise((r) => setTimeout(r, backoff));
           continue;
         }
@@ -49,7 +57,9 @@ async function fetchWithRetry(url, opts = {}) {
     } catch (err) {
       lastErr = err;
       if (attempt < MAX_RETRIES) {
-        await new Promise((r) => setTimeout(r, Math.min(500 * 2 ** attempt, MAX_DELAY_MS)));
+        const backoff = Math.min(500 * 2 ** attempt, MAX_DELAY_MS);
+        console.warn(`    ! network error from ${shortLabel(url)} (${err.message}) — retrying in ${(backoff / 1000).toFixed(1)}s (attempt ${attempt + 2}/${MAX_RETRIES + 1})`);
+        await new Promise((r) => setTimeout(r, backoff));
         continue;
       }
     }

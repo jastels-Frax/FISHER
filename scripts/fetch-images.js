@@ -117,7 +117,7 @@ async function processSpecies(species, { existingKeys, args }) {
   let alreadyHave = 0;
   let stageSkipped = 0;
 
-  for (const cand of allFound) {
+  for (const [idx, cand] of allFound.entries()) {
     if (!isLicenseAllowed(cand.source, cand.licenseCode)) {
       licenseRejected++;
       continue;
@@ -138,6 +138,10 @@ async function processSpecies(species, { existingKeys, args }) {
     if (args.dryRun) {
       newCandidates.push({ ...full, id: `dry-run-${key}`, localPath: null });
     } else {
+      // One line per download attempt — this is often the slowest step (image
+      // hosts rate-limit harder than the search APIs), so without a line here
+      // a long retry/backoff sleep looks identical to the script having hung.
+      console.log(`  downloading ${idx + 1}/${allFound.length} (${cand.source}, stage=${full.stage})...`);
       const saved = await staging.downloadCandidateImage(full, speciesId, full.stage);
       if (saved) {
         newCandidates.push(saved);
@@ -179,36 +183,40 @@ async function main() {
 
   console.log(`Fetching candidate images for ${targetSpecies.length} species${args.dryRun ? ' (DRY RUN — no downloads)' : ''}...`);
 
-  const existingCandidates = staging.loadCandidates();
-  const existingKeys = new Set(existingCandidates.map((c) => staging.dedupeKey(c)));
-  const allNewCandidates = [];
-  const gapsLog = [];
+  // existingCandidates/allGaps are persisted after EVERY species, not just
+  // once at the end — a long run over many species can take a while (image
+  // hosts rate-limit harder than the search APIs, see scripts/lib/http.js),
+  // so if it's interrupted or crashes partway, everything up to that point
+  // is already safely on disk instead of being silently lost.
+  let allCandidates = staging.loadCandidates();
+  const existingKeys = new Set(allCandidates.map((c) => staging.dedupeKey(c)));
+  const processedIds = new Set(targetSpecies.map((s) => s.id));
+  let allGaps = staging.loadGaps().filter((g) => !processedIds.has(g.speciesId));
+  let newCandidateCount = 0;
 
   for (const species of targetSpecies) {
     const { newCandidates, gapsForSpecies, trackedStages } = await processSpecies(species, { existingKeys, args });
-    allNewCandidates.push(...newCandidates);
+    newCandidateCount += newCandidates.length;
+
+    if (!args.dryRun && newCandidates.length) {
+      allCandidates = [...allCandidates, ...newCandidates];
+      staging.saveCandidates(allCandidates);
+    }
+
+    allGaps = allGaps.filter((g) => g.speciesId !== species.id);
     if (gapsForSpecies.length) {
-      gapsLog.push({
+      allGaps.push({
         speciesId: species.id, commonName: species.commonName, scientificName: species.scientificName,
         stagesWithoutConfirmedImage: gapsForSpecies, allTrackedStages: trackedStages,
       });
     }
+    if (!args.dryRun) staging.saveGaps([...allGaps].sort((a, b) => a.speciesId.localeCompare(b.speciesId)));
   }
-
-  if (!args.dryRun) {
-    const merged = [...existingCandidates, ...allNewCandidates];
-    staging.saveCandidates(merged);
-  }
-
-  // Merge gaps: replace entries for species we just processed, keep the rest untouched.
-  const processedIds = new Set(targetSpecies.map((s) => s.id));
-  const previousGaps = staging.loadGaps().filter((g) => !processedIds.has(g.speciesId));
-  staging.saveGaps([...previousGaps, ...gapsLog].sort((a, b) => a.speciesId.localeCompare(b.speciesId)));
 
   console.log(`\n=== Done ===`);
   console.log(`Species processed: ${targetSpecies.length}`);
-  console.log(`New candidates ${args.dryRun ? 'found' : 'downloaded'}: ${allNewCandidates.length}`);
-  console.log(`Species with at least one stage gap: ${gapsLog.length}`);
+  console.log(`New candidates ${args.dryRun ? 'found' : 'downloaded'}: ${newCandidateCount}`);
+  console.log(`Species with at least one stage gap: ${allGaps.filter((g) => processedIds.has(g.speciesId)).length}`);
   if (!args.dryRun) {
     console.log(`\nCandidates manifest: staging/candidates.json`);
     console.log(`Gaps log: staging/gaps.json`);
