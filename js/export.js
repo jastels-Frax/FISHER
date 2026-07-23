@@ -1,11 +1,14 @@
 import { initHeaderNav, showToast, escapeHtml } from './app.js';
 import { FisherDB } from './db.js';
 import { openSurveyPdfReport } from './pdf-report.js';
+import { initSettingsButton } from './settings.js';
 
 initHeaderNav();
+initSettingsButton();
 
 const CSV_COLUMNS = [
   ['surveyId', (s, f) => s.id],
+  ['projectId', (s, f) => s.projectId || ''],
   ['stationId', (s, f) => s.stationId || ''],
   ['siteId', (s, f) => s.siteId || ''],
   ['surveyDateTime', (s, f) => s.dateTime || ''],

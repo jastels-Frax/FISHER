@@ -23,7 +23,8 @@ css/styles.css      Shared high-contrast, one-handed mobile styling
 js/                 db.js (IndexedDB), app.js (shared utils), species-list.js, key-engine.js,
                     identify-modal.js (in-context Identify overlay used from the catalogue form),
                     catalogue.js, export.js, pdf-report.js (branded per-survey PDF report,
-                    see PDF export below), species-page.js, key-page.js
+                    see PDF export below), settings.js (Settings panel, see below),
+                    species-page.js, key-page.js
 data/species.json   Species reference data + citations (this file, see below)
 data/key.json        Dichotomous key tree
 data/images.json     Reference image manifest (see Image Sourcing — currently all placeholders)
@@ -108,6 +109,30 @@ button next to each survey on `export.html`. Sourcing and approach:
   when left blank — nothing renders as an empty label); the fish catalogue table (species, life
   stage, length, weight, health notes, capture method) with a follow-up flag banner if any
   record is unidentified.
+
+## Settings
+
+A gear icon in the header (every page — the same always-visible-icon convention used by the
+Watercourse Permitting App's own "Metadata" drawer, `jastels-Frax/Watercourse-Permitting-App`)
+opens a Settings panel (`js/settings.js`, stored in `localStorage`) with:
+
+- **Survey defaults** — observer(s)/technician name(s), project ID, watershed, water body
+  name, licence/permit number, crew size, gear type/effort, survey purpose, and default
+  sky/wind — pre-fill the corresponding fields every time a **new** survey is started (an
+  existing survey being edited is never touched). Air temperature is intentionally not
+  presettable since it's a point-in-time reading, not something that stays constant.
+- **Fish record default** — an optional default capture method, pre-selected on every new
+  fish record (handy on a single-method day, e.g. electrofishing all day).
+- **App preferences** — a Light/Dark/Auto theme override (applied via an inline script in
+  each page's `<head>`, before first paint, to avoid a flash of the wrong theme), and an
+  opt-in "auto-capture GPS on new survey" toggle (off by default — it triggers the location
+  permission prompt immediately instead of waiting for a manual tap).
+- **Data** — "Clear saved presets" resets everything on this screen to blank. This only
+  touches the presets; logged surveys/fish records are managed from the Export page.
+
+**Project ID** is also a first-class field on the survey record itself (not just a settings
+convenience) — it appears on the catalogue form, the CSV export, and the PDF report's
+metadata grid, alongside Station ID.
 
 ## Species data sources
 

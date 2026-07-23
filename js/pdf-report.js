@@ -36,6 +36,7 @@ function buildSurveyMetaGrid(s) {
   ].filter(Boolean).join(' · ');
 
   const rows = [
+    metaRow('Project ID', s.projectId),
     metaRow('Station ID', s.stationId),
     metaRow('Site name / description', s.siteId),
     metaRow('Observer(s) / technician(s)', s.observerNames),

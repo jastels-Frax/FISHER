@@ -1,8 +1,10 @@
 import { initHeaderNav, showToast, nowLocalDatetimeValue, captureGeolocation, escapeHtml } from './app.js';
 import { FisherDB, newId } from './db.js';
 import { openIdentifyModal } from './identify-modal.js';
+import { getSettings, initSettingsButton } from './settings.js';
 
 initHeaderNav();
+initSettingsButton();
 
 // ---- Controlled vocabularies -------------------------------------------------
 // Sourced where noted from: NS Fish Habitat Suitability Assessment Manual v2.1 (2018, NS
@@ -73,19 +75,33 @@ async function openSurvey(surveyId) {
     currentSurvey = await FisherDB.get('surveys', surveyId);
     currentFishRecords = await FisherDB.listFishRecords(surveyId);
   } else {
+    const preset = getSettings();
     currentSurvey = {
       id: newId('survey'),
       dateTime: nowLocalDatetimeValue(),
-      observerNames: '', stationId: '', siteId: '', waterbodyName: '', watershed: '',
+      observerNames: preset.observerNames, projectId: preset.projectId, stationId: '', siteId: '',
+      waterbodyName: preset.waterbodyName, watershed: preset.watershed,
       gps: null, gpsManualNote: '',
-      weather: { airTempC: '', sky: '', wind: '', windSpeedKmh: '', notes: '' },
-      surveyPurpose: '', permitNumber: '', crewSize: '', gearEffort: '', waterLevel: '',
+      weather: { airTempC: '', sky: preset.defaultSky, wind: preset.defaultWind, windSpeedKmh: '', notes: '' },
+      surveyPurpose: preset.surveyPurpose, permitNumber: preset.permitNumber, crewSize: preset.crewSize,
+      gearEffort: preset.gearEffort, waterLevel: '',
       habitat: {},
       notes: '', flaggedForFollowUp: false,
       createdAt: new Date().toISOString(),
     };
     currentFishRecords = [];
     await FisherDB.put('surveys', currentSurvey);
+    if (preset.autoGps) {
+      captureGeolocation(
+        (loc) => {
+          currentSurvey.gps = loc;
+          const gpsInput = document.getElementById('f-gps');
+          if (gpsInput) gpsInput.value = `${loc.lat.toFixed(6)}, ${loc.lon.toFixed(6)}`;
+          persistSurvey();
+        },
+        () => { /* silent — technician can still tap Capture manually */ }
+      );
+    }
   }
   addFishOpen = false;
   fishDraft = loadFishDraft();
@@ -123,6 +139,9 @@ function renderSurveyForm() {
 
     <label>Date &amp; time <span class="req">*</span></label>
     <input type="datetime-local" id="f-dateTime" value="${escapeHtml(s.dateTime)}">
+
+    <label>Project ID</label>
+    <input type="text" id="f-projectId" value="${escapeHtml(s.projectId || '')}" placeholder="e.g. 2026-087">
 
     <label>Station ID</label>
     <input type="text" id="f-stationId" value="${escapeHtml(s.stationId || '')}" placeholder="Fixed station code, if this is a repeat-visit index site">
@@ -330,7 +349,7 @@ function defaultFishDraft() {
   return {
     speciesId: null, speciesCommonName: '', unidentified: false, lifeStage: '',
     lengthMm: '', weightG: '', conditionFlags: [], conditionNotes: '', disposition: '',
-    captureMethod: '', captureMethodOther: '', technicianName: currentSurvey.observerNames || '',
+    captureMethod: getSettings().defaultCaptureMethod, captureMethodOther: '', technicianName: currentSurvey.observerNames || '',
     notes: '', photoName: null, photoBlob: null,
   };
 }
@@ -485,8 +504,8 @@ function wireSurveyFormEvents() {
   });
 
   const bindings = [
-    ['f-observerNames', 'observerNames'], ['f-dateTime', 'dateTime'], ['f-stationId', 'stationId'],
-    ['f-siteId', 'siteId'], ['f-waterbodyName', 'waterbodyName'], ['f-watershed', 'watershed'],
+    ['f-observerNames', 'observerNames'], ['f-dateTime', 'dateTime'], ['f-projectId', 'projectId'],
+    ['f-stationId', 'stationId'], ['f-siteId', 'siteId'], ['f-waterbodyName', 'waterbodyName'], ['f-watershed', 'watershed'],
     ['f-purpose', 'surveyPurpose'], ['f-permit', 'permitNumber'], ['f-crewSize', 'crewSize'],
     ['f-gearEffort', 'gearEffort'], ['f-waterLevel', 'waterLevel'], ['f-notes', 'notes'],
   ];

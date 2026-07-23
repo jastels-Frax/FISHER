@@ -1,7 +1,7 @@
 // Service worker: cache-first offline support for the NS Fish Field ID & Catalogue app.
 // Bump CACHE_VERSION whenever precached files change so clients pick up the new set.
-const CACHE_VERSION = 'fisher-v4';
-const RUNTIME_CACHE = 'fisher-runtime-v4';
+const CACHE_VERSION = 'fisher-v5';
+const RUNTIME_CACHE = 'fisher-runtime-v5';
 
 const PRECACHE_URLS = [
   './',
@@ -20,6 +20,7 @@ const PRECACHE_URLS = [
   './js/catalogue.js',
   './js/export.js',
   './js/pdf-report.js',
+  './js/settings.js',
   './js/species-page.js',
   './js/key-page.js',
   './data/species.json',

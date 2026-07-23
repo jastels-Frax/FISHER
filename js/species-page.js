@@ -1,8 +1,10 @@
 import { initHeaderNav } from './app.js';
 import { FisherDB } from './db.js';
 import { renderSpeciesBrowser } from './species-list.js';
+import { initSettingsButton } from './settings.js';
 
 initHeaderNav();
+initSettingsButton();
 
 async function boot() {
   const container = document.getElementById('species-root');

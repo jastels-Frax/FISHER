@@ -242,6 +242,22 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; color: 
   min-height: var(--tap);
   cursor: pointer;
 }
+.header-icon-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  flex-shrink: 0;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0.9;
+}
+.header-icon-btn:active { opacity: 0.6; }
 .app-header h1 {
   font-size: 1.05rem;
   font-weight: 600;

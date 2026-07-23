@@ -1,8 +1,10 @@
 import { initHeaderNav, showToast } from './app.js';
 import { FisherDB } from './db.js';
 import { renderKey } from './key-engine.js';
+import { initSettingsButton } from './settings.js';
 
 initHeaderNav();
+initSettingsButton();
 
 async function boot() {
   const container = document.getElementById('key-root');
