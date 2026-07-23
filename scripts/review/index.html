@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NS Fisher — Image Review</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Reference Image Review</h1>
+      <div class="sub" id="header-sub">Loading…</div>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <button class="btn" id="btn-refresh">Refresh</button>
+      <button class="btn" id="btn-dry-run">Preview Finalize</button>
+      <button class="btn btn-primary" id="btn-finalize">Finalize Approved</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="finalize-result" style="display:none"></div>
+
+    <div class="filter-bar">
+      <input type="search" id="filter-search" placeholder="Filter by species name…">
+      <label><input type="checkbox" id="filter-undecided"> Only show undecided candidates</label>
+      <label><input type="checkbox" id="filter-gaps"> Only show species with a gap</label>
+    </div>
+
+    <div id="species-list">Loading…</div>
+  </main>
+
+  <div class="status-bar" id="status-bar"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

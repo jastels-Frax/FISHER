@@ -1,0 +1,76 @@
+[
+  {
+    "key": 1111111111,
+    "scientificName": "Salvelinus fontinalis",
+    "lifeStage": "juvenile",
+    "recordedBy": "J. Smith",
+    "media": [
+      {
+        "type": "StillImage",
+        "identifier": "https://inaturalist-open-data.s3.amazonaws.com/photos/1/medium.jpg",
+        "license": "http://creativecommons.org/licenses/by/4.0/",
+        "rightsHolder": "J. Smith"
+      }
+    ]
+  },
+  {
+    "key": 2222222222,
+    "scientificName": "Salvelinus fontinalis",
+    "lifeStage": null,
+    "recordedBy": "A. Nguyen",
+    "media": [
+      {
+        "type": "StillImage",
+        "identifier": "https://inaturalist-open-data.s3.amazonaws.com/photos/2/medium.jpg",
+        "license": "CC_BY_NC_4_0",
+        "rightsHolder": "A. Nguyen"
+      },
+      {
+        "type": "StillImage",
+        "identifier": "https://inaturalist-open-data.s3.amazonaws.com/photos/2b/medium.jpg",
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/",
+        "rightsHolder": "A. Nguyen"
+      }
+    ]
+  },
+  {
+    "key": 3333333333,
+    "scientificName": "Salvelinus fontinalis",
+    "lifeStage": "adult male, spawning colours",
+    "recordedBy": "R. Bouchard",
+    "media": [
+      {
+        "type": "StillImage",
+        "identifier": "https://inaturalist-open-data.s3.amazonaws.com/photos/3/medium.jpg",
+        "license": "CC0_1_0",
+        "rightsHolder": "R. Bouchard"
+      }
+    ]
+  },
+  {
+    "key": 4444444444,
+    "scientificName": "Salvelinus fontinalis",
+    "lifeStage": "egg",
+    "recordedBy": "M. Tremblay",
+    "media": [
+      {
+        "type": "StillImage",
+        "identifier": "https://inaturalist-open-data.s3.amazonaws.com/photos/4/medium.jpg",
+        "license": "UNSPECIFIED",
+        "rightsHolder": "M. Tremblay"
+      }
+    ]
+  },
+  {
+    "key": 5555555555,
+    "scientificName": "Salvelinus fontinalis",
+    "lifeStage": "fry",
+    "recordedBy": "K. Lee",
+    "media": [
+      {
+        "type": "Sound",
+        "identifier": "https://example.org/audio.mp3"
+      }
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "wikimedia-commons-aaa1111111": { "decision": "approved", "stage": null, "decidedAt": "2026-07-02T00:00:00.000Z" },
+  "wikimedia-commons-bbb2222222": { "decision": "approved", "stage": null, "decidedAt": "2026-07-02T00:01:00.000Z" },
+  "gbif-ccc3333333": { "decision": "approved", "stage": null, "decidedAt": "2026-07-02T00:02:00.000Z" },
+  "inaturalist-ddd4444444": { "decision": "approved", "stage": null, "decidedAt": "2026-07-02T00:03:00.000Z" },
+  "gbif-eee5555555": { "decision": "rejected", "stage": null, "decidedAt": "2026-07-02T00:04:00.000Z" }
+}

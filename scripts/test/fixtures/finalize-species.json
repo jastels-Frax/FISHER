@@ -1,0 +1,14 @@
+[
+  {
+    "id": "brook-trout",
+    "commonName": "Brook Trout",
+    "scientificName": "Salvelinus fontinalis",
+    "lifeStages": { "adult": {}, "juvenile": {}, "fry": {} }
+  },
+  {
+    "id": "rainbow-trout",
+    "commonName": "Rainbow Trout",
+    "scientificName": "Oncorhynchus mykiss",
+    "lifeStages": { "adult": {} }
+  }
+]

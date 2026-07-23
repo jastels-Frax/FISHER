@@ -1,0 +1,27 @@
+[
+  {
+    "id": 987654321,
+    "uri": "https://www.inaturalist.org/observations/987654321",
+    "user": { "login": "fishwatcher01", "name": "Pat Fisher" },
+    "photos": [
+      { "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/10/square.jpg", "license_code": "cc-by-nc" },
+      { "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/11/square.jpg", "license_code": "cc-by-sa" }
+    ]
+  },
+  {
+    "id": 987654322,
+    "uri": "https://www.inaturalist.org/observations/987654322",
+    "user": { "login": "anon2", "name": null },
+    "photos": [
+      { "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/12/square.jpg", "license_code": null }
+    ]
+  },
+  {
+    "id": 987654323,
+    "uri": "https://www.inaturalist.org/observations/987654323",
+    "user": { "login": "cc0fan", "name": "CC0 Fan" },
+    "photos": [
+      { "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/13/square.jpg", "license_code": "cc0" }
+    ]
+  }
+]

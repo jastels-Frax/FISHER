@@ -28,6 +28,7 @@ js/                 db.js (IndexedDB), app.js (shared utils), species-list.js, k
 data/species.json   Species reference data + citations (this file, see below)
 data/key.json        Dichotomous key tree
 data/images.json     Reference image manifest (see Image Sourcing — currently all placeholders)
+scripts/             Reference-image fetch/review/finalize pipeline — see scripts/README.md
 ```
 
 ## Brand styling
@@ -211,32 +212,34 @@ standard field-survey practice but could **not** be verified against a current N
 in this pass. If your organization has a current internal field data sheet, cross-check these
 against it and adjust the constants near the top of `js/catalogue.js`.
 
-## Image sourcing — currently unfetched placeholders
+## Image sourcing
 
-`data/images.json` marks every species/life-stage entry as `"status": "placeholder"` with a
-`candidateNote` suggesting where to look (Wikimedia Commons / GBIF media, filtered to
-CC0/CC-BY/CC-BY-SA/public-domain licenses, searched by scientific name).
+`data/images.json` maps each species/life-stage to either a `"status": "placeholder"` entry
+(with a `candidateNote` on where to look) or a `"status": "verified"` entry with a real
+`localPath` and `credit` once one's been sourced and approved.
 
-**No image files were actually sourced or downloaded in this build pass.** This build
-environment's outbound network policy blocks HTTPS connections to essentially all external
-hosts at the TLS CONNECT level (confirmed 403 responses for Wikimedia, FishBase, DFO, and
-Wikipedia domains) — the research agents could retrieve *text* via the search tool (which
-runs server-side, outside this sandbox), but neither `curl` nor the direct fetch tool could
-retrieve *file bytes* from within this environment. Rather than guess at a license or hotlink
-an unverified image, every entry was left as an honest, flagged placeholder per the original
-requirement: *"Where no open-licensed image exists for a life stage, leave a placeholder and
-flag it rather than substituting a copyrighted image."*
+There's now a three-step tool for populating this — see **[`scripts/README.md`](scripts/README.md)**
+for full details:
 
-**To complete this:** from an environment with normal network access, for each species in
-`data/species.json`:
-1. Search Wikimedia Commons (or GBIF media records) for the scientific name.
-2. Confirm the license is CC0, CC-BY, CC-BY-SA, or public domain — record the exact license,
-   author/photographer, and source URL.
-3. Download the image to `images/species/<species-id>/<stage>.jpg` (or `.png`).
-4. Update the corresponding entry in `data/images.json` to
-   `{"status": "verified", "localPath": "./images/species/<id>/<stage>.jpg", "credit": "<photographer/license/source>"}`.
-5. The service worker (`sw.js`) will cache anything under `/images/` automatically on first
-   load — no other code changes are needed.
+1. `node scripts/fetch-images.js` — searches Wikimedia Commons (Duane Raver/USFWS illustrations
+   + general photos), GBIF occurrence media, and iNaturalist by scientific name, filters to
+   open licenses only (CC0/CC-BY/CC-BY-SA for Commons; CC0/CC-BY/CC-BY-NC for GBIF/iNaturalist),
+   and stages candidates + full attribution metadata under `staging/`. **Requires normal
+   internet access** — run it from a terminal that has it, not from a network-restricted
+   sandbox.
+2. `node scripts/review/server.js` — a local review UI (<http://localhost:5183>) to approve,
+   reject, or reassign the life stage of each staged candidate.
+3. `node scripts/finalize-images.js` (or the "Finalize Approved" button in the review UI) —
+   copies approved images into `images/species/<species-id>/<stage>.<ext>`, updates
+   `data/images.json` to `"status": "verified"`, and writes a full attribution manifest
+   (`data/image-attribution-manifest.json`/`.csv`) plus a remaining-gaps log
+   (`data/image-sourcing-gaps.json`) for whatever still needs manual sourcing.
+
+The service worker (`sw.js`) caches anything under `/images/` automatically on first load — no
+code changes are needed after finalizing. Per the original requirement — *"where no
+open-licensed image exists for a life stage, leave a placeholder and flag it rather than
+substituting a copyrighted image"* — an unconfirmed-life-stage candidate is never silently used
+to fill a different stage's slot; it's flagged in the gaps log instead.
 
 ## Known limitations / follow-ups
 
@@ -244,7 +247,10 @@ flag it rather than substituting a copyrighted image."*
   above.
 - **S-ranks**: mostly `"unknown"` — needs a direct ACCDC/NatureServe Explorer data pull from
   an unrestricted network.
-- **Images**: no images sourced yet (network-restricted build environment) — see above.
+- **Images**: tooling to source, review, and finalize images now exists (see above), but it
+  hasn't been run yet — `data/images.json` still has every entry as a placeholder until someone
+  runs `scripts/fetch-images.js` from a machine with normal internet access and works through
+  the review/finalize steps.
 - **Survey GPS**: captured as decimal-degree lat/lon via the device Geolocation API per the
   original spec. Several source protocols (the NS Fish Habitat manual, EA registration
   documents) use UTM coordinates instead — this app does not currently convert to/from UTM.

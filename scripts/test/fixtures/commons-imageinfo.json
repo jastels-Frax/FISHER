@@ -1,0 +1,39 @@
+{
+  "raverIllustration": {
+    "title": "File:Salvelinus fontinalis (Duane Raver).png",
+    "info": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/x/xx/Salvelinus_fontinalis_Duane_Raver.png",
+      "thumburl": "https://upload.wikimedia.org/wikipedia/commons/thumb/x/xx/Salvelinus_fontinalis_Duane_Raver.png/1000px-Salvelinus_fontinalis_Duane_Raver.png",
+      "mime": "image/png",
+      "extmetadata": {
+        "LicenseShortName": { "value": "Public domain" },
+        "Artist": { "value": "<a href=\"//en.wikipedia.org/wiki/Duane_Raver\">Duane Raver</a>, U.S. Fish and Wildlife Service" },
+        "Credit": { "value": "USFWS National Digital Library" }
+      }
+    }
+  },
+  "ccBySaPhoto": {
+    "title": "File:Brook trout in stream.jpg",
+    "info": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/y/yy/Brook_trout_in_stream.jpg",
+      "thumburl": "https://upload.wikimedia.org/wikipedia/commons/thumb/y/yy/Brook_trout_in_stream.jpg/1000px-Brook_trout_in_stream.jpg",
+      "mime": "image/jpeg",
+      "extmetadata": {
+        "LicenseShortName": { "value": "CC BY-SA 4.0" },
+        "Artist": { "value": "Jane Photographer" }
+      }
+    }
+  },
+  "allRightsReservedPhoto": {
+    "title": "File:Unclear rights trout.jpg",
+    "info": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/z/zz/Unclear_rights_trout.jpg",
+      "thumburl": "https://upload.wikimedia.org/wikipedia/commons/thumb/z/zz/Unclear_rights_trout.jpg/1000px-Unclear_rights_trout.jpg",
+      "mime": "image/jpeg",
+      "extmetadata": {
+        "LicenseShortName": { "value": "Copyrighted, non-commercial use only" },
+        "Artist": { "value": "Someone" }
+      }
+    }
+  }
+}
