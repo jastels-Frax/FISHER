@@ -5,13 +5,26 @@
 
 const USER_AGENT = 'FisherSpeciesImageFetcher/1.0 (internal tool for Fraxinus Environmental & Geomatics; contact: see project README)';
 const MIN_DELAY_MS = 350;
-const MAX_RETRIES = 3;
+const MAX_DELAY_MS = 8000;
+const MAX_RETRIES = 5;
 
+// Adaptive pacing: starts at MIN_DELAY_MS between requests, but permanently
+// backs off (up to MAX_DELAY_MS) for the rest of the run the first time a
+// source starts returning 429s, rather than just retrying the one request
+// that got rate-limited and immediately going back to hammering at the same
+// rate. Wikimedia's file-download host in particular seems to rate-limit
+// more aggressively than its API host once a run has made a lot of requests.
 let lastRequestAt = 0;
+let currentDelayMs = MIN_DELAY_MS;
+
 async function pace() {
-  const wait = lastRequestAt + MIN_DELAY_MS - Date.now();
+  const wait = lastRequestAt + currentDelayMs - Date.now();
   if (wait > 0) await new Promise((r) => setTimeout(r, wait));
   lastRequestAt = Date.now();
+}
+
+function bumpDelay() {
+  currentDelayMs = Math.min(currentDelayMs * 1.5, MAX_DELAY_MS);
 }
 
 async function fetchWithRetry(url, opts = {}) {
@@ -24,8 +37,9 @@ async function fetchWithRetry(url, opts = {}) {
         headers: { 'User-Agent': USER_AGENT, Accept: 'application/json', ...(opts.headers || {}) },
       });
       if (res.status === 429 || res.status >= 500) {
+        if (res.status === 429) bumpDelay();
         const retryAfter = Number(res.headers.get('retry-after')) || 0;
-        const backoff = Math.max(retryAfter * 1000, 500 * 2 ** attempt);
+        const backoff = Math.min(Math.max(retryAfter * 1000, 500 * 2 ** attempt), MAX_DELAY_MS);
         if (attempt < MAX_RETRIES) {
           await new Promise((r) => setTimeout(r, backoff));
           continue;
@@ -35,7 +49,7 @@ async function fetchWithRetry(url, opts = {}) {
     } catch (err) {
       lastErr = err;
       if (attempt < MAX_RETRIES) {
-        await new Promise((r) => setTimeout(r, 500 * 2 ** attempt));
+        await new Promise((r) => setTimeout(r, Math.min(500 * 2 ** attempt, MAX_DELAY_MS)));
         continue;
       }
     }
@@ -71,4 +85,13 @@ function extFromContentType(contentType) {
   return 'jpg';
 }
 
-module.exports = { fetchJson, fetchBinary, extFromContentType, USER_AGENT };
+// Test-only introspection/reset — currentDelayMs is otherwise process-lifetime
+// state, which is exactly what we want in production (stay cautious for the
+// rest of a run once rate-limited) but needs to be resettable between tests.
+function _getCurrentDelayMs() { return currentDelayMs; }
+function _resetPacingForTest() { currentDelayMs = MIN_DELAY_MS; lastRequestAt = 0; }
+
+module.exports = {
+  fetchJson, fetchBinary, extFromContentType, USER_AGENT,
+  _getCurrentDelayMs, _resetPacingForTest,
+};
