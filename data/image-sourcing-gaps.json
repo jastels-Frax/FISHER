@@ -1,0 +1,374 @@
+[
+  {
+    "speciesId": "atlantic-salmon",
+    "commonName": "Atlantic Salmon",
+    "scientificName": "Salmo salar",
+    "stage": "egg"
+  },
+  {
+    "speciesId": "atlantic-salmon",
+    "commonName": "Atlantic Salmon",
+    "scientificName": "Salmo salar",
+    "stage": "fry"
+  },
+  {
+    "speciesId": "atlantic-salmon",
+    "commonName": "Atlantic Salmon",
+    "scientificName": "Salmo salar",
+    "stage": "parr"
+  },
+  {
+    "speciesId": "brook-trout",
+    "commonName": "Brook Trout",
+    "scientificName": "Salvelinus fontinalis",
+    "stage": "egg"
+  },
+  {
+    "speciesId": "brook-trout",
+    "commonName": "Brook Trout",
+    "scientificName": "Salvelinus fontinalis",
+    "stage": "parr"
+  },
+  {
+    "speciesId": "brook-trout",
+    "commonName": "Brook Trout",
+    "scientificName": "Salvelinus fontinalis",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "brown-trout",
+    "commonName": "Brown Trout",
+    "scientificName": "Salmo trutta",
+    "stage": "parr"
+  },
+  {
+    "speciesId": "brown-trout",
+    "commonName": "Brown Trout",
+    "scientificName": "Salmo trutta",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "rainbow-trout",
+    "commonName": "Rainbow Trout",
+    "scientificName": "Oncorhynchus mykiss",
+    "stage": "parr"
+  },
+  {
+    "speciesId": "rainbow-trout",
+    "commonName": "Rainbow Trout",
+    "scientificName": "Oncorhynchus mykiss",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "lake-trout",
+    "commonName": "Lake Trout",
+    "scientificName": "Salvelinus namaycush",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "lake-trout",
+    "commonName": "Lake Trout",
+    "scientificName": "Salvelinus namaycush",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "chain-pickerel",
+    "commonName": "Chain Pickerel",
+    "scientificName": "Esox niger",
+    "stage": "egg"
+  },
+  {
+    "speciesId": "chain-pickerel",
+    "commonName": "Chain Pickerel",
+    "scientificName": "Esox niger",
+    "stage": "fry"
+  },
+  {
+    "speciesId": "chain-pickerel",
+    "commonName": "Chain Pickerel",
+    "scientificName": "Esox niger",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "chain-pickerel",
+    "commonName": "Chain Pickerel",
+    "scientificName": "Esox niger",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "smallmouth-bass",
+    "commonName": "Smallmouth Bass",
+    "scientificName": "Micropterus dolomieu",
+    "stage": "egg"
+  },
+  {
+    "speciesId": "smallmouth-bass",
+    "commonName": "Smallmouth Bass",
+    "scientificName": "Micropterus dolomieu",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "smallmouth-bass",
+    "commonName": "Smallmouth Bass",
+    "scientificName": "Micropterus dolomieu",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "striped-bass",
+    "commonName": "Striped Bass",
+    "scientificName": "Morone saxatilis",
+    "stage": "egg"
+  },
+  {
+    "speciesId": "striped-bass",
+    "commonName": "Striped Bass",
+    "scientificName": "Morone saxatilis",
+    "stage": "fry"
+  },
+  {
+    "speciesId": "striped-bass",
+    "commonName": "Striped Bass",
+    "scientificName": "Morone saxatilis",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "striped-bass",
+    "commonName": "Striped Bass",
+    "scientificName": "Morone saxatilis",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "blacknose-dace",
+    "commonName": "Blacknose Dace",
+    "scientificName": "Rhinichthys atratulus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "blacknose-dace",
+    "commonName": "Blacknose Dace",
+    "scientificName": "Rhinichthys atratulus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "common-shiner",
+    "commonName": "Common Shiner",
+    "scientificName": "Luxilus cornutus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "common-shiner",
+    "commonName": "Common Shiner",
+    "scientificName": "Luxilus cornutus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "creek-chub",
+    "commonName": "Creek Chub",
+    "scientificName": "Semotilus atromaculatus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "creek-chub",
+    "commonName": "Creek Chub",
+    "scientificName": "Semotilus atromaculatus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "banded-killifish",
+    "commonName": "Banded Killifish",
+    "scientificName": "Fundulus diaphanus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "banded-killifish",
+    "commonName": "Banded Killifish",
+    "scientificName": "Fundulus diaphanus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "mummichog",
+    "commonName": "Mummichog",
+    "scientificName": "Fundulus heteroclitus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "mummichog",
+    "commonName": "Mummichog",
+    "scientificName": "Fundulus heteroclitus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "ninespine-stickleback",
+    "commonName": "Ninespine Stickleback",
+    "scientificName": "Pungitius pungitius",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "ninespine-stickleback",
+    "commonName": "Ninespine Stickleback",
+    "scientificName": "Pungitius pungitius",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "threespine-stickleback",
+    "commonName": "Threespine Stickleback",
+    "scientificName": "Gasterosteus aculeatus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "threespine-stickleback",
+    "commonName": "Threespine Stickleback",
+    "scientificName": "Gasterosteus aculeatus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "slimy-sculpin",
+    "commonName": "Slimy Sculpin",
+    "scientificName": "Cottus cognatus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "slimy-sculpin",
+    "commonName": "Slimy Sculpin",
+    "scientificName": "Cottus cognatus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "american-eel",
+    "commonName": "American Eel",
+    "scientificName": "Anguilla rostrata",
+    "stage": "elver"
+  },
+  {
+    "speciesId": "american-eel",
+    "commonName": "American Eel",
+    "scientificName": "Anguilla rostrata",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "american-eel",
+    "commonName": "American Eel",
+    "scientificName": "Anguilla rostrata",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "white-sucker",
+    "commonName": "White Sucker",
+    "scientificName": "Catostomus commersonii",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "white-sucker",
+    "commonName": "White Sucker",
+    "scientificName": "Catostomus commersonii",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "brown-bullhead",
+    "commonName": "Brown Bullhead",
+    "scientificName": "Ameiurus nebulosus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "brown-bullhead",
+    "commonName": "Brown Bullhead",
+    "scientificName": "Ameiurus nebulosus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "yellow-perch",
+    "commonName": "Yellow Perch",
+    "scientificName": "Perca flavescens",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "yellow-perch",
+    "commonName": "Yellow Perch",
+    "scientificName": "Perca flavescens",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "alewife",
+    "commonName": "Alewife (Gaspereau)",
+    "scientificName": "Alosa pseudoharengus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "alewife",
+    "commonName": "Alewife (Gaspereau)",
+    "scientificName": "Alosa pseudoharengus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "blueback-herring",
+    "commonName": "Blueback Herring",
+    "scientificName": "Alosa aestivalis",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "blueback-herring",
+    "commonName": "Blueback Herring",
+    "scientificName": "Alosa aestivalis",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "rainbow-smelt",
+    "commonName": "Rainbow Smelt",
+    "scientificName": "Osmerus mordax",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "rainbow-smelt",
+    "commonName": "Rainbow Smelt",
+    "scientificName": "Osmerus mordax",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "atlantic-tomcod",
+    "commonName": "Atlantic Tomcod",
+    "scientificName": "Microgadus tomcod",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "atlantic-tomcod",
+    "commonName": "Atlantic Tomcod",
+    "scientificName": "Microgadus tomcod",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "sea-lamprey",
+    "commonName": "Sea Lamprey",
+    "scientificName": "Petromyzon marinus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "sea-lamprey",
+    "commonName": "Sea Lamprey",
+    "scientificName": "Petromyzon marinus",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "golden-shiner",
+    "commonName": "Golden Shiner",
+    "scientificName": "Notemigonus crysoleucas",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "golden-shiner",
+    "commonName": "Golden Shiner",
+    "scientificName": "Notemigonus crysoleucas",
+    "stage": "adult"
+  },
+  {
+    "speciesId": "pumpkinseed",
+    "commonName": "Pumpkinseed",
+    "scientificName": "Lepomis gibbosus",
+    "stage": "juvenile"
+  },
+  {
+    "speciesId": "pumpkinseed",
+    "commonName": "Pumpkinseed",
+    "scientificName": "Lepomis gibbosus",
+    "stage": "adult"
+  }
+]

@@ -3,8 +3,14 @@
   "_readme": "All entries are unfetched placeholders — see README.md Image Sourcing section for why, and how to complete this file.",
   "atlantic-salmon": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Salmo salar\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "localPath": "./images/species/atlantic-salmon/adult.jpg",
+      "credit": "Knepp, Timothy — Public domain, via Wikimedia Commons"
+    },
+    "juvenile": {
+      "status": "verified",
+      "localPath": "./images/species/atlantic-salmon/juvenile.jpg",
+      "credit": "donnymidas — CC BY-NC 4.0, via GBIF"
     }
   },
   "brook-trout": {
