@@ -552,14 +552,18 @@ legend {
   position: relative;
   touch-action: pan-y;
   user-select: none;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-card);
 }
 .img-carousel-img {
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: var(--radius-card);
   display: block;
+  cursor: zoom-in;
 }
+.detail-photo-single { cursor: zoom-in; }
 .img-carousel-arrow {
   position: absolute;
   top: 50%;
@@ -584,6 +588,26 @@ legend {
   background: var(--border-color);
 }
 .img-carousel-dot.active { background: var(--accent); }
+
+.img-lightbox-overlay {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 20px;
+  padding-top: calc(20px + var(--safe-top, 0px));
+  padding-bottom: calc(20px + var(--safe-bottom, 0px));
+}
+.img-lightbox-overlay[hidden] { display: none; }
+.img-lightbox-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+.img-lightbox-credit { color: #F5F5F5; font-size: 0.75rem; text-align: center; margin: 10px 0 0; }
+.img-lightbox-close {
+  position: absolute; top: calc(12px + var(--safe-top, 0px)); right: 12px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15); border: none; color: #fff;
+  font-size: 1.6rem; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
 
 .stage-tabs { display: flex; gap: 6px; overflow-x: auto; margin: 10px 0; }
 .stage-tabs button {
