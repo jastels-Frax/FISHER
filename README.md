@@ -215,8 +215,11 @@ against it and adjust the constants near the top of `js/catalogue.js`.
 ## Image sourcing
 
 `data/images.json` maps each species/life-stage to either a `"status": "placeholder"` entry
-(with a `candidateNote` on where to look) or a `"status": "verified"` entry with a real
-`localPath` and `credit` once one's been sourced and approved.
+(with a `candidateNote` on where to look) or a `"status": "verified"` entry with an `images`
+array (`[{"localPath": "...", "credit": "..."}, ...]`) once one or more photos have been sourced
+and approved. A stage can have more than one approved photo — the app shows them as a
+side-scrolling carousel in the species detail view (a single-image array just renders as one
+photo, no carousel chrome).
 
 There's now a three-step tool for populating this — see **[`scripts/README.md`](scripts/README.md)**
 for full details:
@@ -228,18 +231,21 @@ for full details:
    internet access** — run it from a terminal that has it, not from a network-restricted
    sandbox.
 2. `node scripts/review/server.js` — a local review UI (<http://localhost:5183>) to approve,
-   reject, or reassign the life stage of each staged candidate.
+   reject, or reassign the life stage of each staged candidate. Approve as many as you want per
+   species/stage — they all end up in that stage's carousel.
 3. `node scripts/finalize-images.js` (or the "Finalize Approved" button in the review UI) —
-   copies approved images into `images/species/<species-id>/<stage>.<ext>`, updates
-   `data/images.json` to `"status": "verified"`, and writes a full attribution manifest
-   (`data/image-attribution-manifest.json`/`.csv`) plus a remaining-gaps log
-   (`data/image-sourcing-gaps.json`) for whatever still needs manual sourcing.
+   copies every approved image into `images/species/<species-id>/<stage>-1.<ext>`,
+   `-2.<ext>`, etc., updates `data/images.json` to `"status": "verified"` with the full image
+   array, and writes a full attribution manifest (`data/image-attribution-manifest.json`/`.csv`)
+   plus a remaining-gaps log (`data/image-sourcing-gaps.json`) for whatever still needs manual
+   sourcing.
 
 The service worker (`sw.js`) caches anything under `/images/` automatically on first load — no
 code changes are needed after finalizing. Per the original requirement — *"where no
 open-licensed image exists for a life stage, leave a placeholder and flag it rather than
 substituting a copyrighted image"* — an unconfirmed-life-stage candidate is never silently used
-to fill a different stage's slot; it's flagged in the gaps log instead.
+to fill a different stage's slot (it's flagged in the gaps log instead), and the species detail
+view never falls back to showing a different stage's photo when the current one has none.
 
 ## Known limitations / follow-ups
 

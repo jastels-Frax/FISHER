@@ -18,17 +18,16 @@ const MANIFEST_CSV_PATH = path.join(ROOT, 'data', 'image-attribution-manifest.cs
 const GAPS_LOG_PATH = path.join(ROOT, 'data', 'image-sourcing-gaps.json');
 
 /**
- * Among a slot's (speciesId + effective stage) approved candidates, pick the
- * one that becomes the app's actual image for that stage. The reference
- * illustration wins when present (per spec: "prefer Duane Raver/USFWS where
- * available"); otherwise the earliest-approved candidate wins. Everything
- * else in the slot is kept out of images.json but still recorded in the
- * manifest as a non-active alternate, so it's not lost — the user can swap
- * it in later by re-running finalize after changing decisions.
+ * Every approved candidate in a slot (speciesId + effective stage) ends up in
+ * that stage's image carousel — the app shows them all, not just one. The
+ * only thing this controls is display order: the reference illustration (if
+ * approved) leads, per spec: "prefer Duane Raver/USFWS where available";
+ * everything else keeps the order it was approved/found in.
  */
-function pickWinner(approvedForSlot) {
-  if (!approvedForSlot.length) return null;
-  return approvedForSlot.find((c) => c.isReferenceIllustration) || approvedForSlot[0];
+function orderForCarousel(approvedForSlot) {
+  const illustrations = approvedForSlot.filter((c) => c.isReferenceIllustration);
+  const rest = approvedForSlot.filter((c) => !c.isReferenceIllustration);
+  return [...illustrations, ...rest];
 }
 
 function extOf(localPath) {
@@ -113,21 +112,19 @@ function planFinalize({ speciesList, candidates, decisions }) {
       continue;
     }
 
-    const winner = pickWinner(list);
-    const destRel = path.posix.join('images', 'species', speciesId, `${stage}.${extOf(winner.localPath)}`);
-    imagesJsonUpdates[speciesId] = imagesJsonUpdates[speciesId] || {};
-    imagesJsonUpdates[speciesId][stage] = {
-      status: 'verified',
-      localPath: `./${destRel}`,
-      credit: creditLine(winner),
-    };
-    copyOps.push({ from: winner.localPath, to: destRel });
-    manifestRows.push(toManifestRow(winner, { used: true, destPath: destRel }));
+    // Every approved candidate for this slot becomes one carousel image —
+    // the app shows all of them, so there's no single "winner" to pick.
+    const ordered = orderForCarousel(list);
+    const images = ordered.map((c, i) => {
+      const filename = `${stage}-${i + 1}.${extOf(c.localPath)}`;
+      const destRel = path.posix.join('images', 'species', speciesId, filename);
+      copyOps.push({ from: c.localPath, to: destRel });
+      manifestRows.push(toManifestRow(c, { used: true, destPath: destRel }));
+      return { localPath: `./${destRel}`, credit: creditLine(c), isReferenceIllustration: !!c.isReferenceIllustration };
+    });
 
-    for (const alt of list) {
-      if (alt.id === winner.id) continue;
-      manifestRows.push(toManifestRow(alt, { used: false, reason: 'alternate candidate for this stage — not selected as the primary image' }));
-    }
+    imagesJsonUpdates[speciesId] = imagesJsonUpdates[speciesId] || {};
+    imagesJsonUpdates[speciesId][stage] = { status: 'verified', images };
   }
 
   const gapsRemaining = [];
@@ -183,6 +180,26 @@ function runFinalize({ dryRun = false } = {}) {
  * real repo — see scripts/test/finalize.test.js.
  */
 function applyPlan(plan, { copyBaseDir, imagesJsonPath, manifestJsonPath, manifestCsvPath, gapsLogPath }) {
+  // Clean up stale numbered files for slots this run touches — e.g. if a
+  // species/stage previously finalized with 3 approved images and one was
+  // since rejected, don't leave the old "<stage>-3.jpg" behind unreferenced.
+  // Scoped only to slots in this plan; a species/stage with zero approved
+  // candidates this run is left as-is (its existing images.json entry and
+  // files aren't touched — see scripts/README.md for this known limitation).
+  for (const [speciesId, stages] of Object.entries(plan.imagesJsonUpdates)) {
+    const dir = path.join(copyBaseDir, 'images', 'species', speciesId);
+    if (!fs.existsSync(dir)) continue;
+    for (const [stage, entry] of Object.entries(stages)) {
+      const expected = new Set(entry.images.map((img) => path.posix.basename(img.localPath)));
+      const stagePattern = new RegExp(`^${stage}-\\d+\\.[A-Za-z0-9]+$`);
+      for (const filename of fs.readdirSync(dir)) {
+        if (stagePattern.test(filename) && !expected.has(filename)) {
+          fs.unlinkSync(path.join(dir, filename));
+        }
+      }
+    }
+  }
+
   for (const op of plan.copyOps) {
     const fromAbs = path.join(copyBaseDir, op.from);
     const toAbs = path.join(copyBaseDir, op.to);
@@ -205,6 +222,6 @@ function applyPlan(plan, { copyBaseDir, imagesJsonPath, manifestJsonPath, manife
 }
 
 module.exports = {
-  planFinalize, runFinalize, applyPlan, pickWinner, creditLine, manifestToCsv,
+  planFinalize, runFinalize, applyPlan, orderForCarousel, creditLine, manifestToCsv,
   IMAGES_JSON_PATH, MANIFEST_JSON_PATH, MANIFEST_CSV_PATH, GAPS_LOG_PATH,
 };

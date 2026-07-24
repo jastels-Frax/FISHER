@@ -548,6 +548,24 @@ legend {
 }
 .img-credit { font-size: 0.7rem; color: var(--text-secondary); margin-top: 4px; }
 
+.img-carousel-track {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  padding: 0 0 4px;
+}
+.img-carousel-item {
+  flex: 0 0 88%;
+  max-width: 420px;
+  scroll-snap-align: start;
+  margin: 0;
+}
+.img-carousel-item img { width: 100%; border-radius: var(--radius-card); display: block; }
+.img-carousel-hint { font-size: 0.7rem; color: var(--text-secondary); text-align: center; margin: 4px 0 0; }
+
 .stage-tabs { display: flex; gap: 6px; overflow-x: auto; margin: 10px 0; }
 .stage-tabs button {
   flex: 0 0 auto; padding: 7px 14px; border-radius: 999px; border: 1.5px solid var(--accent);
