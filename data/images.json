@@ -22,6 +22,11 @@
         },
         {
           "localPath": "./images/species/atlantic-salmon/adult-4.jpg",
+          "credit": "J. Burke Korol — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/atlantic-salmon/adult-5.jpg",
           "credit": "kristen_towne — CC BY-NC 4.0, via GBIF",
           "isReferenceIllustration": false
         }
@@ -45,74 +50,385 @@
   },
   "brook-trout": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Salvelinus fontinalis\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/brook-trout/adult-1.jpg",
+          "credit": "Raver, Duane. Cropped by Siebrand — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/brook-trout/adult-2.jpg",
+          "credit": "Duane Raver, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/brook-trout/adult-3.jpg",
+          "credit": "Robert W. Hines, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/brook-trout/adult-4.jpg",
+          "credit": "Engbretson, Eric — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/brook-trout/adult-5.jpg",
+          "credit": "Jay Fleming (US Nat'l Park Svc) — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/brook-trout/adult-6.jpg",
+          "credit": "Claire — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/brook-trout/adult-7.jpg",
+          "credit": "Dargan Jaeger — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/brook-trout/adult-8.jpg",
+          "credit": "Dargan Jaeger — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "parr": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/brook-trout/parr-1.jpg",
+          "credit": "Andrea M — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "brown-trout": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Salmo trutta\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/brown-trout/adult-1.jpg",
+          "credit": "Duane Raver, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/brown-trout/adult-2.jpg",
+          "credit": "Eric Engbretson for U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/brown-trout/adult-3.jpg",
+          "credit": "Oregon State University — CC BY-SA 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/brown-trout/adult-4.jpg",
+          "credit": "bevo2020 — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "rainbow-trout": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Oncorhynchus mykiss\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/rainbow-trout/adult-1.jpg",
+          "credit": "Knepp, Timothy - U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/rainbow-trout/adult-2.jpg",
+          "credit": "Josh Woodsworth — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "lake-trout": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Salvelinus namaycush\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/lake-trout/adult-1.jpg",
+          "credit": "Knepp Timothy, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/lake-trout/adult-2.png",
+          "credit": "USFWS — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/lake-trout/adult-3.jpg",
+          "credit": "emeraldamiaocellicauda — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/lake-trout/adult-4.jpg",
+          "credit": "Ellie — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/lake-trout/juvenile-1.jpg",
+          "credit": "Drew — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "chain-pickerel": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Esox niger\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/chain-pickerel/adult-1.png",
+          "credit": "Raver Duane, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/chain-pickerel/adult-2.jpg",
+          "credit": "(c) Ken-ichi Ueda, some rights reserved (CC BY) — CC BY 4.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/chain-pickerel/adult-3.jpg",
+          "credit": "otofrog — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/chain-pickerel/adult-4.jpg",
+          "credit": "brianarob — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "smallmouth-bass": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Micropterus dolomieu\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/smallmouth-bass/adult-1.png",
+          "credit": "Ianaré Sévi (for modifications only)\nDuane Raver, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/smallmouth-bass/adult-2.jpg",
+          "credit": "Eric Engbretson, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/smallmouth-bass/adult-3.jpg",
+          "credit": "USFWS Mountain Prairie — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/smallmouth-bass/adult-4.jpg",
+          "credit": "David Sanderson-Kilchenstein — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/smallmouth-bass/juvenile-1.jpg",
+          "credit": "Oscar Upson — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/smallmouth-bass/juvenile-2.jpg",
+          "credit": "Oscar Upson — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/smallmouth-bass/juvenile-3.jpg",
+          "credit": "Oscar Upson — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/smallmouth-bass/juvenile-4.jpg",
+          "credit": "Oscar Upson — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/smallmouth-bass/juvenile-5.jpg",
+          "credit": "Oscar Upson — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "striped-bass": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Morone saxatilis\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/striped-bass/adult-1.jpg",
+          "credit": "Timothy Knepp — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/striped-bass/adult-2.jpg",
+          "credit": "Raver Duane, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/striped-bass/adult-3.jpg",
+          "credit": "D Ross Robertson — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/striped-bass/adult-4.jpg",
+          "credit": "Jonathan Irons — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/striped-bass/juvenile-1.jpg",
+          "credit": "Ingolf Askevold — CC0 1.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "blacknose-dace": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Rhinichthys atratulus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/blacknose-dace/adult-1.jpg",
+          "credit": "SERC Photos — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/blacknose-dace/adult-2.jpg",
+          "credit": "averagewalrus — CC BY 4.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "common-shiner": {
     "adult": {
       "status": "placeholder",
       "candidateNote": "Search Wikimedia Commons / GBIF media for \"Luxilus cornutus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/common-shiner/juvenile-1.jpg",
+          "credit": "Keemy Wille — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/common-shiner/juvenile-2.jpg",
+          "credit": "k-schafer — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "creek-chub": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Semotilus atromaculatus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/creek-chub/adult-1.jpg",
+          "credit": "Brian Gratwicke — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/creek-chub/adult-2.jpg",
+          "credit": "nmacelko2 — CC0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/creek-chub/adult-3.jpg",
+          "credit": "Dominic — CC BY 4.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/creek-chub/adult-4.jpg",
+          "credit": "ashleyrsteel — CC BY 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "banded-killifish": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Fundulus diaphanus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/banded-killifish/adult-1.jpg",
+          "credit": "Biodiversity Heritage Library — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/banded-killifish/adult-2.jpg",
+          "credit": "Biodiversity Heritage Library — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/banded-killifish/adult-3.jpg",
+          "credit": "Nick Spigler — CC0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/banded-killifish/adult-4.jpg",
+          "credit": "Charlie Mellor — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "mummichog": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Fundulus heteroclitus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/mummichog/adult-1.jpg",
+          "credit": "NOAA — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/mummichog/adult-2.jpg",
+          "credit": "Brian.gratwicke at English Wikipedia — CC BY 2.5, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/mummichog/adult-3.jpg",
+          "credit": "Smithsonian Environmental Research Center — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/mummichog/adult-4.jpg",
+          "credit": "Smithsonian Environmental Research Center — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/mummichog/adult-5.jpg",
+          "credit": "averagewalrus — CC BY 4.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "ninespine-stickleback": {
@@ -123,80 +439,398 @@
   },
   "threespine-stickleback": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Gasterosteus aculeatus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/threespine-stickleback/adult-1.jpg",
+          "credit": "Berger, F. G.; Bloch, Marcus Elieser; Bodenehr, G.; Darchow, C.; Gursch, C. F.; Krüger; Schmidt, A. F.; Schmidt, F. G.; Schmidt, Friedrich Wilhelm; Schmidt, Johann Gottlieb; Schmidt, Ludwig — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/threespine-stickleback/adult-2.jpg",
+          "credit": "Holger Krisp — CC BY 4.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/threespine-stickleback/adult-3.jpg",
+          "credit": "smelt_luvr_42069 — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "slimy-sculpin": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Cottus cognatus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/slimy-sculpin/adult-1.jpg",
+          "credit": "Painting by Ellen Edmonson — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/slimy-sculpin/adult-2.jpg",
+          "credit": "Barton Warren Evermann / Edmund Lee Goldsborough — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "american-eel": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Anguilla rostrata\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/american-eel/adult-1.jpg",
+          "credit": "U. S. Fish and Wildlife Service - Northeast Region — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/american-eel/adult-2.jpg",
+          "credit": "Clinton &amp; Charles Robertson from RAF Lakenheath, UK &amp; San Marcos, TX, USA &amp; UK — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/american-eel/adult-3.png",
+          "credit": "Kayt Jonsson/USFWS — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/american-eel/adult-4.jpg",
+          "credit": "adam_small — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/american-eel/juvenile-1.jpg",
+          "credit": "ivoryhead — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "white-sucker": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Catostomus commersonii\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/white-sucker/adult-1.jpg",
+          "credit": "State of New York Forest, Fish, and Game Commission — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/white-sucker/adult-2.jpg",
+          "credit": "cybilla — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/white-sucker/adult-3.jpg",
+          "credit": "Emily Palahnuk — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/white-sucker/juvenile-1.jpg",
+          "credit": "Brian Gratwicke — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/white-sucker/juvenile-2.jpg",
+          "credit": "Landon Marshall — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "brown-bullhead": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Ameiurus nebulosus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/brown-bullhead/adult-1.jpg",
+          "credit": "Duane Raver, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/brown-bullhead/adult-2.jpg",
+          "credit": "Unknown photographer/illustrator — CC BY-SA 2.5, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/brown-bullhead/adult-3.jpg",
+          "credit": "Kathryn Jones — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/brown-bullhead/juvenile-1.jpg",
+          "credit": "Oregon Department of Fish &amp; Wildlife — CC BY-SA 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "yellow-perch": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Perca flavescens\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/yellow-perch/adult-1.jpg",
+          "credit": "Raver Duane, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/yellow-perch/adult-2.jpg",
+          "credit": "Originally uploaded to English Wikipedia by en:User:Hadal — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/yellow-perch/adult-3.jpg",
+          "credit": "Daniel Wieferich — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/yellow-perch/adult-4.jpg",
+          "credit": "szeligaw — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "alewife": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Alosa pseudoharengus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/alewife/adult-1.jpg",
+          "credit": "Duane Raver, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/alewife/adult-2.jpg",
+          "credit": "JenWinnell — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/alewife/juvenile-1.jpg",
+          "credit": "NOAA Great Lakes Environmental Research Laboratory — CC BY-SA 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "blueback-herring": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Alosa aestivalis\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/blueback-herring/adult-1.jpg",
+          "credit": "Duane Raver, U.S. Fish and Wildlife Service — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/blueback-herring/adult-2.jpg",
+          "credit": "Smithsonian Environmental Research Center — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/blueback-herring/adult-3.jpg",
+          "credit": "Jacob Jones — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/blueback-herring/adult-4.jpg",
+          "credit": "natebillhime — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "rainbow-smelt": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Osmerus mordax\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/rainbow-smelt/adult-1.jpg",
+          "credit": "http://www.glerl.noaa.gov/pubs/photogallery/Fish/pages/1076.html — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/rainbow-smelt/adult-2.jpg",
+          "credit": "Bex Goreham — CC BY 4.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/rainbow-smelt/adult-3.jpg",
+          "credit": "Alexander Skevington — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/rainbow-smelt/adult-4.jpg",
+          "credit": "wes_inc — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/rainbow-smelt/adult-5.jpg",
+          "credit": "Dylan.B — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/rainbow-smelt/adult-6.jpg",
+          "credit": "J. Burke Korol — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "atlantic-tomcod": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Microgadus tomcod\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/atlantic-tomcod/adult-1.jpg",
+          "credit": "Joanie Côté — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/atlantic-tomcod/adult-2.jpg",
+          "credit": "Unknown authorUnknown author — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/atlantic-tomcod/adult-3.jpg",
+          "credit": "Joanie Côté, derivative work Lämpel — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/atlantic-tomcod/juvenile-1.jpg",
+          "credit": "Sarah Wilme — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "sea-lamprey": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Petromyzon marinus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/sea-lamprey/adult-1.jpg",
+          "credit": "Fernando Losada Rodríguez — CC BY-SA 4.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/sea-lamprey/adult-2.jpg",
+          "credit": "brendanboyd — CC BY 4.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/sea-lamprey/adult-3.jpg",
+          "credit": "marsel mersinaj — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/sea-lamprey/juvenile-1.jpg",
+          "credit": "Charcos Companhia — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/sea-lamprey/juvenile-2.jpg",
+          "credit": "tightontanago — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/sea-lamprey/juvenile-3.jpg",
+          "credit": "tightontanago — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "golden-shiner": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Notemigonus crysoleucas\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/golden-shiner/adult-1.jpg",
+          "credit": "Unknown photographer/illustrator — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/golden-shiner/adult-2.jpg",
+          "credit": "Olaf Nies — CC BY 2.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/golden-shiner/adult-3.jpg",
+          "credit": "monicareusche — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/golden-shiner/adult-4.jpg",
+          "credit": "monicareusche — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "pumpkinseed": {
     "adult": {
-      "status": "placeholder",
-      "candidateNote": "Search Wikimedia Commons / GBIF media for \"Lepomis gibbosus\" filtered to CC0, CC-BY, CC-BY-SA, or public-domain licenses."
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/pumpkinseed/adult-1.jpg",
+          "credit": "Raver, Duane — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/pumpkinseed/adult-2.jpg",
+          "credit": "Paleo1954 — CC BY-SA 4.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/pumpkinseed/adult-3.jpg",
+          "credit": "gid — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
+    },
+    "juvenile": {
+      "status": "verified",
+      "images": [
+        {
+          "localPath": "./images/species/pumpkinseed/juvenile-1.jpg",
+          "credit": "Osado — CC BY-SA 3.0, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   }
 }
