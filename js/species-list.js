@@ -35,11 +35,43 @@ function uniqueSorted(values) {
   return Array.from(new Set(values.filter(Boolean))).sort();
 }
 
+// A single shared full-screen viewer, created once and reused for every
+// "tap to enlarge" click across any renderSpeciesBrowser instance on the
+// page (standalone browse page, or the Identify modal's species browser).
+let sharedLightbox = null;
+function getLightbox() {
+  if (sharedLightbox) return sharedLightbox;
+  const el = document.createElement('div');
+  el.className = 'img-lightbox-overlay';
+  el.hidden = true;
+  el.innerHTML = `
+    <button type="button" class="img-lightbox-close" aria-label="Close enlarged photo">&times;</button>
+    <img class="img-lightbox-img" alt="">
+    <p class="img-lightbox-credit"></p>
+  `;
+  document.body.appendChild(el);
+  const imgEl = el.querySelector('.img-lightbox-img');
+  const creditEl = el.querySelector('.img-lightbox-credit');
+  const close = () => { el.hidden = true; };
+  el.addEventListener('click', (e) => { if (e.target === el) close(); });
+  el.querySelector('.img-lightbox-close').addEventListener('click', close);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !el.hidden) close(); });
+  sharedLightbox = {
+    open(src, alt, credit) {
+      imgEl.src = src;
+      imgEl.alt = alt || '';
+      creditEl.textContent = credit || '';
+      el.hidden = false;
+    },
+  };
+  return sharedLightbox;
+}
+
 function carouselHtml(images, commonName, stage) {
   if (images.length === 1) {
     const img = images[0];
     return `
-      <img src="${escapeHtml(img.localPath)}" alt="${escapeHtml(commonName)} (${escapeHtml(stage)})" style="width:100%;border-radius:10px" loading="lazy">
+      <img class="detail-photo-single" data-role="single-photo" src="${escapeHtml(img.localPath)}" alt="${escapeHtml(commonName)} (${escapeHtml(stage)})" style="width:100%;border-radius:10px" loading="lazy">
       <p class="img-credit">${escapeHtml(img.credit || '')}</p>
     `;
   }
@@ -85,6 +117,10 @@ function bindCarousel(container, images, commonName, stage) {
 
   carousel.querySelector('[data-role="carousel-prev"]').addEventListener('click', () => show(index - 1));
   carousel.querySelector('[data-role="carousel-next"]').addEventListener('click', () => show(index + 1));
+  imgEl.addEventListener('click', () => {
+    const img = images[index];
+    getLightbox().open(img.localPath, imgEl.alt, img.credit);
+  });
 
   const viewport = carousel.querySelector('.img-carousel-viewport');
   let touchStartX = null;
@@ -241,6 +277,9 @@ export function renderSpeciesBrowser(container, opts) {
     container.querySelectorAll('[data-stage]').forEach((btn) => btn.addEventListener('click', () => { state.detailStage = btn.getAttribute('data-stage'); renderDetail(); }));
     if (img && img.status === 'verified' && img.images && img.images.length > 1) {
       bindCarousel(container, img.images, s.commonName, state.detailStage);
+    } else if (img && img.status === 'verified' && img.images && img.images.length === 1) {
+      const photoEl = container.querySelector('[data-role="single-photo"]');
+      photoEl.addEventListener('click', () => getLightbox().open(img.images[0].localPath, photoEl.alt, img.images[0].credit));
     }
     if (mode === 'select') {
       container.querySelector('[data-role="confirm"]').addEventListener('click', () => onSelect && onSelect({ species: s, lifeStage: state.detailStage, unidentified: false }));
