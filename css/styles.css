@@ -539,6 +539,7 @@ legend {
 .badge.native { background: var(--status-ok-bg); color: var(--status-ok-text); }
 .badge.non-native { background: var(--status-warn-bg); color: var(--status-warn-text); }
 .badge.srank { background: var(--bg-page); color: var(--text-secondary); border: 1px solid var(--border-color); }
+.badge.sara-risk { background: var(--status-danger-bg); color: var(--status-danger-text); border: 1px solid var(--status-danger-border); font-weight: 600; }
 
 .placeholder-img {
   width: 100%; aspect-ratio: 4/3; border-radius: var(--radius-card);

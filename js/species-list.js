@@ -13,6 +13,11 @@ function nativeBadge(status) {
   return `<span class="badge ${cls}">${escapeHtml(status || 'unknown')}</span>`;
 }
 
+function saraBadgeHtml(status) {
+  if (!status || status === 'not listed' || status === 'unknown') return '';
+  return `<span class="badge sara-risk">SARA: ${escapeHtml(status)}</span>`;
+}
+
 function habitatBadgeLabel(type) {
   const map = {
     freshwater: 'Freshwater', anadromous: 'Anadromous', catadromous: 'Catadromous',
@@ -214,6 +219,7 @@ export function renderSpeciesBrowser(container, opts) {
             ${nativeBadge(s.nativeStatus)}
             <span class="badge">${escapeHtml(habitatBadgeLabel(s.habitatType))}</span>
             ${s.sRank ? `<span class="badge srank">${escapeHtml(s.sRank)}</span>` : ''}
+            ${saraBadgeHtml(s.saraStatus)}
           </div>
         </span>
       </button>
@@ -236,6 +242,7 @@ export function renderSpeciesBrowser(container, opts) {
         ${nativeBadge(s.nativeStatus)}
         <span class="badge">${escapeHtml(habitatBadgeLabel(s.habitatType))}</span>
         ${s.sRank ? `<span class="badge srank">S-rank: ${escapeHtml(s.sRank)}</span>` : ''}
+        ${saraBadgeHtml(s.saraStatus)}
       </div>
 
       <div class="stage-tabs">

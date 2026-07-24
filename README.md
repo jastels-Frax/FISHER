@@ -251,12 +251,18 @@ view never falls back to showing a different stage's photo when the current one 
 
 - **Species list**: curated core set (27 species), not exhaustive — see Species data sources
   above.
-- **S-ranks**: mostly `"unknown"` — needs a direct ACCDC/NatureServe Explorer data pull from
-  an unrestricted network.
-- **Images**: tooling to source, review, and finalize images now exists (see above), but it
-  hasn't been run yet — `data/images.json` still has every entry as a placeholder until someone
-  runs `scripts/fetch-images.js` from a machine with normal internet access and works through
-  the review/finalize steps.
+- **S-ranks and SARA status**: cross-checked against an ACCDC (Atlantic Canada Conservation Data
+  Centre) NS species ranks export, matched by exact scientific name (see each species'
+  `citations` in `data/species.json`). 25 of 27 species matched and got a real `sRank` plus a
+  `saraStatus` (currently `"not listed"` for all of them — none of NS's freshwater/diadromous
+  fish are on the SARA Schedule 1 per this export). **Slimy Sculpin** and **Pumpkinseed** were
+  not present in that export at all — both remain `sRank: "unknown"` / `saraStatus: "unknown"`,
+  flagged in `dataFlags`, pending a direct ACCDC/NatureServe Explorer lookup for those two
+  specifically. The app shows a red "SARA: \<status\>" badge automatically if any species'
+  `saraStatus` is ever set to Endangered/Threatened/Special Concern/Extirpated.
+- **Images**: tooling to source, review, and finalize images exists (see above) and has been
+  run — most species now have real `"status": "verified"` images in `data/images.json`; check
+  `data/image-sourcing-gaps.json` for whatever's still outstanding.
 - **Survey GPS**: captured as decimal-degree lat/lon via the device Geolocation API per the
   original spec. Several source protocols (the NS Fish Habitat manual, EA registration
   documents) use UTM coordinates instead — this app does not currently convert to/from UTM.
