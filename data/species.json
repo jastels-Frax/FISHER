@@ -30,7 +30,7 @@
         { "source": "DFO Gulf NS SFA18 research document", "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/41107238.pdf", "accessedNote": "Status in SFA 18 (Northumberland Strait NS / western Cape Breton); identifies Margaree, West River Antigonish, East River Pictou, River Philip as index rivers." },
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/salmo-salar.html", "accessedNote": "Dorsal/anal fin ray counts." },
         { "source": "Atlantic Salmon Trust", "url": "https://atlanticsalmontrust.org/knowledge/resources/salmon-and-sea-trout-facts/", "accessedNote": "Salmon vs. trout parr recognition guide: maxilla length, adipose fin colour, gill-cover spotting, tail fork, parr marks." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -59,7 +59,7 @@
         { "source": "FishBase", "url": "https://fishbase.se/Summary/Salvelinus-fontinalis", "accessedNote": "Dorsal/anal soft-ray counts (8-14 each) and vertebral count (58-62)." },
         { "source": "NCBI (peer-reviewed)", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7232767/", "accessedNote": "Hatchery introgression in wild NS brook trout populations, confirming native status and stocking history." },
         { "source": "Nova Scotia Salmon Association", "url": "https://nssalmon.ca/wild-trout", "accessedNote": "Confirms brook trout as native to NS and the provincial fish; sea-run brook trout described." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -86,7 +86,7 @@
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/Salmo-trutta.html", "accessedNote": "Dorsal/anal soft-ray counts and spotting/adipose-fin description." },
         { "source": "Purdue Extension FNR-579-W", "url": "https://www.extension.purdue.edu/extmedia/fnr/fnr-579-w.pdf", "accessedNote": "Parr-mark count and width comparison used for the parr-stage couplet." },
         { "source": "Nova Scotia Salmon Association", "url": "https://www.nssalmon.ca/wild-trout", "accessedNote": "Confirms brown trout as an introduced, self-sustaining recreational species in NS coastal rivers." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -113,7 +113,7 @@
         { "source": "ResearchGate", "url": "https://www.researchgate.net/publication/228825369_Examining_the_Occurrence_of_Wild_Rainbow_Trout_in_the_Bras_d'Or_Lakes_Nova_Scotia_Using_Scale_Pattern_Analysis_to_Differentiate_Hatchery_and_Wild", "accessedNote": "Study on wild vs. hatchery rainbow trout in Bras d'Or Lakes watershed." },
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/Oncorhynchus-mykiss.html", "accessedNote": "Anal ray count and lateral-line scale range." },
         { "source": "DFO", "url": "https://www.dfo-mpo.gc.ca/species-especes/profiles-profils/rainbow-trout-truite-arc-en-ciel-eng.html", "accessedNote": "Confirms native Pacific range and general identification." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -140,7 +140,7 @@
         { "source": "Government of Nova Scotia FFRC report", "url": "https://novascotia.ca/fish/documents/2023-ffrc-lake-trout-distribution.pdf", "accessedNote": "2023 report on past/present lake trout distribution in NS; 1886 stocking start date." },
         { "source": "DFO", "url": "https://www.dfo-mpo.gc.ca/species-especes/profiles-profils/lake-trout-touladi-eng.html", "accessedNote": "Juvenile parr-mark description, spot colour, fin coloration, max length (~106 cm)." },
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/Salvelinus-namaycush", "accessedNote": "Dorsal/anal soft-ray counts and adult colour description." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -169,7 +169,7 @@
         { "source": "Government of Nova Scotia impact report", "url": "https://novascotia.ca/fish/documents/special-management-areas-reports/impact-chain-pickerel.pdf", "accessedNote": "Chain pickerel impacts on lake fish communities." },
         { "source": "FishBase", "url": "https://fishbase.se/summary/2712", "accessedNote": "Dorsal/anal soft-ray counts and max length/weight for Esox niger." },
         { "source": "Canadian Field-Naturalist (peer-reviewed)", "url": "https://www.canadianfieldnaturalist.ca/index.php/cfn/article/download/1116/1120/4464", "accessedNote": "Scaled-cheek/operculum diagnostics distinguishing Esox niger from E. americanus (not present in NS)." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -198,7 +198,7 @@
         { "source": "Government of Nova Scotia life history report", "url": "https://novascotia.ca/fish/documents/special-management-areas-reports/GrandLakeBassRpt265911.pdf", "accessedNote": "NS tournament-monitoring growth data." },
         { "source": "FishBase", "url": "https://fishbase.org/summary/3382", "accessedNote": "Dorsal spine/soft-ray counts and body colour/bar pattern." },
         { "source": "NCBI (peer-reviewed)", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7069312/", "accessedNote": "Competitive threat to Atlantic salmon in an NS river." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -227,7 +227,7 @@
         { "source": "NatureServe Explorer", "url": "https://explorer.natureserve.org/Taxon/ELEMENT_GLOBAL.2.104731/Morone_saxatilis", "accessedNote": "Provincial S-rank comparison table (NS S1, NB S2, PEI S2N, QC SX), surfaced via search — page itself not directly rendered in this research pass." },
         { "source": "Canadian Journal of Fisheries and Aquatic Sciences (peer-reviewed)", "url": "https://cdnsciencepub.com/doi/abs/10.1139/cjfas-2016-0002", "accessedNote": "Winter presence/diel vertical migration of Shubenacadie River striped bass in the Minas Passage." },
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/Morone-saxatilis.html", "accessedNote": "Dorsal spine count, stripe count, adult size range." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -253,7 +253,7 @@
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/Rhinichthys-atratulus", "accessedNote": "Dorsal soft rays (8), anal soft rays (7), max/common length, barbel and overhanging snout, native range NS to Manitoba." },
         { "source": "Wikipedia — Eastern blacknose dace", "url": "https://en.wikipedia.org/wiki/Eastern_blacknose_dace", "accessedNote": "Lateral line scale count (56-70) and general body description." },
         { "source": "Distribution of Blacknose Dace, Rhinichthys atratulus, in Nova Scotia (ResearchGate)", "url": "https://www.researchgate.net/publication/292623523_Distribution_of_Blacknose_Dace_Rhinichthys_atratulus_in_Nova_Scotia", "accessedNote": "NS-specific distribution: Northumberland Strait and Bay of Fundy watersheds, Cobequid Mountains headwaters; 55 documented localities." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -278,7 +278,7 @@
       "citations": [
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/Luxilus-cornutus", "accessedNote": "Max/common length, olive back with dark dorsal stripe, silvery/bronze coloration, native range NS to southeastern Saskatchewan, habitat in rocky pools near riffles." },
         { "source": "USGS NAS", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=563", "accessedNote": "Range and general species account." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -303,7 +303,7 @@
       "citations": [
         { "source": "FishBase", "url": "https://fishbase.mnhn.fr/summary/semotilus-atromaculatus.html", "accessedNote": "Dorsal fin 8 rays, large black spot at dorsal fin base, black caudal spot, lateral line 47-65 scales, pointed mouth, habitat in rocky/sandy pools of headwaters and creeks." },
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/Semotilus-atromaculatus", "accessedNote": "Size data: max length 30.3 cm TL, common length 19.1 cm TL." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -328,7 +328,7 @@
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/Fundulus-diaphanus", "accessedNote": "No lateral line, 39-49 lateral scales, dorsal/anal ray counts, max/common length." },
         { "source": "Canadian Field-Naturalist (peer-reviewed)", "url": "https://www.canadianfieldnaturalist.ca/index.php/cfn/article/view/2373", "accessedNote": "Morphological comparison identifying dorsal fin position and caudal peduncle depth as the key characters distinguishing the two species." },
         { "source": "COSEWIC — Banded Killifish status report", "url": "https://wildlife-species.canada.ca/species-risk-registry/virtual_sara/files/cosewic/sr_Banded%20Killifish_2014_e.pdf", "accessedNote": "Mainland NS, NB, QC, ON and MB populations native and not at risk, distinct from the at-risk Newfoundland population." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -352,7 +352,7 @@
       "citations": [
         { "source": "FishBase", "url": "https://www.fishbase.org/summary/3192", "accessedNote": "Dorsal fin 11-12 rays (range 10-15), origin before the anal fin, elongate body depth <1/3 SL, rounded snout, small mouth, max/common length." },
         { "source": "Canadian Field-Naturalist (peer-reviewed)", "url": "https://www.canadianfieldnaturalist.ca/index.php/cfn/article/view/2373", "accessedNote": "Dorsal fin position / caudal peduncle depth distinguishing characters vs. banded killifish." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -376,7 +376,7 @@
       "citations": [
         { "source": "FishBase", "url": "https://fishbase.se/summary/Pungitius-pungitius", "accessedNote": "Dorsal spines (total) 6-12, max/common length." },
         { "source": "FishBase-sourced stickleback reference compilation", "url": "https://allfishes.org/fishes/freshwater/sticklebacks-ninespine", "accessedNote": "Caudal-peduncle keel/scute description and free dorsal spine range." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -401,7 +401,7 @@
         { "source": "FishBase", "url": "https://fishbase.se/summary/Gasterosteus-aculeatus.html", "accessedNote": "Dorsal spines (total) 2-4, max/common length, freshwater vs. saltwater max size difference." },
         { "source": "Canadian Journal of Zoology (peer-reviewed)", "url": "https://cdnsciencepub.com/doi/10.1139/z73-079", "accessedNote": "Meristic variation in threespine stickleback in eastern Canadian waters." },
         { "source": "PMC (peer-reviewed)", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5072691/", "accessedNote": "Lateral plate morph categories and their association with salinity/habitat." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -453,7 +453,7 @@
         { "source": "DFO Assessment of Maritimes Region American Eel", "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/41040624.pdf", "accessedNote": "Identifies LaHave and St. Mary's Rivers as electrofishing index rivers; reports ~3%/yr decline 1985-2012." },
         { "source": "NCFishes.com (FishBase-derived)", "url": "https://ncfishes.com/marine-fishes-of-north-carolina/anguilla-rostrata/", "accessedNote": "Diagnostic characters: basket-weave scales, large pectoral fins, mouth reaching under eye, single gill opening." },
         { "source": "U.S. Fish & Wildlife Service Species Profile", "url": "https://www.fws.gov/species/american-eel-anguilla-rostrata", "accessedNote": "Sexual dimorphism and max length (152 cm females)." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -478,7 +478,7 @@
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/catostomus-commersonii.html", "accessedNote": "Diagnostic subterminal papillose sucking mouth and lip thickness ratio." },
         { "source": "NatureNorth.com fish species accounts", "url": "http://www.naturenorth.com/spring/creature/whsucker/Fwhsuck2.html", "accessedNote": "Dorsal ray counts (10-13), lateral line scale counts (55-85), juvenile blotch pattern, adult size." },
         { "source": "DFO species profile", "url": "https://www.dfo-mpo.gc.ca/species-especes/profiles-profils/white-sucker-meunier-noir-eng.html", "accessedNote": "Confirms white sucker is the only sucker native to Nova Scotia." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -503,7 +503,7 @@
         { "source": "USGS NAS Species Profile", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=734", "accessedNote": "Native range includes Nova Scotia and New Brunswick to Mobile Bay, AL." },
         { "source": "FishBase", "url": "https://www.fishbase.se/summary/Ameiurus-nebulosus", "accessedNote": "Dorsal fin (1 spine, 6-7 rays), anal rays (21-24), dark chin barbels, pectoral spine tooth character." },
         { "source": "PEI Invasive Species Council", "url": "https://peiinvasives.com/brown-bullhead/", "accessedNote": "Brown bullhead treated as introduced/invasive in PEI despite native range including NS." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -527,7 +527,7 @@
       "citations": [
         { "source": "Animal Diversity Web / FishBase", "url": "https://animaldiversity.org/accounts/Perca_flavescens/", "accessedNote": "Dorsal spine/ray counts, 6-8 vertical bars, lateral line scale count 51-61." },
         { "source": "Nova Scotia Fisheries and Aquaculture — Special Management Areas Reports", "url": "https://novascotia.ca/fish/documents/special-management-areas-reports/yellowperch.pdf", "accessedNote": "NS-specific report on yellow perch growth/overpopulation in provincial lakes." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -554,7 +554,7 @@
         { "source": "DFO — Gaspereau Integrated Fishery Management Plan", "url": "https://www.dfo-mpo.gc.ca/fisheries-peches/ifmp-gmp/gaspereau-gaspareau/index-eng.html", "accessedNote": "Gaspereau River NS gaspereau fishery; alewife-then-blueback run timing." },
         { "source": "DFO Science — Assessment of Gaspereau River Alewife", "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/329174.pdf", "accessedNote": "~69 rivers along Atlantic coastal NS with spawning gaspereau runs." },
         { "source": "Virginia Institute of Marine Science", "url": "https://www.vims.edu/research/units/programs/american_shad/River%20Herring%20about/Alewife/", "accessedNote": "General morphology and sawbelly/shoulder-spot description." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -580,7 +580,7 @@
         { "source": "USGS NAS Species Profile", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=488", "accessedNote": "General life history and size range." },
         { "source": "Atlantic Salmon Restoration Project", "url": "https://atlanticsalmonrestoration.org/resources/fact-sheets/blueback-herring-alosa-aestivalis-1", "accessedNote": "Gill raker counts (41-51) and blue dorsal coloration." },
         { "source": "DFO — Gaspereau Integrated Fishery Management Plan", "url": "https://www.dfo-mpo.gc.ca/fisheries-peches/ifmp-gmp/gaspereau-gaspareau/index-eng.html", "accessedNote": "Jointly managed with alewife; enters rivers ~2 weeks after alewife." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -606,7 +606,7 @@
         { "source": "USGS NAS Species Profile", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=796", "accessedNote": "Diagnostic teeth description, adipose fin, lateral line scale count, coloration." },
         { "source": "Maine Department of Marine Resources fact sheet", "url": "https://www.maine.gov/dmr/sites/maine.gov.dmr/files/docs/rainbowsmelt.pdf", "accessedNote": "Spawning habitat and anadromous vs. landlocked life history." },
         { "source": "DFO Science", "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/197905.pdf", "accessedNote": "Regional anadromous life history context for Maritimes populations." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -631,7 +631,7 @@
       "citations": [
         { "source": "Acadia University — Coastal ecology of Atlantic Tomcod in Minas Basin, Nova Scotia", "url": "https://scholar.acadiau.ca/node/4278", "accessedNote": "NS-specific study on tomcod spawning migration, habitat connectivity and diet in Minas Basin, Bay of Fundy." },
         { "source": "Marine Life ID (FishBase-derived)", "url": "https://www.marinelifeid.com/identification/atlantic-tomcod-microgadus-tomcod/", "accessedNote": "Chin barbel, three dorsal/two anal fins, projecting upper jaw, coloration and size range." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ]
     },
     {
@@ -654,7 +654,7 @@
       "habitatNotes": "Anadromous; adults spawn in gravel-bottomed streams and rivers, and ammocoetes then spend several years burrowed in silty/sandy margins of the same or nearby streams before migrating to sea. Documented on Nova Scotia's general status freshwater fish list and in the NS Museum's freshwater fish checklist; ammocoetes are a common but easily-overlooked electrofishing bycatch in silty stream margins.",
       "citations": [
         { "source": "Nova Scotia Department of Natural Resources and Renewables — General Status of freshwater fish", "url": "https://novascotia.ca/natr/wildlife/genstatus/chartfish.asp", "accessedNote": "Confirms sea lamprey presence on NS's general status freshwater fish list." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ],
       "dataFlags": ["Added during source cross-check as a species not in the original candidate list; diagnostic text drawn from standard lamprey morphology and confirmed present in NS via the cited government checklist rather than a species-specific NS diagnostic paper."]
     },
@@ -679,7 +679,7 @@
       "habitatNotes": "Native to Nova Scotia, at the northern limit of its Atlantic Slope native range; reported as widespread in the province, collected in 264 of 744 NS lakes sampled in provincial lake surveys. A common minnow-trap/electrofishing catch in weedy NS lakes and ponds.",
       "citations": [
         { "source": "USGS NAS Species Profile", "url": "https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=579", "accessedNote": "Native Atlantic Slope range reaching Nova Scotia; general morphology." },
-        {"source":"ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export","accessedNote":"User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export."}
+        { "source": "ACCDC (Atlantic Canada Conservation Data Centre) NS species ranks export", "accessedNote": "User-provided data export (file: NSall_3.xls) cross-checked by exact scientific name for SRank (subnational conservation rank) and N::NPROTsar (SARA Schedule 1 status). No stable public URL for this specific export." }
       ],
       "dataFlags": ["Added during source cross-check as a species not in the original candidate list, based on documented NS lake survey occurrence."]
     },
