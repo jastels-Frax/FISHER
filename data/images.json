@@ -4,13 +4,43 @@
   "atlantic-salmon": {
     "adult": {
       "status": "verified",
-      "localPath": "./images/species/atlantic-salmon/adult.jpg",
-      "credit": "Knepp, Timothy — Public domain, via Wikimedia Commons"
+      "images": [
+        {
+          "localPath": "./images/species/atlantic-salmon/adult-1.jpg",
+          "credit": "Knepp, Timothy — Public domain, via Wikimedia Commons",
+          "isReferenceIllustration": true
+        },
+        {
+          "localPath": "./images/species/atlantic-salmon/adult-2.jpg",
+          "credit": "Hans-Petter Fjeld — CC BY-SA 2.5, via Wikimedia Commons",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/atlantic-salmon/adult-3.jpg",
+          "credit": "Will Earley — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/atlantic-salmon/adult-4.jpg",
+          "credit": "kristen_towne — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     },
     "juvenile": {
       "status": "verified",
-      "localPath": "./images/species/atlantic-salmon/juvenile.jpg",
-      "credit": "donnymidas — CC BY-NC 4.0, via GBIF"
+      "images": [
+        {
+          "localPath": "./images/species/atlantic-salmon/juvenile-1.jpg",
+          "credit": "donnymidas — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        },
+        {
+          "localPath": "./images/species/atlantic-salmon/juvenile-2.jpg",
+          "credit": "guybroome — CC BY-NC 4.0, via GBIF",
+          "isReferenceIllustration": false
+        }
+      ]
     }
   },
   "brook-trout": {
