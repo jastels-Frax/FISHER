@@ -11,7 +11,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const { planFinalize, applyPlan, pickWinner, creditLine, manifestToCsv } = require('../lib/finalize');
+const { planFinalize, applyPlan, orderForCarousel, creditLine, manifestToCsv } = require('../lib/finalize');
 
 function loadFixture(name) {
   return JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', name), 'utf8'));
@@ -25,36 +25,40 @@ function loadPlanFixtures() {
   };
 }
 
-test('pickWinner prefers the reference illustration over other approved candidates', () => {
+test('orderForCarousel puts the reference illustration first, keeps the rest in order', () => {
   const illustration = { id: 'a', isReferenceIllustration: true };
-  const photo = { id: 'b', isReferenceIllustration: false };
-  assert.equal(pickWinner([photo, illustration]).id, 'a');
-  assert.equal(pickWinner([illustration, photo]).id, 'a');
-  assert.equal(pickWinner([photo]).id, 'b');
-  assert.equal(pickWinner([]), null);
+  const photo1 = { id: 'b', isReferenceIllustration: false };
+  const photo2 = { id: 'c', isReferenceIllustration: false };
+  assert.deepEqual(orderForCarousel([photo1, illustration, photo2]).map((c) => c.id), ['a', 'b', 'c']);
+  assert.deepEqual(orderForCarousel([photo1, photo2]).map((c) => c.id), ['b', 'c']);
+  assert.deepEqual(orderForCarousel([]), []);
 });
 
-test('planFinalize: illustration wins the adult slot, photo alternate is kept but unused', () => {
+test('planFinalize: all approved candidates for a slot become carousel images, illustration first', () => {
   const plan = planFinalize(loadPlanFixtures());
 
-  assert.equal(plan.imagesJsonUpdates['brook-trout'].adult.status, 'verified');
-  assert.match(plan.imagesJsonUpdates['brook-trout'].adult.localPath, /brook-trout\/adult\.png$/);
-  assert.match(plan.imagesJsonUpdates['brook-trout'].adult.credit, /Duane Raver/);
+  const adult = plan.imagesJsonUpdates['brook-trout'].adult;
+  assert.equal(adult.status, 'verified');
+  assert.equal(adult.images.length, 2, 'both the illustration and the approved photo should be in the carousel');
+  assert.equal(adult.images[0].isReferenceIllustration, true, 'illustration should lead the carousel');
+  assert.match(adult.images[0].localPath, /brook-trout\/adult-1\.png$/);
+  assert.match(adult.images[0].credit, /Duane Raver/);
+  assert.equal(adult.images[1].isReferenceIllustration, false);
+  assert.match(adult.images[1].localPath, /brook-trout\/adult-2\.jpg$/);
+  assert.match(adult.images[1].credit, /Jane Photographer/);
 
   const adultRows = plan.manifestRows.filter((r) => r.speciesId === 'brook-trout' && r.stage === 'adult');
-  assert.equal(adultRows.length, 2, 'both the illustration and the alternate photo should appear in the manifest');
-  const used = adultRows.find((r) => r.used);
-  const unused = adultRows.find((r) => !r.used);
-  assert.equal(used.candidateId, 'wikimedia-commons-aaa1111111');
-  assert.equal(unused.candidateId, 'wikimedia-commons-bbb2222222');
-  assert.match(unused.reason, /alternate/);
+  assert.equal(adultRows.length, 2, 'both should appear in the manifest, both marked used');
+  assert.ok(adultRows.every((r) => r.used === true));
 });
 
-test('planFinalize: sole approved candidate wins its slot by default', () => {
+test('planFinalize: sole approved candidate becomes a single-image carousel', () => {
   const plan = planFinalize(loadPlanFixtures());
-  assert.equal(plan.imagesJsonUpdates['brook-trout'].juvenile.status, 'verified');
-  assert.match(plan.imagesJsonUpdates['brook-trout'].juvenile.localPath, /brook-trout\/juvenile\.jpg$/);
-  assert.match(plan.imagesJsonUpdates['brook-trout'].juvenile.credit, /J\. Smith/);
+  const juvenile = plan.imagesJsonUpdates['brook-trout'].juvenile;
+  assert.equal(juvenile.status, 'verified');
+  assert.equal(juvenile.images.length, 1);
+  assert.match(juvenile.images[0].localPath, /brook-trout\/juvenile-1\.jpg$/);
+  assert.match(juvenile.images[0].credit, /J\. Smith/);
 });
 
 test('planFinalize: approved-but-unassigned-stage candidates are excluded from images.json and flagged, never silently used', () => {
@@ -64,9 +68,9 @@ test('planFinalize: approved-but-unassigned-stage candidates are excluded from i
   assert.ok(row, 'unassigned candidate must still appear in the manifest for traceability');
   assert.equal(row.used, false);
   assert.match(row.reason, /no life stage assigned/);
-  // and it must not have silently become e.g. the "adult" image for its species
-  assert.notEqual(plan.imagesJsonUpdates['brook-trout'].adult.localPath, undefined);
-  assert.doesNotMatch(plan.imagesJsonUpdates['brook-trout'].adult.credit, /Pat Fisher/);
+  // and it must not have silently become part of e.g. the "adult" carousel for its species
+  const adultCredits = plan.imagesJsonUpdates['brook-trout'].adult.images.map((img) => img.credit);
+  assert.ok(!adultCredits.some((c) => /Pat Fisher/.test(c)));
 });
 
 test('planFinalize: rejected candidates never appear in the plan at all', () => {
@@ -76,12 +80,12 @@ test('planFinalize: rejected candidates never appear in the plan at all', () => 
   for (const ops of plan.copyOps) assert.notEqual(ops.from, 'staging/images/brook-trout/unknown/gbif-eee5555555.jpg');
 });
 
-test('planFinalize: gaps computed for stages with no winning candidate, across all tracked species', () => {
+test('planFinalize: gaps computed for stages with no approved candidate, across all tracked species', () => {
   const plan = planFinalize(loadPlanFixtures());
   const gapKeys = plan.gapsRemaining.map((g) => `${g.speciesId}/${g.stage}`);
   assert.ok(gapKeys.includes('brook-trout/fry'), 'fry has zero candidates at all -> gap');
   assert.ok(gapKeys.includes('rainbow-trout/adult'), 'species with no candidates at all -> gap');
-  assert.ok(!gapKeys.includes('brook-trout/adult'), 'adult was resolved by the illustration -> not a gap');
+  assert.ok(!gapKeys.includes('brook-trout/adult'), 'adult was resolved -> not a gap');
   assert.ok(!gapKeys.includes('brook-trout/juvenile'), 'juvenile was resolved -> not a gap');
 });
 
@@ -97,13 +101,13 @@ test('manifestToCsv quotes fields containing commas and escapes embedded quotes'
   assert.match(lines[1], /"has, a comma and ""quotes"""/);
 });
 
-test('applyPlan: writes images.json, manifest json+csv, gaps log, and copies winning files — in a throwaway temp dir only', () => {
+test('applyPlan: writes images.json with a full image carousel, manifest json+csv, gaps log, and copies every approved file — in a throwaway temp dir only', () => {
   const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'fisher-finalize-test-'));
   try {
-    // Minimal fixture staging tree + starting images.json, all inside tmpRoot.
     const stagingDir = path.join(tmpRoot, 'staging', 'images', 'brook-trout', 'adult');
     fs.mkdirSync(stagingDir, { recursive: true });
     fs.writeFileSync(path.join(stagingDir, 'wikimedia-commons-aaa1111111.png'), Buffer.from('fake-png-bytes'));
+    fs.writeFileSync(path.join(stagingDir, 'wikimedia-commons-bbb2222222.jpg'), Buffer.from('fake-jpg-bytes'));
 
     fs.mkdirSync(path.join(tmpRoot, 'data'), { recursive: true });
     const imagesJsonPath = path.join(tmpRoot, 'data', 'images.json');
@@ -113,30 +117,57 @@ test('applyPlan: writes images.json, manifest json+csv, gaps log, and copies win
     const manifestCsvPath = path.join(tmpRoot, 'data', 'image-attribution-manifest.csv');
     const gapsLogPath = path.join(tmpRoot, 'data', 'image-sourcing-gaps.json');
 
-    const plan = planFinalize({
-      speciesList: [{ id: 'brook-trout', commonName: 'Brook Trout', scientificName: 'Salvelinus fontinalis', lifeStages: { adult: {} } }],
-      candidates: [loadFixture('finalize-candidates.json')[0]], // just the illustration
-      decisions: { 'wikimedia-commons-aaa1111111': { decision: 'approved' } },
+    const [illustration, photo] = loadFixture('finalize-candidates.json');
+    const speciesList = [{ id: 'brook-trout', commonName: 'Brook Trout', scientificName: 'Salvelinus fontinalis', lifeStages: { adult: {} } }];
+    const paths = { copyBaseDir: tmpRoot, imagesJsonPath, manifestJsonPath, manifestCsvPath, gapsLogPath };
+
+    const plan1 = planFinalize({
+      speciesList,
+      candidates: [illustration, photo],
+      decisions: {
+        'wikimedia-commons-aaa1111111': { decision: 'approved' },
+        'wikimedia-commons-bbb2222222': { decision: 'approved' },
+      },
     });
+    applyPlan(plan1, paths);
 
-    applyPlan(plan, { copyBaseDir: tmpRoot, imagesJsonPath, manifestJsonPath, manifestCsvPath, gapsLogPath });
+    const dir = path.join(tmpRoot, 'images', 'species', 'brook-trout');
+    assert.ok(fs.existsSync(path.join(dir, 'adult-1.png')), 'illustration should be copied as adult-1');
+    assert.ok(fs.existsSync(path.join(dir, 'adult-2.jpg')), 'photo should be copied as adult-2');
 
-    const copiedAbs = path.join(tmpRoot, 'images', 'species', 'brook-trout', 'adult.png');
-    assert.ok(fs.existsSync(copiedAbs), 'winning image should be copied to images/species/<id>/<stage>.<ext>');
-    assert.equal(fs.readFileSync(copiedAbs, 'utf8'), 'fake-png-bytes');
-
-    const updatedImages = JSON.parse(fs.readFileSync(imagesJsonPath, 'utf8'));
+    let updatedImages = JSON.parse(fs.readFileSync(imagesJsonPath, 'utf8'));
     assert.equal(updatedImages['brook-trout'].adult.status, 'verified');
+    assert.equal(updatedImages['brook-trout'].adult.images.length, 2);
 
-    const manifest = JSON.parse(fs.readFileSync(manifestJsonPath, 'utf8'));
-    assert.equal(manifest.length, 1);
-    assert.equal(manifest[0].used, true);
+    let manifest = JSON.parse(fs.readFileSync(manifestJsonPath, 'utf8'));
+    assert.equal(manifest.length, 2);
 
     const csv = fs.readFileSync(manifestCsvPath, 'utf8');
-    assert.match(csv, /candidateId/); // header row present
+    assert.match(csv, /candidateId/);
 
-    const gaps = JSON.parse(fs.readFileSync(gapsLogPath, 'utf8'));
+    let gaps = JSON.parse(fs.readFileSync(gapsLogPath, 'utf8'));
     assert.deepEqual(gaps, []);
+
+    // Now reject the second photo and re-finalize — the stale adult-2.jpg
+    // file must be cleaned up, not left behind unreferenced.
+    const plan2 = planFinalize({
+      speciesList,
+      candidates: [illustration, photo],
+      decisions: {
+        'wikimedia-commons-aaa1111111': { decision: 'approved' },
+        'wikimedia-commons-bbb2222222': { decision: 'rejected' },
+      },
+    });
+    applyPlan(plan2, paths);
+
+    assert.ok(fs.existsSync(path.join(dir, 'adult-1.png')), 'remaining approved image should still exist');
+    assert.ok(!fs.existsSync(path.join(dir, 'adult-2.jpg')), 'no-longer-approved image file should be cleaned up');
+
+    updatedImages = JSON.parse(fs.readFileSync(imagesJsonPath, 'utf8'));
+    assert.equal(updatedImages['brook-trout'].adult.images.length, 1);
+
+    manifest = JSON.parse(fs.readFileSync(manifestJsonPath, 'utf8'));
+    assert.equal(manifest.length, 1, 'manifest reflects only the current finalize run, not accumulated history');
   } finally {
     fs.rmSync(tmpRoot, { recursive: true, force: true });
   }

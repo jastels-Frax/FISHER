@@ -49,10 +49,11 @@ export function renderKey(container, opts) {
     } else if (node.type === 'result') {
       const s = speciesById.get(node.speciesId);
       const img = images[node.speciesId] && (images[node.speciesId].adult);
+      const primary = img && img.status === 'verified' && img.images && img.images.length ? img.images[0] : null;
       container.innerHTML = `
         ${breadcrumbHtml()}
         <div class="key-result-card card">
-          ${img && img.status === 'verified' ? `<img src="${escapeHtml(img.localPath)}" alt="${escapeHtml(s ? s.commonName : '')}" style="width:100%;border-radius:10px;margin-bottom:8px">` : ''}
+          ${primary ? `<img src="${escapeHtml(primary.localPath)}" alt="${escapeHtml(s ? s.commonName : '')}" style="width:100%;border-radius:10px;margin-bottom:8px">` : ''}
           <h2>${escapeHtml(s ? s.commonName : node.speciesId)}</h2>
           <p class="sci" style="font-style:italic">${escapeHtml(s ? s.scientificName : '')}</p>
           ${node.note ? `<p>${escapeHtml(node.note)}</p>` : ''}

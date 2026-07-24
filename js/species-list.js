@@ -24,11 +24,38 @@ function habitatBadgeLabel(type) {
 function findImage(images, speciesId, stage) {
   const entry = images[speciesId];
   if (!entry) return null;
-  return entry[stage] || entry.adult || null;
+  // No fallback to the adult entry here: per the "flag clearly rather than
+  // substitute a photo silently" rule this app follows for images, a stage
+  // with no entry of its own should show the placeholder, not another
+  // stage's photo passed off as this one.
+  return entry[stage] || null;
 }
 
 function uniqueSorted(values) {
   return Array.from(new Set(values.filter(Boolean))).sort();
+}
+
+function carouselHtml(images, commonName, stage) {
+  if (images.length === 1) {
+    const img = images[0];
+    return `
+      <img src="${escapeHtml(img.localPath)}" alt="${escapeHtml(commonName)} (${escapeHtml(stage)})" style="width:100%;border-radius:10px" loading="lazy">
+      <p class="img-credit">${escapeHtml(img.credit || '')}</p>
+    `;
+  }
+  return `
+    <div class="img-carousel" role="region" aria-label="${escapeHtml(commonName)} ${escapeHtml(stage)} photos">
+      <div class="img-carousel-track">
+        ${images.map((img, i) => `
+          <figure class="img-carousel-item">
+            <img src="${escapeHtml(img.localPath)}" alt="${escapeHtml(commonName)} (${escapeHtml(stage)}) photo ${i + 1} of ${images.length}" loading="lazy">
+            <figcaption class="img-credit">${escapeHtml(img.credit || '')}</figcaption>
+          </figure>
+        `).join('')}
+      </div>
+      <p class="img-carousel-hint">${images.length} photos &mdash; swipe or scroll for more</p>
+    </div>
+  `;
 }
 
 /**
@@ -98,8 +125,9 @@ export function renderSpeciesBrowser(container, opts) {
 
   function cardHtml(s) {
     const img = findImage(images, s.id, 'adult');
-    const thumb = img && img.status === 'verified'
-      ? `<img src="${escapeHtml(img.localPath)}" alt="${escapeHtml(s.commonName)}" loading="lazy">`
+    const primary = img && img.status === 'verified' && img.images && img.images.length ? img.images[0] : null;
+    const thumb = primary
+      ? `<img src="${escapeHtml(primary.localPath)}" alt="${escapeHtml(s.commonName)}" loading="lazy">`
       : '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13c2.8-3.6 6.8-5.5 11-5.5 3 0 5.3 1.7 7 5.5-1.7 3.8-4 5.5-7 5.5-4.2 0-8.2-1.9-11-5.5Z"/><path d="M18.5 10.3 21 8.2m-2.5 9.5 2.5-2.1"/><circle cx="9.3" cy="11.6" r=".55" fill="currentColor" stroke="none"/></svg>';
     return `
       <button type="button" class="species-card" data-species-id="${escapeHtml(s.id)}">
@@ -139,9 +167,8 @@ export function renderSpeciesBrowser(container, opts) {
         ${availableStages.map((st) => `<button type="button" data-stage="${st}" class="${st === state.detailStage ? 'active' : ''}">${stageLabel(st)}</button>`).join('')}
       </div>
 
-      ${img && img.status === 'verified'
-        ? `<img src="${escapeHtml(img.localPath)}" alt="${escapeHtml(s.commonName)} (${state.detailStage})" style="width:100%;border-radius:10px" loading="lazy">
-           <p class="img-credit">${escapeHtml(img.credit || '')}</p>`
+      ${img && img.status === 'verified' && img.images && img.images.length
+        ? carouselHtml(img.images, s.commonName, state.detailStage)
         : `<div class="placeholder-img">No open-licensed image available yet for this life stage.<br>${img && img.candidateNote ? escapeHtml(img.candidateNote) : ''}</div>`
       }
 

@@ -100,13 +100,13 @@ there's no separate save step. "Preview Finalize" shows what finalizing
 would do without writing anything; "Finalize Approved" actually applies it
 (see step 3).
 
-If more than one candidate ends up approved for the same species+stage, the
-reference illustration wins automatically when there is one (per the
-original brief: prefer Duane Raver/USFWS for the "one clean reference
-illustration"); otherwise the earliest-approved one wins. The rest stay
-recorded as alternates in the attribution manifest, not deleted — reject them
-if you don't want them lingering, or leave them as a documented backup
-option.
+Every candidate you approve for a given species+stage shows up in the app —
+they don't need to be narrowed down to one. The species detail view shows
+them as a side-scrolling carousel per life stage. The one exception to
+ordering: if you approve a reference illustration for a stage, it always
+leads the carousel (per the original brief: prefer Duane Raver/USFWS for
+the "one clean reference illustration"); everything else after it keeps
+roughly the order it was found in.
 
 ## 3. Finalize
 
@@ -120,14 +120,18 @@ node scripts/finalize-images.js --dry-run  # preview only
 
 This:
 
-1. Copies each winning approved image into
-   `images/species/<speciesId>/<stage>.<ext>` (the app's real asset folder —
-   already cached by the service worker automatically, no code changes
-   needed).
+1. Copies *every* approved image for a species+stage into
+   `images/species/<speciesId>/<stage>-1.<ext>`,
+   `images/species/<speciesId>/<stage>-2.<ext>`, etc. — the app's real asset
+   folder, already cached by the service worker automatically, no code
+   changes needed.
 2. Updates `data/images.json`, replacing placeholder entries with
-   `{"status": "verified", "localPath": "...", "credit": "..."}`.
+   `{"status": "verified", "images": [{"localPath": "...", "credit": "..."}, ...]}`
+   — an array, since a stage can have more than one approved photo. The app
+   renders these as a side-scrolling carousel (a single-image array just
+   shows the one photo, no carousel chrome).
 3. Writes `data/image-attribution-manifest.json` and `.csv` — one row per
-   *approved* candidate (used or not), with full source/license/author
+   *approved and stage-assigned* candidate, with full source/license/author
    traceability. This is kept separate from `data/images.json` because the
    attribution detail isn't shown in the app UI, but the app is internal-use
    only, so the bar is "reasonable internal use with attribution tracked,"
@@ -139,9 +143,11 @@ This:
    obvious what still needs manual sourcing or a field photo.
 
 Finalize is safe to re-run after further review — it always recomputes from
-the current `staging/candidates.json` + `staging/decisions.json`, and only
-overwrites the specific species/stage entries it has a decision for; other
-entries in `data/images.json` are left as-is.
+the current `staging/candidates.json` + `staging/decisions.json`. For a
+species+stage it has a decision for, it fully replaces that slot's images
+(so un-approving one after a previous finalize correctly removes its copied
+file, not just its `data/images.json` entry); species+stage combinations
+with no approved candidate at all are left exactly as they were.
 
 ## What's committed vs. what's not
 
