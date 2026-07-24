@@ -43,19 +43,58 @@ function carouselHtml(images, commonName, stage) {
       <p class="img-credit">${escapeHtml(img.credit || '')}</p>
     `;
   }
+  const first = images[0];
   return `
-    <div class="img-carousel" role="region" aria-label="${escapeHtml(commonName)} ${escapeHtml(stage)} photos">
-      <div class="img-carousel-track">
-        ${images.map((img, i) => `
-          <figure class="img-carousel-item">
-            <img src="${escapeHtml(img.localPath)}" alt="${escapeHtml(commonName)} (${escapeHtml(stage)}) photo ${i + 1} of ${images.length}" loading="lazy">
-            <figcaption class="img-credit">${escapeHtml(img.credit || '')}</figcaption>
-          </figure>
-        `).join('')}
+    <div class="img-carousel" data-role="img-carousel" data-total="${images.length}" data-index="0">
+      <div class="img-carousel-viewport">
+        <img class="img-carousel-img" data-role="carousel-img" src="${escapeHtml(first.localPath)}" alt="${escapeHtml(commonName)} (${escapeHtml(stage)}) photo 1 of ${images.length}" loading="lazy">
+        <button type="button" class="img-carousel-arrow img-carousel-prev" data-role="carousel-prev" aria-label="Previous photo">&lsaquo;</button>
+        <button type="button" class="img-carousel-arrow img-carousel-next" data-role="carousel-next" aria-label="Next photo">&rsaquo;</button>
       </div>
-      <p class="img-carousel-hint">${images.length} photos &mdash; swipe or scroll for more</p>
+      <p class="img-credit" data-role="carousel-credit">${escapeHtml(first.credit || '')}</p>
+      <div class="img-carousel-dots" data-role="carousel-dots">
+        ${images.map((_, i) => `<span class="img-carousel-dot ${i === 0 ? 'active' : ''}"></span>`).join('')}
+      </div>
     </div>
   `;
+}
+
+/**
+ * Wires up click/swipe navigation for a rendered carousel — one image
+ * visible at a time, looping in both directions. Called after innerHTML is
+ * set; does its own small DOM updates on nav rather than a full re-render so
+ * swiping stays snappy and doesn't reset scroll position.
+ */
+function bindCarousel(container, images, commonName, stage) {
+  const carousel = container.querySelector('[data-role="img-carousel"]');
+  if (!carousel) return;
+  const total = images.length;
+  const imgEl = carousel.querySelector('[data-role="carousel-img"]');
+  const creditEl = carousel.querySelector('[data-role="carousel-credit"]');
+  const dots = carousel.querySelectorAll('.img-carousel-dot');
+  let index = 0;
+
+  function show(i) {
+    index = ((i % total) + total) % total; // wraps both directions
+    const img = images[index];
+    imgEl.src = img.localPath;
+    imgEl.alt = `${commonName} (${stage}) photo ${index + 1} of ${total}`;
+    creditEl.textContent = img.credit || '';
+    dots.forEach((dot, di) => dot.classList.toggle('active', di === index));
+  }
+
+  carousel.querySelector('[data-role="carousel-prev"]').addEventListener('click', () => show(index - 1));
+  carousel.querySelector('[data-role="carousel-next"]').addEventListener('click', () => show(index + 1));
+
+  const viewport = carousel.querySelector('.img-carousel-viewport');
+  let touchStartX = null;
+  viewport.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  viewport.addEventListener('touchend', (e) => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+    touchStartX = null;
+  }, { passive: true });
 }
 
 /**
@@ -200,6 +239,9 @@ export function renderSpeciesBrowser(container, opts) {
 
     container.querySelector('[data-role="back"]').addEventListener('click', () => { state.detailId = null; renderList(); });
     container.querySelectorAll('[data-stage]').forEach((btn) => btn.addEventListener('click', () => { state.detailStage = btn.getAttribute('data-stage'); renderDetail(); }));
+    if (img && img.status === 'verified' && img.images && img.images.length > 1) {
+      bindCarousel(container, img.images, s.commonName, state.detailStage);
+    }
     if (mode === 'select') {
       container.querySelector('[data-role="confirm"]').addEventListener('click', () => onSelect && onSelect({ species: s, lifeStage: state.detailStage, unidentified: false }));
       container.querySelector('[data-role="uncertain"]').addEventListener('click', () => onSelect && onSelect({ species: null, lifeStage: null, unidentified: true }));
