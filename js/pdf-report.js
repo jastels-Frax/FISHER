@@ -130,7 +130,45 @@ function buildHabitatSection(h) {
   return `<h2>Habitat Characterization</h2>${rendered}`;
 }
 
-function buildFishTable(records) {
+function fmtDateTimeShort(v) {
+  return v ? String(v).replace('T', ' ') : '';
+}
+
+function trapSoakTimeText(deployed, retrieved) {
+  if (!deployed || !retrieved) return '';
+  const ms = new Date(retrieved) - new Date(deployed);
+  if (isNaN(ms) || ms < 0) return '';
+  const totalMin = Math.round(ms / 60000);
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  return h > 0 ? `${h} h ${m} min` : `${m} min`;
+}
+
+function buildTrapsTable(traps) {
+  traps = traps || [];
+  if (!traps.length) return '';
+  const rows = traps.map((t) => `<tr>
+      <td>${escapeHtml(t.label || 'Unlabeled trap')}</td>
+      <td>${escapeHtml(t.location || '')}</td>
+      <td>${escapeHtml(t.baitType || '')}</td>
+      <td>${escapeHtml(fmtDateTimeShort(t.dateTimeDeployed))}</td>
+      <td>${escapeHtml(fmtDateTimeShort(t.dateTimeRetrieved))}</td>
+      <td>${escapeHtml(trapSoakTimeText(t.dateTimeDeployed, t.dateTimeRetrieved))}</td>
+      <td>${escapeHtml(t.notes || '')}</td>
+    </tr>`).join('');
+
+  return `
+    <h2>Minnow Trap Deployments</h2>
+    <table>
+      <thead><tr>
+        <th>Trap</th><th>Set location</th><th>Bait</th><th>Deployed</th><th>Retrieved</th><th>Soak time</th><th>Notes</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  `;
+}
+
+function buildFishTable(records, traps) {
   if (!records.length) {
     return '<p class="empty">No fish were logged for this survey.</p>';
   }
@@ -141,6 +179,7 @@ function buildFishTable(records) {
     const weight = r.weightG != null ? `${r.weightG} g` : '';
     const health = [ (r.conditionFlags || []).join(', '), r.conditionNotes ].filter(Boolean).join(' — ') || (r.unidentified ? '' : 'Healthy');
     const method = r.captureMethod || '';
+    const trap = r.trapId ? (traps || []).find((t) => t.id === r.trapId) : null;
     return `<tr>
       <td>${escapeHtml(species)}</td>
       <td>${escapeHtml(stage)}</td>
@@ -148,13 +187,14 @@ function buildFishTable(records) {
       <td>${escapeHtml(weight)}</td>
       <td>${escapeHtml(health)}</td>
       <td>${escapeHtml(method)}</td>
+      <td>${escapeHtml(trap ? (trap.label || 'Unlabeled trap') : '')}</td>
     </tr>`;
   }).join('');
 
   return `
     <table>
       <thead><tr>
-        <th>Species</th><th>Life stage</th><th>Length</th><th>Weight</th><th>Health notes</th><th>Capture method</th>
+        <th>Species</th><th>Life stage</th><th>Length</th><th>Weight</th><th>Health notes</th><th>Capture method</th><th>Trap</th>
       </tr></thead>
       <tbody>${rows}</tbody>
     </table>
@@ -172,7 +212,8 @@ function buildReportHtml(survey, fishRecords) {
   const font700 = abs('./fonts/oswald-700.woff2');
 
   const habitatHtml = buildHabitatSection(s.habitat);
-  const fishTableHtml = buildFishTable(fishRecords);
+  const trapsTableHtml = buildTrapsTable(s.traps);
+  const fishTableHtml = buildFishTable(fishRecords, s.traps);
   const flagNote = s.flaggedForFollowUp
     ? `<p class="flag">One or more fish in this catalogue are flagged unidentified &mdash; see key, pending follow-up confirmation.</p>` : '';
 
@@ -257,6 +298,8 @@ tbody tr:nth-child(even) td { background: #f9fbf9; }
   ${s.notes ? `<h3 class="sub">General notes</h3><p>${escapeHtml(s.notes)}</p>` : ''}
 
   ${habitatHtml}
+
+  ${trapsTableHtml}
 
   <h2>Fish Catalogue (${fishRecords.length})</h2>
   ${flagNote}

@@ -31,6 +31,7 @@ const CSV_COLUMNS = [
   ['conditionNotes', (s, f) => f.conditionNotes || ''],
   ['disposition', (s, f) => f.disposition || ''],
   ['captureMethod', (s, f) => f.captureMethod || ''],
+  ['trapLabel', (s, f) => (f.trapId ? ((s.traps || []).find((t) => t.id === f.trapId)?.label || '') : '')],
   ['technicianName', (s, f) => f.technicianName || ''],
   ['photoAttached', (s, f) => (f.photo ? 'Y' : 'N')],
   ['fishNotes', (s, f) => f.notes || ''],

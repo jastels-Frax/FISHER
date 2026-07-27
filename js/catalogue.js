@@ -91,7 +91,7 @@ async function openSurvey(surveyId) {
       weather: { airTempC: '', sky: preset.defaultSky, wind: preset.defaultWind, windSpeedKmh: '', notes: '' },
       surveyPurpose: preset.surveyPurpose, permitNumber: preset.permitNumber, crewSize: preset.crewSize,
       gearEffort: preset.gearEffort, waterLevel: '',
-      habitat: {},
+      habitat: {}, traps: [],
       notes: '', flaggedForFollowUp: false,
       createdAt: new Date().toISOString(),
     };
@@ -198,6 +198,8 @@ function renderSurveyForm() {
     <textarea id="f-notes">${escapeHtml(s.notes)}</textarea>
 
     <p class="field-hint" id="autosave-indicator">Changes autosave to this device.</p>
+
+    ${trapsSectionHtml(s.traps)}
 
     <hr style="border-color:var(--line);margin:20px 0">
     <h2>Fish caught (${currentFishRecords.length})</h2>
@@ -312,13 +314,68 @@ function habitatSectionHtml(h) {
   `;
 }
 
+function trapById(trapId) {
+  return (currentSurvey.traps || []).find((t) => t.id === trapId);
+}
+
+function formatDuration(ms) {
+  const totalMin = Math.round(ms / 60000);
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  return h > 0 ? `${h} h ${m} min` : `${m} min`;
+}
+
+function trapSoakTimeHtml(deployed, retrieved) {
+  if (!deployed || !retrieved) return 'Soak time will be calculated once both deploy and retrieval times are set.';
+  const ms = new Date(retrieved) - new Date(deployed);
+  if (isNaN(ms)) return 'Soak time will be calculated once both deploy and retrieval times are set.';
+  if (ms < 0) return 'Check dates &mdash; retrieval time is before deployment time.';
+  return `Soak time: <strong>${formatDuration(ms)}</strong>`;
+}
+
+function trapCardHtml(t) {
+  const id = escapeHtml(t.id);
+  return `
+    <div class="card trap-card">
+      <div class="identify-row">
+        <input type="text" class="trap-field" data-trap-id="${id}" data-key="label" value="${escapeHtml(t.label || '')}" placeholder="Trap label / ID, e.g. MT-01">
+        <button type="button" class="btn btn-outline btn-sm trap-remove" data-trap-id="${id}">Remove</button>
+      </div>
+      <label>Set location / description</label>
+      <input type="text" class="trap-field" data-trap-id="${id}" data-key="location" value="${escapeHtml(t.location || '')}" placeholder="e.g. river left bank, 5 m upstream of riffle">
+      <label>Bait type</label>
+      <input type="text" class="trap-field" data-trap-id="${id}" data-key="baitType" value="${escapeHtml(t.baitType || '')}" placeholder="e.g. cheese, roe, dog food">
+      <label>Date &amp; time deployed</label>
+      <input type="datetime-local" class="trap-field trap-datetime" data-trap-id="${id}" data-key="dateTimeDeployed" value="${escapeHtml(t.dateTimeDeployed || '')}">
+      <label>Date &amp; time retrieved</label>
+      <input type="datetime-local" class="trap-field trap-datetime" data-trap-id="${id}" data-key="dateTimeRetrieved" value="${escapeHtml(t.dateTimeRetrieved || '')}">
+      <p class="field-hint trap-soak" data-trap-id="${id}">${trapSoakTimeHtml(t.dateTimeDeployed, t.dateTimeRetrieved)}</p>
+      <label>Notes</label>
+      <textarea class="trap-field" data-trap-id="${id}" data-key="notes">${escapeHtml(t.notes || '')}</textarea>
+    </div>
+  `;
+}
+
+function trapsSectionHtml(traps) {
+  traps = traps || [];
+  return `
+    <hr style="border-color:var(--line);margin:20px 0">
+    <h2 id="traps-count">Minnow Trap Deployments (${traps.length})</h2>
+    <p class="field-hint">Log each trap set here, then pick the trap when logging a fish caught from it, below.</p>
+    <div id="traps-list">${traps.length ? traps.map(trapCardHtml).join('') : '<p class="empty-state">No traps logged yet for this survey.</p>'}</div>
+    <button type="button" class="btn btn-outline" id="add-trap-btn">+ Add Minnow Trap</button>
+  `;
+}
+
 function fishRowHtml(r) {
   const name = r.unidentified ? 'Unidentified — see key' : r.speciesCommonName;
+  const trap = r.trapId ? trapById(r.trapId) : null;
   return `
     <div class="record-list-item">
       <strong>${escapeHtml(name)}</strong> ${r.lifeStage ? `<span class="badge">${escapeHtml(LIFE_STAGE_LABELS[r.lifeStage] || r.lifeStage)}</span>` : ''}
       ${r.unidentified ? '<span class="badge" style="background:var(--danger)">follow-up</span>' : ''}
       <div class="meta">${r.lengthMm ? `${escapeHtml(r.lengthMm)} mm` : ''} ${r.weightG ? `&middot; ${escapeHtml(r.weightG)} g` : ''} &middot; ${escapeHtml(r.captureMethod || 'method n/a')}</div>
+      ${trap ? `<div class="meta">Trap: ${escapeHtml(trap.label || 'Unlabeled trap')}</div>` : ''}
       <div class="meta">${(r.conditionFlags || []).map(escapeHtml).join(', ')}</div>
       <button type="button" class="btn btn-outline btn-sm" data-delete-fish="${escapeHtml(r.id)}" style="margin-top:6px">Delete</button>
     </div>
@@ -365,6 +422,13 @@ function fishFormHtml(draft) {
       <select id="ff-method"><option value="">Select&hellip;</option>${opt(CAPTURE_METHODS, draft.captureMethod || '')}</select>
       ${draft.captureMethod === 'Other' ? `<input type="text" id="ff-methodOther" value="${escapeHtml(draft.captureMethodOther || '')}" placeholder="Specify method">` : ''}
 
+      <label>Minnow trap (if applicable)</label>
+      <select id="ff-trap">
+        <option value="">Not trap-caught / N/A</option>
+        ${(currentSurvey.traps || []).map((t) => `<option value="${escapeHtml(t.id)}" ${draft.trapId === t.id ? 'selected' : ''}>${escapeHtml(t.label || 'Unlabeled trap')}</option>`).join('')}
+      </select>
+      ${(!currentSurvey.traps || !currentSurvey.traps.length) ? '<p class="field-hint">No minnow traps logged yet for this survey &mdash; add one in the Minnow Trap Deployments section above if this fish came from a trap.</p>' : ''}
+
       <label>Technician name</label>
       <input type="text" id="ff-technician" value="${escapeHtml(draft.technicianName || '')}">
 
@@ -385,7 +449,7 @@ function defaultFishDraft() {
   return {
     speciesId: null, speciesCommonName: '', unidentified: false, lifeStage: '',
     lengthMm: '', weightG: '', conditionFlags: [], conditionNotes: '', disposition: '',
-    captureMethod: getSettings().defaultCaptureMethod, captureMethodOther: '', technicianName: currentSurvey.observerNames || '',
+    captureMethod: getSettings().defaultCaptureMethod, captureMethodOther: '', trapId: '', technicianName: currentSurvey.observerNames || '',
     notes: '', photoName: null, photoBlob: null,
   };
 }
@@ -407,6 +471,7 @@ function readFishFormIntoDraft() {
   d.captureMethod = document.getElementById('ff-method').value;
   const otherEl = document.getElementById('ff-methodOther');
   if (otherEl) d.captureMethodOther = otherEl.value;
+  d.trapId = document.getElementById('ff-trap').value;
   d.technicianName = document.getElementById('ff-technician').value;
   d.notes = document.getElementById('ff-notes').value;
   fishDraft = d;
@@ -421,6 +486,7 @@ function wireFishFormEvents() {
     renderSurveyForm();
   });
   document.getElementById('ff-method').addEventListener('change', () => { readFishFormIntoDraft(); saveFishDraft(fishDraft); renderSurveyForm(); });
+  document.getElementById('ff-trap').addEventListener('change', () => { readFishFormIntoDraft(); saveFishDraft(fishDraft); });
   ['ff-lifeStage', 'ff-length', 'ff-weight', 'ff-conditionNotes', 'ff-disposition', 'ff-technician', 'ff-notes'].forEach((id) => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('input', () => { readFishFormIntoDraft(); saveFishDraft(fishDraft); });
@@ -489,6 +555,7 @@ function wireFishFormEvents() {
       conditionNotes: d.conditionNotes || '',
       disposition: d.disposition || '',
       captureMethod: d.captureMethod === 'Other' ? (d.captureMethodOther || 'Other') : d.captureMethod,
+      trapId: d.trapId || null,
       technicianName: d.technicianName || '',
       notes: d.notes || '',
       photo: d.photoBlob ? { blob: d.photoBlob, name: d.photoName, mimeType: d.photoBlob.type } : null,
@@ -567,6 +634,57 @@ function wireSurveyFormEvents() {
   });
 
   wireHabitatEvents();
+  wireTrapEvents();
+}
+
+function wireTrapEvents() {
+  const s = currentSurvey;
+  s.traps = s.traps || [];
+  document.getElementById('add-trap-btn')?.addEventListener('click', () => {
+    s.traps.push({ id: newId('trap'), label: `Trap ${s.traps.length + 1}`, location: '', baitType: '', dateTimeDeployed: '', dateTimeRetrieved: '', notes: '' });
+    autosave();
+    refreshTrapsList();
+  });
+  wireTrapFieldEvents();
+}
+
+function wireTrapFieldEvents() {
+  const s = currentSurvey;
+  document.querySelectorAll('.trap-field').forEach((el) => {
+    const trap = trapById(el.getAttribute('data-trap-id'));
+    const key = el.getAttribute('data-key');
+    if (!trap) return;
+    const handler = () => {
+      trap[key] = el.value;
+      autosave();
+      if (el.classList.contains('trap-datetime')) refreshTrapSoak(trap.id);
+    };
+    el.addEventListener('input', handler);
+    el.addEventListener('change', handler);
+  });
+  document.querySelectorAll('.trap-remove').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const trapId = btn.getAttribute('data-trap-id');
+      s.traps = s.traps.filter((t) => t.id !== trapId);
+      autosave();
+      refreshTrapsList();
+    });
+  });
+}
+
+function refreshTrapSoak(trapId) {
+  const trap = trapById(trapId);
+  const el = document.querySelector(`.trap-soak[data-trap-id="${trapId}"]`);
+  if (trap && el) el.innerHTML = trapSoakTimeHtml(trap.dateTimeDeployed, trap.dateTimeRetrieved);
+}
+
+function refreshTrapsList() {
+  const traps = currentSurvey.traps || [];
+  const listEl = document.getElementById('traps-list');
+  if (listEl) listEl.innerHTML = traps.length ? traps.map(trapCardHtml).join('') : '<p class="empty-state">No traps logged yet for this survey.</p>';
+  const heading = document.getElementById('traps-count');
+  if (heading) heading.textContent = `Minnow Trap Deployments (${traps.length})`;
+  wireTrapFieldEvents();
 }
 
 function habitatPath(key) {
