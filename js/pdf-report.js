@@ -58,8 +58,20 @@ function buildSurveyMetaGrid(s) {
 // only fields with a real value are rendered, and a sub-group is skipped
 // entirely if none of its fields have data. If nothing at all is filled in,
 // the whole Habitat Characterization section is omitted from the report.
+const VEGETATION_STRATA_LABELS = {
+  canopy: 'Canopy / overstory', understory: 'Understory / shrub',
+  herbaceous: 'Herbaceous / groundcover', aquatic: 'Aquatic / emergent (instream)',
+};
+
+function depthStats(measurements) {
+  const nums = (measurements || []).map(Number).filter((n) => !isNaN(n));
+  if (!nums.length) return null;
+  return { avg: nums.reduce((a, b) => a + b, 0) / nums.length, max: Math.max(...nums), n: nums.length };
+}
+
 function buildHabitatSection(h) {
   if (!h) return '';
+  const depths = depthStats(h.channelMorphology?.depthMeasurementsCm);
   const groups = [
     { title: 'Water Chemistry', fields: [
       ['Water temperature', h.waterChemistry?.tempC, '°C'],
@@ -70,8 +82,9 @@ function buildHabitatSection(h) {
     { title: 'Channel Morphology', fields: [
       ['Wetted width', h.channelMorphology?.wettedWidthM, 'm'],
       ['Bankfull width', h.channelMorphology?.bankfullWidthM, 'm'],
-      ['Depth (average)', h.channelMorphology?.depthAvgCm, 'cm'],
-      ['Depth (max)', h.channelMorphology?.depthMaxCm, 'cm'],
+      ['Depth — average', depths ? depths.avg.toFixed(1) : null, 'cm'],
+      ['Depth — max', depths ? depths.max : null, 'cm'],
+      ['Depth measurements taken', depths ? depths.n : null, ''],
       ['Gradient', h.channelMorphology?.gradientPct, '%'],
       ['Dominant channel unit', h.channelMorphology?.channelUnit, ''],
     ] },
@@ -85,7 +98,8 @@ function buildHabitatSection(h) {
       ['Buffer width', h.riparian?.bufferWidthM, 'm'],
       ['Canopy cover', h.riparian?.canopyCoverPct, '%'],
       ['Bank stability', h.riparian?.bankStability, ''],
-      ['Dominant riparian vegetation', h.riparian?.vegetationType, ''],
+      ...Object.entries(VEGETATION_STRATA_LABELS).map(([key, label]) =>
+        [`Dominant vegetation — ${label}`, h.riparian?.vegetationByStratum?.[key], '']),
     ] },
     { title: 'Flow', fields: [
       ['Discharge', h.flow?.discharge, ''],

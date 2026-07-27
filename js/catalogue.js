@@ -25,6 +25,12 @@ const BANK_STABILITY = ['Stable', 'Moderately stable', 'Eroding', 'Severely erod
 const BARRIER_TYPE = ['None observed', 'Complete barrier', 'Partial barrier', 'Temporal barrier'];
 const BARRIER_STRUCTURE = ['Culvert', 'Dam', 'Natural falls / cascade', 'Beaver dam', 'Debris jam', 'Other'];
 const CAPTURE_METHODS = ['Electrofishing', 'Minnow trap', 'Seine', 'Angling', 'Fyke net', 'Gillnet', 'Dip net', 'Other trap', 'Other'];
+const VEGETATION_STRATA = [
+  { key: 'canopy', label: 'Canopy / overstory' },
+  { key: 'understory', label: 'Understory / shrub' },
+  { key: 'herbaceous', label: 'Herbaceous / groundcover' },
+  { key: 'aquatic', label: 'Aquatic / emergent (instream)' },
+];
 const CONDITION_FLAGS = ['Healthy', 'Deformity', 'Eroded fin(s)', 'Lesion(s)', 'Tumor(s)', 'Parasites', 'Other anomaly'];
 const DISPOSITION_OPTIONS = ['Released alive', 'Retained (voucher/sample)', 'Mortality'];
 const LIFE_STAGE_LABELS = { egg: 'Egg', elver: 'Elver / glass eel', fry: 'Fry', parr: 'Parr', juvenile: 'Juvenile', adult: 'Adult' };
@@ -204,10 +210,34 @@ function renderSurveyForm() {
   if (addFishOpen) wireFishFormEvents();
 }
 
+function depthStats(measurements) {
+  const nums = (measurements || []).map(Number).filter((n) => !isNaN(n));
+  if (!nums.length) return null;
+  return { avg: nums.reduce((a, b) => a + b, 0) / nums.length, max: Math.max(...nums), n: nums.length };
+}
+
+function depthListHtml(measurements) {
+  measurements = measurements || [];
+  if (!measurements.length) return '<p class="field-hint">No depth measurements yet.</p>';
+  return measurements.map((v, i) => `
+    <div class="identify-row" style="margin-bottom:6px">
+      <input type="number" step="1" class="h-depth-input" data-idx="${i}" value="${escapeHtml(v)}" placeholder="cm">
+      <button type="button" class="btn btn-outline btn-sm h-depth-remove" data-idx="${i}">Remove</button>
+    </div>
+  `).join('');
+}
+
+function depthSummaryHtml(measurements) {
+  const stats = depthStats(measurements);
+  if (!stats) return 'Average depth will be calculated automatically once measurements are added.';
+  return `Average depth: <strong>${stats.avg.toFixed(1)} cm</strong> &middot; Max depth: <strong>${stats.max} cm</strong> &middot; n = ${stats.n} measurement${stats.n === 1 ? '' : 's'}`;
+}
+
 function habitatSectionHtml(h) {
   h = h || {};
   const wc = h.waterChemistry || {}; const cm = h.channelMorphology || {}; const sub = h.substrate || {};
   const cov = h.cover || {}; const rip = h.riparian || {}; const flow = h.flow || {}; const barrier = h.barrier || {};
+  const veg = rip.vegetationByStratum || {};
   return `
     <details class="section-collapsible" id="habitat-details" style="margin-bottom:12px">
       <summary>
@@ -227,8 +257,10 @@ function habitatSectionHtml(h) {
       <fieldset><legend>Channel morphology</legend>
         <label>Wetted width (m)</label><input type="number" step="0.1" id="h-wettedWidth" value="${escapeHtml(cm.wettedWidthM || '')}">
         <label>Bankfull width (m)</label><input type="number" step="0.1" id="h-bankfullWidth" value="${escapeHtml(cm.bankfullWidthM || '')}">
-        <label>Depth &mdash; average (cm)</label><input type="number" step="1" id="h-depthAvg" value="${escapeHtml(cm.depthAvgCm || '')}">
-        <label>Depth &mdash; max (cm)</label><input type="number" step="1" id="h-depthMax" value="${escapeHtml(cm.depthMaxCm || '')}">
+        <label>Depth measurements (cm) <span class="field-hint">&mdash; e.g. individual pond-depth soundings; add as many as needed</span></label>
+        <div id="h-depth-list">${depthListHtml(cm.depthMeasurementsCm)}</div>
+        <button type="button" class="btn btn-outline btn-sm" id="h-depth-add">+ Add depth measurement</button>
+        <p class="field-hint" id="h-depth-summary">${depthSummaryHtml(cm.depthMeasurementsCm)}</p>
         <label>Gradient (%)</label><input type="number" step="0.1" id="h-gradient" value="${escapeHtml(cm.gradientPct || '')}">
         <label>Dominant channel unit type <span class="field-hint">(standard convention, not NS/DFO-verbatim)</span></label>
         <select id="h-channelUnit"><option value="">Select&hellip;</option>${opt(CHANNEL_UNIT_OPTIONS, cm.channelUnit || '')}</select>
@@ -251,7 +283,11 @@ function habitatSectionHtml(h) {
         <label>Buffer width (m)</label><input type="number" step="0.5" id="h-bufferWidth" value="${escapeHtml(rip.bufferWidthM || '')}">
         <label>Canopy cover (%)</label><input type="number" step="1" id="h-canopy" value="${escapeHtml(rip.canopyCoverPct || '')}">
         <label>Bank stability</label><select id="h-bankStability"><option value="">Select&hellip;</option>${opt(BANK_STABILITY, rip.bankStability || '')}</select>
-        <label>Dominant riparian vegetation</label><input type="text" id="h-vegType" value="${escapeHtml(rip.vegetationType || '')}">
+        <label>Dominant vegetation, by stratum</label>
+        ${VEGETATION_STRATA.map((st) => `
+          <label class="field-hint" style="margin-top:8px">${escapeHtml(st.label)}</label>
+          <input type="text" id="h-veg-${st.key}" value="${escapeHtml(veg[st.key] || '')}" placeholder="Dominant species / description">
+        `).join('')}
       </fieldset>
 
       <fieldset><legend>Flow</legend>
@@ -543,15 +579,16 @@ function wireHabitatEvents() {
   h.waterChemistry = h.waterChemistry || {}; h.channelMorphology = h.channelMorphology || {};
   h.substrate = h.substrate || {}; h.cover = h.cover || {}; h.riparian = h.riparian || {};
   h.flow = h.flow || {}; h.barrier = h.barrier || {};
+  h.channelMorphology.depthMeasurementsCm = h.channelMorphology.depthMeasurementsCm || [];
+  h.riparian.vegetationByStratum = h.riparian.vegetationByStratum || {};
 
   const simple = [
     ['h-temp', h.waterChemistry, 'tempC'], ['h-do', h.waterChemistry, 'doMgL'], ['h-ph', h.waterChemistry, 'ph'], ['h-cond', h.waterChemistry, 'conductivityUsCm'],
     ['h-wettedWidth', h.channelMorphology, 'wettedWidthM'], ['h-bankfullWidth', h.channelMorphology, 'bankfullWidthM'],
-    ['h-depthAvg', h.channelMorphology, 'depthAvgCm'], ['h-depthMax', h.channelMorphology, 'depthMaxCm'],
     ['h-gradient', h.channelMorphology, 'gradientPct'], ['h-channelUnit', h.channelMorphology, 'channelUnit'],
     ['h-subDominant', h.substrate, 'dominant'], ['h-subSubdominant', h.substrate, 'subdominant'], ['h-embeddedness', h.substrate, 'embeddedness'],
     ['h-bufferWidth', h.riparian, 'bufferWidthM'], ['h-canopy', h.riparian, 'canopyCoverPct'],
-    ['h-bankStability', h.riparian, 'bankStability'], ['h-vegType', h.riparian, 'vegetationType'],
+    ['h-bankStability', h.riparian, 'bankStability'],
     ['h-discharge', h.flow, 'discharge'], ['h-flowRegime', h.flow, 'regimeNotes'],
     ['h-barrierType', h.barrier, 'type'], ['h-barrierStructure', h.barrier, 'structure'], ['h-barrierNotes', h.barrier, 'notes'],
   ];
@@ -559,6 +596,14 @@ function wireHabitatEvents() {
     const el = document.getElementById(id);
     if (!el) return;
     const handler = () => { obj[key] = el.value; autosave(); };
+    el.addEventListener('input', handler);
+    el.addEventListener('change', handler);
+  });
+
+  VEGETATION_STRATA.forEach((st) => {
+    const el = document.getElementById(`h-veg-${st.key}`);
+    if (!el) return;
+    const handler = () => { h.riparian.vegetationByStratum[st.key] = el.value; autosave(); };
     el.addEventListener('input', handler);
     el.addEventListener('change', handler);
   });
@@ -573,6 +618,45 @@ function wireHabitatEvents() {
   if (benthic) benthic.addEventListener('input', () => { h.benthicNotes = benthic.value; autosave(); });
   const photoRef = document.getElementById('h-photoRef');
   if (photoRef) photoRef.addEventListener('input', () => { h.photoRef = photoRef.value; autosave(); });
+
+  document.getElementById('h-depth-add')?.addEventListener('click', () => {
+    h.channelMorphology.depthMeasurementsCm.push('');
+    autosave();
+    refreshDepthList();
+  });
+  wireDepthRowEvents();
+}
+
+function refreshDepthList() {
+  const cm = currentSurvey.habitat.channelMorphology;
+  const listEl = document.getElementById('h-depth-list');
+  if (listEl) listEl.innerHTML = depthListHtml(cm.depthMeasurementsCm);
+  refreshDepthSummary();
+  wireDepthRowEvents();
+}
+
+function refreshDepthSummary() {
+  const cm = currentSurvey.habitat.channelMorphology;
+  const summaryEl = document.getElementById('h-depth-summary');
+  if (summaryEl) summaryEl.innerHTML = depthSummaryHtml(cm.depthMeasurementsCm);
+}
+
+function wireDepthRowEvents() {
+  const cm = currentSurvey.habitat.channelMorphology;
+  document.querySelectorAll('.h-depth-input').forEach((el) => {
+    const idx = Number(el.getAttribute('data-idx'));
+    const handler = () => { cm.depthMeasurementsCm[idx] = el.value; autosave(); refreshDepthSummary(); };
+    el.addEventListener('input', handler);
+    el.addEventListener('change', handler);
+  });
+  document.querySelectorAll('.h-depth-remove').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.getAttribute('data-idx'));
+      cm.depthMeasurementsCm.splice(idx, 1);
+      autosave();
+      refreshDepthList();
+    });
+  });
 }
 
 let autosaveTimer = null;
