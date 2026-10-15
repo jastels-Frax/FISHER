@@ -2,6 +2,10 @@ import { initHeaderNav, showToast, nowLocalDatetimeValue, captureGeolocation, es
 import { FisherDB, newId } from './db.js';
 import { openIdentifyModal } from './identify-modal.js';
 import { getSettings, initSettingsButton } from './settings.js';
+import {
+  SKY_OPTIONS, WIND_OPTIONS, SURVEY_PURPOSE_OPTIONS, CAPTURE_METHODS, LIFE_STAGE_LABELS,
+  VEGETATION_STRATA, depthStats, trapSoakMs, formatDuration,
+} from './vocab.js';
 
 initHeaderNav();
 initSettingsButton();
@@ -12,9 +16,8 @@ initSettingsButton();
 // Methods & Standards v4.0, USGS Illustrated Field Guide for Assessing Anomalies in Fish.
 // Fields marked "(convention)" are standard field-survey practice but could not be verified
 // verbatim against a current NS/DFO document in this pass — see README for details.
-const SKY_OPTIONS = ['Clear', 'Partly cloudy', 'Overcast', 'Light precipitation', 'Heavy precipitation'];
-const WIND_OPTIONS = ['Calm', 'Light', 'Moderate', 'Strong'];
-const SURVEY_PURPOSE_OPTIONS = ['Index / monitoring station', 'Fish salvage', 'Habitat assessment', 'Baseline / pre-development survey', 'Other'];
+// (SKY_OPTIONS, WIND_OPTIONS, SURVEY_PURPOSE_OPTIONS, CAPTURE_METHODS, LIFE_STAGE_LABELS,
+// and VEGETATION_STRATA live in vocab.js — shared with settings.js and pdf-report.js.)
 const WATER_LEVEL_OPTIONS = ['Low / base flow', 'Normal', 'High / freshet', 'Flood'];
 const CHANNEL_UNIT_OPTIONS = ['Pool', 'Riffle', 'Run', 'Glide'];
 const SUBSTRATE_CLASSES = ['Fines (silt/sand/clay)', 'Gravel', 'Cobble', 'Boulder', 'Bedrock / hardpan'];
@@ -24,16 +27,8 @@ const COVER_ABUNDANCE = ['None', 'Low', 'Moderate', 'High'];
 const BANK_STABILITY = ['Stable', 'Moderately stable', 'Eroding', 'Severely eroding'];
 const BARRIER_TYPE = ['None observed', 'Complete barrier', 'Partial barrier', 'Temporal barrier'];
 const BARRIER_STRUCTURE = ['Culvert', 'Dam', 'Natural falls / cascade', 'Beaver dam', 'Debris jam', 'Other'];
-const CAPTURE_METHODS = ['Electrofishing', 'Minnow trap', 'Seine', 'Angling', 'Fyke net', 'Gillnet', 'Dip net', 'Other trap', 'Other'];
-const VEGETATION_STRATA = [
-  { key: 'canopy', label: 'Canopy / overstory' },
-  { key: 'understory', label: 'Understory / shrub' },
-  { key: 'herbaceous', label: 'Herbaceous / groundcover' },
-  { key: 'aquatic', label: 'Aquatic / emergent (instream)' },
-];
 const CONDITION_FLAGS = ['Healthy', 'Deformity', 'Eroded fin(s)', 'Lesion(s)', 'Tumor(s)', 'Parasites', 'Other anomaly'];
 const DISPOSITION_OPTIONS = ['Released alive', 'Retained (voucher/sample)', 'Mortality'];
-const LIFE_STAGE_LABELS = { egg: 'Egg', elver: 'Elver / glass eel', fry: 'Fry', parr: 'Parr', juvenile: 'Juvenile', adult: 'Adult' };
 
 let refSpecies = [];
 let refImages = {};
@@ -47,6 +42,19 @@ const root = document.getElementById('catalogue-root');
 
 function opt(list, value) {
   return list.map((v) => `<option value="${escapeHtml(v)}" ${v === value ? 'selected' : ''}>${escapeHtml(v)}</option>`).join('');
+}
+
+// Wires up plain input/select/textarea fields that write straight into an object
+// on every input/change and trigger the debounced autosave. Used for survey
+// metadata, weather, and habitat characterization fields alike.
+function bindFields(triples) {
+  triples.forEach(([id, obj, key]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const handler = () => { obj[key] = el.value; autosave(); };
+    el.addEventListener('input', handler);
+    el.addEventListener('change', handler);
+  });
 }
 
 function draftKey(surveyId) { return `fisher-draft-fish-${surveyId}`; }
@@ -212,12 +220,6 @@ function renderSurveyForm() {
   if (addFishOpen) wireFishFormEvents();
 }
 
-function depthStats(measurements) {
-  const nums = (measurements || []).map(Number).filter((n) => !isNaN(n));
-  if (!nums.length) return null;
-  return { avg: nums.reduce((a, b) => a + b, 0) / nums.length, max: Math.max(...nums), n: nums.length };
-}
-
 function depthListHtml(measurements) {
   measurements = measurements || [];
   if (!measurements.length) return '<p class="field-hint">No depth measurements yet.</p>';
@@ -318,17 +320,9 @@ function trapById(trapId) {
   return (currentSurvey.traps || []).find((t) => t.id === trapId);
 }
 
-function formatDuration(ms) {
-  const totalMin = Math.round(ms / 60000);
-  const h = Math.floor(totalMin / 60);
-  const m = totalMin % 60;
-  return h > 0 ? `${h} h ${m} min` : `${m} min`;
-}
-
 function trapSoakTimeHtml(deployed, retrieved) {
-  if (!deployed || !retrieved) return 'Soak time will be calculated once both deploy and retrieval times are set.';
-  const ms = new Date(retrieved) - new Date(deployed);
-  if (isNaN(ms)) return 'Soak time will be calculated once both deploy and retrieval times are set.';
+  const ms = trapSoakMs(deployed, retrieved);
+  if (ms === null) return 'Soak time will be calculated once both deploy and retrieval times are set.';
   if (ms < 0) return 'Check dates &mdash; retrieval time is before deployment time.';
   return `Soak time: <strong>${formatDuration(ms)}</strong>`;
 }
@@ -607,23 +601,13 @@ function wireSurveyFormEvents() {
   });
 
   const bindings = [
-    ['f-observerNames', 'observerNames'], ['f-dateTime', 'dateTime'], ['f-projectId', 'projectId'],
-    ['f-stationId', 'stationId'], ['f-siteId', 'siteId'], ['f-waterbodyName', 'waterbodyName'], ['f-watershed', 'watershed'],
-    ['f-purpose', 'surveyPurpose'], ['f-permit', 'permitNumber'], ['f-crewSize', 'crewSize'],
-    ['f-gearEffort', 'gearEffort'], ['f-waterLevel', 'waterLevel'], ['f-notes', 'notes'],
+    ['f-observerNames', currentSurvey, 'observerNames'], ['f-dateTime', currentSurvey, 'dateTime'], ['f-projectId', currentSurvey, 'projectId'],
+    ['f-stationId', currentSurvey, 'stationId'], ['f-siteId', currentSurvey, 'siteId'], ['f-waterbodyName', currentSurvey, 'waterbodyName'], ['f-watershed', currentSurvey, 'watershed'],
+    ['f-purpose', currentSurvey, 'surveyPurpose'], ['f-permit', currentSurvey, 'permitNumber'], ['f-crewSize', currentSurvey, 'crewSize'],
+    ['f-gearEffort', currentSurvey, 'gearEffort'], ['f-waterLevel', currentSurvey, 'waterLevel'], ['f-notes', currentSurvey, 'notes'],
+    ['f-airTempC', currentSurvey.weather, 'airTempC'], ['f-sky', currentSurvey.weather, 'sky'], ['f-wind', currentSurvey.weather, 'wind'], ['f-weatherNotes', currentSurvey.weather, 'notes'],
   ];
-  bindings.forEach(([id, key]) => {
-    const el = document.getElementById(id);
-    el.addEventListener('input', () => { currentSurvey[key] = el.value; autosave(); });
-    el.addEventListener('change', () => { currentSurvey[key] = el.value; autosave(); });
-  });
-
-  const weatherBindings = [['f-airTempC', 'airTempC'], ['f-sky', 'sky'], ['f-wind', 'wind'], ['f-weatherNotes', 'notes']];
-  weatherBindings.forEach(([id, key]) => {
-    const el = document.getElementById(id);
-    el.addEventListener('input', () => { currentSurvey.weather[key] = el.value; autosave(); });
-    el.addEventListener('change', () => { currentSurvey.weather[key] = el.value; autosave(); });
-  });
+  bindFields(bindings);
 
   document.getElementById('f-gps').addEventListener('change', (e) => {
     const parts = e.target.value.split(',').map((v) => parseFloat(v.trim()));
@@ -687,11 +671,6 @@ function refreshTrapsList() {
   wireTrapFieldEvents();
 }
 
-function habitatPath(key) {
-  currentSurvey.habitat = currentSurvey.habitat || {};
-  return currentSurvey.habitat;
-}
-
 function wireHabitatEvents() {
   const h = currentSurvey.habitat = currentSurvey.habitat || {};
   h.waterChemistry = h.waterChemistry || {}; h.channelMorphology = h.channelMorphology || {};
@@ -710,13 +689,7 @@ function wireHabitatEvents() {
     ['h-discharge', h.flow, 'discharge'], ['h-flowRegime', h.flow, 'regimeNotes'],
     ['h-barrierType', h.barrier, 'type'], ['h-barrierStructure', h.barrier, 'structure'], ['h-barrierNotes', h.barrier, 'notes'],
   ];
-  simple.forEach(([id, obj, key]) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const handler = () => { obj[key] = el.value; autosave(); };
-    el.addEventListener('input', handler);
-    el.addEventListener('change', handler);
-  });
+  bindFields(simple);
 
   VEGETATION_STRATA.forEach((st) => {
     const el = document.getElementById(`h-veg-${st.key}`);

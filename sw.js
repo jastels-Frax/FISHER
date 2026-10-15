@@ -1,7 +1,7 @@
 // Service worker: cache-first offline support for the NS Fish Field ID & Catalogue app.
 // Bump CACHE_VERSION whenever precached files change so clients pick up the new set.
-const CACHE_VERSION = 'fisher-v6';
-const RUNTIME_CACHE = 'fisher-runtime-v6';
+const CACHE_VERSION = 'fisher-v7';
+const RUNTIME_CACHE = 'fisher-runtime-v7';
 
 // data/*.json changes independently of app deploys (every image finalize
 // run rewrites data/images.json) — cache-first would keep serving whatever
@@ -21,6 +21,7 @@ const PRECACHE_URLS = [
   './css/styles.css',
   './js/app.js',
   './js/db.js',
+  './js/vocab.js',
   './js/species-list.js',
   './js/key-engine.js',
   './js/identify-modal.js',

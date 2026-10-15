@@ -3,13 +3,10 @@
 // Watercourse Permitting App), plus a few app preferences. Stored in
 // localStorage — small, synchronous, no IndexedDB ceremony needed for this.
 import { escapeHtml, showToast } from './app.js';
+import { SKY_OPTIONS, WIND_OPTIONS, SURVEY_PURPOSE_OPTIONS, CAPTURE_METHODS } from './vocab.js';
 
 export const SETTINGS_KEY = 'fisher-settings';
 
-const SKY_OPTIONS = ['Clear', 'Partly cloudy', 'Overcast', 'Light precipitation', 'Heavy precipitation'];
-const WIND_OPTIONS = ['Calm', 'Light', 'Moderate', 'Strong'];
-const SURVEY_PURPOSE_OPTIONS = ['Index / monitoring station', 'Fish salvage', 'Habitat assessment', 'Baseline / pre-development survey', 'Other'];
-const CAPTURE_METHODS = ['Electrofishing', 'Minnow trap', 'Seine', 'Angling', 'Fyke net', 'Gillnet', 'Dip net', 'Other trap', 'Other'];
 
 function defaultSettings() {
   return {

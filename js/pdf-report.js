@@ -6,8 +6,7 @@
 // Layout/format mirrors the existing Fraxinus survey report templates
 // (see README "PDF export" section for exactly what was reused from where).
 import { escapeHtml } from './app.js';
-
-const LIFE_STAGE_LABELS = { egg: 'Egg', elver: 'Elver / glass eel', fry: 'Fry', parr: 'Parr', juvenile: 'Juvenile', adult: 'Adult' };
+import { LIFE_STAGE_LABELS, VEGETATION_STRATA, depthStats, trapSoakMs, formatDuration } from './vocab.js';
 
 function abs(path) {
   return new URL(path, window.location.href).href;
@@ -58,17 +57,6 @@ function buildSurveyMetaGrid(s) {
 // only fields with a real value are rendered, and a sub-group is skipped
 // entirely if none of its fields have data. If nothing at all is filled in,
 // the whole Habitat Characterization section is omitted from the report.
-const VEGETATION_STRATA_LABELS = {
-  canopy: 'Canopy / overstory', understory: 'Understory / shrub',
-  herbaceous: 'Herbaceous / groundcover', aquatic: 'Aquatic / emergent (instream)',
-};
-
-function depthStats(measurements) {
-  const nums = (measurements || []).map(Number).filter((n) => !isNaN(n));
-  if (!nums.length) return null;
-  return { avg: nums.reduce((a, b) => a + b, 0) / nums.length, max: Math.max(...nums), n: nums.length };
-}
-
 function buildHabitatSection(h) {
   if (!h) return '';
   const depths = depthStats(h.channelMorphology?.depthMeasurementsCm);
@@ -98,8 +86,8 @@ function buildHabitatSection(h) {
       ['Buffer width', h.riparian?.bufferWidthM, 'm'],
       ['Canopy cover', h.riparian?.canopyCoverPct, '%'],
       ['Bank stability', h.riparian?.bankStability, ''],
-      ...Object.entries(VEGETATION_STRATA_LABELS).map(([key, label]) =>
-        [`Dominant vegetation — ${label}`, h.riparian?.vegetationByStratum?.[key], '']),
+      ...VEGETATION_STRATA.map((st) =>
+        [`Dominant vegetation — ${st.label}`, h.riparian?.vegetationByStratum?.[st.key], '']),
     ] },
     { title: 'Flow', fields: [
       ['Discharge', h.flow?.discharge, ''],
@@ -135,13 +123,9 @@ function fmtDateTimeShort(v) {
 }
 
 function trapSoakTimeText(deployed, retrieved) {
-  if (!deployed || !retrieved) return '';
-  const ms = new Date(retrieved) - new Date(deployed);
-  if (isNaN(ms) || ms < 0) return '';
-  const totalMin = Math.round(ms / 60000);
-  const h = Math.floor(totalMin / 60);
-  const m = totalMin % 60;
-  return h > 0 ? `${h} h ${m} min` : `${m} min`;
+  const ms = trapSoakMs(deployed, retrieved);
+  if (ms === null || ms < 0) return '';
+  return formatDuration(ms);
 }
 
 function buildTrapsTable(traps) {

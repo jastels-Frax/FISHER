@@ -21,9 +21,9 @@ const CSV_COLUMNS = [
   ['sky', (s, f) => s.weather?.sky || ''],
   ['wind', (s, f) => s.weather?.wind || ''],
   ['waterLevel', (s, f) => s.waterLevel || ''],
-  ['fishRecordId', (s, f) => f.id],
-  ['species', (s, f) => f.speciesCommonName || ''],
-  ['unidentifiedFlag', (s, f) => (f.unidentified ? 'Y' : 'N')],
+  ['fishRecordId', (s, f) => f.id || ''],
+  ['species', (s, f) => (f.id ? (f.speciesCommonName || '') : '(no fish caught)')],
+  ['unidentifiedFlag', (s, f) => (f.id ? (f.unidentified ? 'Y' : 'N') : '')],
   ['lifeStage', (s, f) => f.lifeStage || ''],
   ['lengthMm', (s, f) => (f.lengthMm ?? '')],
   ['weightG', (s, f) => (f.weightG ?? '')],
@@ -33,7 +33,7 @@ const CSV_COLUMNS = [
   ['captureMethod', (s, f) => f.captureMethod || ''],
   ['trapLabel', (s, f) => (f.trapId ? ((s.traps || []).find((t) => t.id === f.trapId)?.label || '') : '')],
   ['technicianName', (s, f) => f.technicianName || ''],
-  ['photoAttached', (s, f) => (f.photo ? 'Y' : 'N')],
+  ['photoAttached', (s, f) => (f.id ? (f.photo ? 'Y' : 'N') : '')],
   ['fishNotes', (s, f) => f.notes || ''],
   ['surveyNotes', (s, f) => s.notes || ''],
 ];
@@ -44,16 +44,23 @@ function csvEscape(val) {
   return str;
 }
 
-function buildCsv(surveys, fishBySurvey) {
-  const rows = [CSV_COLUMNS.map(([name]) => name).join(',')];
+// One [survey, fish] pair per fish caught; surveys with no fish still get one
+// pair (with an empty fish object) so habitat/trap/metadata-only surveys —
+// e.g. a barren-site assessment — aren't silently dropped from CSV/preview.
+function csvRows(surveys, fishBySurvey) {
+  const rows = [];
   surveys.forEach((s) => {
     const fish = fishBySurvey.get(s.id) || [];
-    if (!fish.length) return;
-    fish.forEach((f) => {
-      rows.push(CSV_COLUMNS.map(([, fn]) => csvEscape(fn(s, f))).join(','));
-    });
+    if (!fish.length) { rows.push([s, {}]); return; }
+    fish.forEach((f) => rows.push([s, f]));
   });
-  return rows.join('\n');
+  return rows;
+}
+
+function buildCsv(surveys, fishBySurvey) {
+  const header = CSV_COLUMNS.map(([name]) => name).join(',');
+  const rows = csvRows(surveys, fishBySurvey).map(([s, f]) => CSV_COLUMNS.map(([, fn]) => csvEscape(fn(s, f))).join(','));
+  return [header, ...rows].join('\n');
 }
 
 function buildJson(surveys, fishBySurvey) {
@@ -95,8 +102,7 @@ async function loadAll() {
 }
 
 function previewTable(surveys, fishBySurvey) {
-  const rows = [];
-  surveys.forEach((s) => (fishBySurvey.get(s.id) || []).forEach((f) => rows.push([s, f])));
+  const rows = csvRows(surveys, fishBySurvey);
   if (!rows.length) return '<p class="empty-state">Nothing selected, or nothing logged yet on this device.</p>';
   return `
     <div class="table-scroll">
