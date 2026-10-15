@@ -392,6 +392,9 @@ input:focus, select:focus, textarea:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(45, 107, 45, 0.16);
 }
+input.field-missing, select.field-missing {
+  border-color: var(--status-danger-text);
+}
 button:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 1px;

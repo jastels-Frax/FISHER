@@ -57,6 +57,17 @@ function bindFields(triples) {
   });
 }
 
+// Soft, non-blocking required-field indicator: flags empty required fields
+// with a red outline so blank surveys don't get lost, but never prevents
+// saving — a hard block isn't worth the field-conditions risk of losing data.
+const REQUIRED_FIELD_IDS = ['f-observerNames', 'f-dateTime', 'f-siteId'];
+function updateRequiredFieldState() {
+  REQUIRED_FIELD_IDS.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('field-missing', !el.value.trim());
+  });
+}
+
 function draftKey(surveyId) { return `fisher-draft-fish-${surveyId}`; }
 
 // ---------------------------------------------------------------- List view --
@@ -608,6 +619,8 @@ function wireSurveyFormEvents() {
     ['f-airTempC', currentSurvey.weather, 'airTempC'], ['f-sky', currentSurvey.weather, 'sky'], ['f-wind', currentSurvey.weather, 'wind'], ['f-weatherNotes', currentSurvey.weather, 'notes'],
   ];
   bindFields(bindings);
+  REQUIRED_FIELD_IDS.forEach((id) => document.getElementById(id)?.addEventListener('input', updateRequiredFieldState));
+  updateRequiredFieldState();
 
   document.getElementById('f-gps').addEventListener('change', (e) => {
     const parts = e.target.value.split(',').map((v) => parseFloat(v.trim()));
